@@ -4,7 +4,7 @@ stages:
   - test
   - build
   - deploy-dev
-  
+
 test:
   stage: test
   image: alpine
@@ -42,6 +42,7 @@ build:
   script:
       # Install node/npm and build
       - apk add --update nodejs nodejs-npm
+      - apk add --update yarn
 
       # create-react-app option can help with OOM issues on build
       - export GENERATE_SOURCEMAP=false
