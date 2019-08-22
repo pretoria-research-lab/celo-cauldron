@@ -56,7 +56,7 @@ class ServerlessPlugin {
     const args = [
       's3',
       'sync',
-      '.',
+      'app/',
       `s3://${s3Bucket}/`,
       '--delete',
     ];
