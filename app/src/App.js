@@ -41,11 +41,9 @@ export default class App extends Component {
   reloadClaimUrls = async () => {
     this.setState({loading:true}, async () => {
       const claimUrls = await this.getClaimUrls();
-      const sortedClaimUrls = claimUrls.sort((a,b) => {return a.createdTimestamp - b.createdTimestamp});      
-      console.log("Sorted to : " + JSON.stringify(sortedClaimUrls));
 
-      if(sortedClaimUrls[sortedClaimUrls.length-1].hashCode !== this.state.currentUrl.hashCode){
-        this.setState({claimUrls:sortedClaimUrls}, () => {
+      if(claimUrls[claimUrls.length-1].hashCode !== this.state.currentUrl.hashCode){
+        this.setState({claimUrls:claimUrls}, () => {
           this.setState({currentUrl: this.state.claimUrls[this.state.claimUrls.length - 1]}, () => {
             const currentUrlIndex = this.state.claimUrls.length;
             this.setState({currentUrlIndex}, () => {
