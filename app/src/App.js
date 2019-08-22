@@ -4,6 +4,9 @@ import QRCode from 'qrcode.react';
 import loadingImg from './loading.svg';
 import axios from 'axios';
 
+const startingTimerSeconds = 30;
+const extraTimeSeconds = 10;
+
 const API_CONFIG = {
   baseUrl : "https://xsxgj1rqnc.execute-api.eu-central-1.amazonaws.com",
   basePath : "/dev/reward",
@@ -25,7 +28,7 @@ export default class App extends Component {
                       currentUrl: "",
                       currentUrlIndex: 0,
                       loading: true,
-                      reloadTimer: 30
+                      reloadTimer: startingTimerSeconds
                   };
   }
 
@@ -38,14 +41,23 @@ export default class App extends Component {
   reloadClaimUrls = async () => {
     this.setState({loading:true}, async () => {
       const claimUrls = await this.getClaimUrls();
-      this.setState({claimUrls}, () => {
-        this.setState({currentUrl: this.state.claimUrls[this.state.claimUrls.length - 1]}, () => {
-          const currentUrlIndex = this.state.claimUrls.length;
-          this.setState({currentUrlIndex}, () => {
-            this.setState({loading:false});
-          });          
-        });        
-      });
+      const sortedClaimUrls = claimUrls.sort((a,b) => {return a.createdTimestamp - b.createdTimestamp});      
+      console.log("Sorted to : " + JSON.stringify(sortedClaimUrls));
+
+      if(sortedClaimUrls[sortedClaimUrls.length-1].hashCode !== this.state.currentUrl.hashCode){
+        this.setState({claimUrls:sortedClaimUrls}, () => {
+          this.setState({currentUrl: this.state.claimUrls[this.state.claimUrls.length - 1]}, () => {
+            const currentUrlIndex = this.state.claimUrls.length;
+            this.setState({currentUrlIndex}, () => {
+              this.setState({loading:false});
+            });          
+          });        
+        });
+      }
+      else{
+        console.log('Result is not new, ignoring...');
+        this.setState({loading:true});
+      }
     });
   }
 
@@ -56,7 +68,7 @@ export default class App extends Component {
       this.setState({reloadTimer}, async () => {
         if(reloadTimer===0){
           await this.reloadClaimUrls();
-          this.setState({reloadTimer:10});
+          this.setState({reloadTimer:startingTimerSeconds});
         }
       });      
     }, 1000);
@@ -66,46 +78,51 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="Next Big Thing">          
-          <h1>xDAIRow</h1>
-          <hr/>
+          <div>
+            <h1>xDAIRow</h1>
+            <hr />
+          </div>          
         </header>
         <div id="main" className="container">        
           <div className="row">            
             <div className="column col-sm-12">                
                 { this.state.loading ? 
-                  <>
-                    <h2>Loading...</h2>
-                    <div>
-                      <img alt="loading" className="loadingImg" src={loadingImg} /> 
-                    </div>
-                  </>
+                  <div className="waiting container">
+                    <p>Waiting for result...</p>
+                    <p>¯\_(ツ)_/¯</p>
+                    <img alt="loading" className="loadingImg" src={loadingImg} /> 
+                  </div>
                   :
                   <>                    
-                    <p>Scan this URL and go straight to a browser burner wallet for use in our vending machine!</p>
+                    {this.state.currentUrl.rewardInXDAI > 0 ? 
+                      <p>Scan this URL, claim your reward, and spend at our vending machine!</p>
+                      :
+                      <p>No reward for this attempt</p>
+                    }
                     
                     <div className='qrCode'>
-                      {this.state.currentUrl.claimUrl ? <QRCode size={256} bgColor="#000000" fgColor="#00FF33" includeMargin={true} value={this.state.currentUrl.claimUrl} />
+                      {this.state.currentUrl.claimUrl ? <QRCode size={256} bgColor="#000000" fgColor="#00FF33" includeMargin={false} value={this.state.currentUrl.claimUrl} />
                       : <h3>:(</h3>}
                     </div>
-
-                    <p><strong>You received {this.state.currentUrl.rewardInXDAI} xDAI</strong></p>
-                    <p>{"Attempt : " + this.state.currentUrlIndex}</p>
-                    <p>{"Timestamp : " + this.state.currentUrl.createdTimestamp}</p>
-                    <p>{"Hash (truncated) : " + this.state.currentUrl.hashCode.substring(0,12)}</p>
-                    <p>Refreshing in {this.state.reloadTimer} seconds...</p>
                     
-                    <button className="btn-primary" onClick={(event)=>{
+                      <p>You received {this.state.currentUrl.rewardInXDAI} xDAI</p>                
+                      <p>{"Attempt : " + this.state.currentUrlIndex}</p>
+                      <p>{"Timestamp : " + this.state.currentUrl.createdTimestamp}</p>
+                      <p>{"Hash (truncated) : " + this.state.currentUrl.hashCode.substring(0,12)}</p>
+                      <p>Disappearing in {this.state.reloadTimer} seconds...</p>
+                    
+                    {/* <button className="btn-primary" onClick={(event)=>{
                       event.preventDefault();
                       if(this.state.currentUrlIndex!==0){
                         const currentUrlIndex = this.state.currentUrlIndex -1;
                         const currentUrl = this.state.claimUrls[currentUrlIndex];
                         this.setState({currentUrl},()=>this.setState({currentUrlIndex}));  
                       }
-                    }}>Show previous...</button>
+                    }}>Show previous...</button> */}
                     
                     <button className="btn-primary" onClick={(event)=>{
                       event.preventDefault(); 
-                      const addToTimer = this.state.reloadTimer + 10; 
+                      const addToTimer = this.state.reloadTimer + extraTimeSeconds; 
                       this.setState({reloadTimer:addToTimer});
                     }}>Wait!</button>
                   </>
