@@ -1,30 +1,87 @@
-image: alpine
+image: docker:latest
 
 stages:
+  - test
+  - build
   - deploy-dev
+  
+test:
+  stage: test
+  image: alpine
+  script:
+      # Install alpine-sdk
+      - apk add --update alpine-sdk
+  
+      # Install py-pip for some yarn dependencies
+      - apk add --update py-pip 
+      - pip install -U pip
 
-deploy:
+      # Install node/npm/yarn and build
+      - apk add --update nodejs nodejs-npm
+      - apk add --update yarn
+      - cd app 
+      - yarn
+      
+      - echo "FILES"
+      - ls
+      
+      # Create test
+      - echo "TEST START"
+      - yarn test
+      - echo "TEST COMPLETE" 
+  artifacts:
+    paths:
+      - app/node_modules/
+    expire_in: 60 mins
+
+build:
+  stage: build
+  image: alpine
+  dependencies:
+    - test
+  script:
+      # Install node/npm and build
+      - apk add --update nodejs nodejs-npm
+
+      # create-react-app option can help with OOM issues on build
+      - export GENERATE_SOURCEMAP=false
+      
+      # Create build
+      - cd app
+      - echo "BUILD START"
+      - yarn build
+      - echo "BUILD COMPLETE"
+  artifacts:
+    paths:
+      - app/build/
+    expire_in: 60 mins
+  only:
+    - master
+    - develop
+
+deploy-dev:
   stage: deploy-dev
-  script:    
-    # Install AWS CLI
-    # AWS CLI requires python-pip, python is installed by default
-    - apk add --update alpine-sdk
-    - apk add --update py-pip 
-    - pip install -U pip  
-    - pip install awscli  
-    
-    # Install node/npm/yarn and build
-    - apk add --update nodejs nodejs-npm
-    - apk add --update yarn
-    - yarn
-    
+  image: python:3.7-alpine
+  dependencies:
+    - build
+  script:
+    # Configure environment variables injected by GitLab
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+    # Install awscli
+    - export PATH=~/.local/bin:$PATH    
+    - pip install awscli --upgrade --user    
+
     # Install and configure 
     # Using injected environment variables for AWS IAM setup
     - npm install -g serverless
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
-    #- serverless deploy -v --stage dev -- Only do this first time from the shell file "deploy_first_time.sh"
+    
+    # Sync build/ to s3 bucket
     - serverless syncToS3
-    - serverless serverless invalidateCloudFrontCache
+    - serverless invalidatCloudFrontCache
 
+    - echo "DEPLOYMENT COMPLETE"
   environment:
     name: dev
