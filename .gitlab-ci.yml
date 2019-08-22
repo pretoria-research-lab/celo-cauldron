@@ -16,7 +16,7 @@ test:
       - apk add --update py-pip 
       - pip install -U pip
 
-      # Install node/npm/yarn and build
+      # Install npm & yarn
       - apk add --update nodejs nodejs-npm
       - apk add --update yarn
       - cd app 
@@ -40,7 +40,7 @@ build:
   dependencies:
     - test
   script:
-      # Install node/npm and build
+      # Install npm, yarn
       - apk add --update nodejs nodejs-npm
       - apk add --update yarn
 
@@ -74,8 +74,9 @@ deploy-dev:
     - export PATH=~/.local/bin:$PATH    
     - pip install awscli --upgrade --user
 
-    # Install npm & serverless
+    # Install npm, yarn, & serverless
     - apk add --update nodejs nodejs-npm
+    - apk add --update yarn
     - npm install -g serverless
 
     # Make sure serverless s3 plugin is installed
