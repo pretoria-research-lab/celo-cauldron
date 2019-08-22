@@ -78,6 +78,9 @@ deploy-dev:
     - apk add --update nodejs nodejs-npm
     - npm install -g serverless
 
+    # Make sure serverless s3 plugin is installed
+    - yarn
+
     # Configure serverless using injected environment variables for AWS IAM setup
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
     
