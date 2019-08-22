@@ -1,0 +1,88 @@
+body {
+  background-color: black;  
+}
+
+.App {
+  text-align: center;
+  background: black;
+  color: var(--terminal);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin:10px;
+  border: solid 2px var(--terminal);  
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* h1,h2,h3{
+  color: var(--secondary-pelorous);
+}
+h4,h5{
+  color: var(--secondary-pelorous);
+} */
+
+.bpf-primary {
+  color:  var(--primary-ming);
+}
+.main-bg {
+  background-color: white;
+}
+.light-highlight-bg {
+  background-color: var(--med-gray-1); 
+}
+.dark-highlight-bg {
+  background-color: var(--secondary-vida-loca); 
+}
+
+.btn-primary {
+  background-color: grey;
+  color: var(--terminal);
+  border: 1px solid var(--terminal);
+  font-size: 24px;
+  margin: 5px;
+}
+
+.btn-secondary {
+  color: var(--terminal);
+  border: 1px solid var(--terminal);
+  font-size: 24px;
+  margin: 5px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+}
+
+.loadingImg {
+  display: flex;
+  max-width: 256px;
+}

@@ -1,0 +1,30 @@
+image: alpine
+
+stages:
+  - deploy-dev
+
+deploy:
+  stage: deploy-dev
+  script:    
+    # Install AWS CLI
+    # AWS CLI requires python-pip, python is installed by default
+    - apk add --update alpine-sdk
+    - apk add --update py-pip 
+    - pip install -U pip  
+    - pip install awscli  
+    
+    # Install node/npm/yarn and build
+    - apk add --update nodejs nodejs-npm
+    - apk add --update yarn
+    - yarn
+    
+    # Install and configure 
+    # Using injected environment variables for AWS IAM setup
+    - npm install -g serverless
+    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
+    #- serverless deploy -v --stage dev -- Only do this first time from the shell file "deploy_first_time.sh"
+    - serverless syncToS3
+    - serverless serverless invalidateCloudFrontCache
+
+  environment:
+    name: dev
