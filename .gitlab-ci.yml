@@ -87,7 +87,7 @@ deploy-dev:
     
     # Sync build/ to s3 bucket and invalidate cache
     - serverless syncToS3
-    - serverless invalidatCloudFrontCache
+    - serverless invalidateCloudFrontCache
 
     - echo "DEPLOYMENT COMPLETE"
   environment:
