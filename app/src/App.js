@@ -33,7 +33,8 @@ export default class App extends Component {
   }
 
   getClaimUrls = async () => {
-      const response = await instance.get(API_CONFIG.basePath); // no authorization on this endpoint
+      const queryParms = "?limit=1";
+      const response = await instance.get(API_CONFIG.basePath+queryParms); // no authorization on this endpoint
       console.log("Reward API - getAll() - success, response : " + JSON.stringify(response));
       return response.data.rewards;    
   }
@@ -64,7 +65,7 @@ export default class App extends Component {
     setInterval(()=>{
       const reloadTimer =this.state.reloadTimer - 1;
       this.setState({reloadTimer}, async () => {
-        if((reloadTimer===0) || (this.state.loading && this.state.reloadTimer%2 === 0)){
+        if((reloadTimer===0) || this.state.loading){
           await this.reloadClaimUrls();
           this.setState({reloadTimer:startingTimerSeconds});
         }
