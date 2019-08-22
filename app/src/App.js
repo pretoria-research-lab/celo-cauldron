@@ -66,7 +66,7 @@ export default class App extends Component {
     setInterval(()=>{
       const reloadTimer =this.state.reloadTimer - 1;
       this.setState({reloadTimer}, async () => {
-        if(reloadTimer===0){
+        if((reloadTimer===0) || (this.state.loading && this.state.reloadTimer%2 === 0)){
           await this.reloadClaimUrls();
           this.setState({reloadTimer:startingTimerSeconds});
         }
