@@ -44,7 +44,7 @@ build:
       - apk add --update nodejs nodejs-npm
       - apk add --update yarn
 
-      # create-react-app option can help with OOM issues on build
+      # create-react-app option GENERATE_SOURCEMAP=false can help with OOM issues on build for large apps
       - export GENERATE_SOURCEMAP=false
       
       # Create build
@@ -72,14 +72,16 @@ deploy-dev:
 
     # Install awscli
     - export PATH=~/.local/bin:$PATH    
-    - pip install awscli --upgrade --user    
+    - pip install awscli --upgrade --user
 
-    # Install and configure 
-    # Using injected environment variables for AWS IAM setup
+    # Install npm & serverless
+    - apk add --update nodejs nodejs-npm
     - npm install -g serverless
+
+    # Configure serverless using injected environment variables for AWS IAM setup
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
     
-    # Sync build/ to s3 bucket
+    # Sync build/ to s3 bucket and invalidate cache
     - serverless syncToS3
     - serverless invalidatCloudFrontCache
 
