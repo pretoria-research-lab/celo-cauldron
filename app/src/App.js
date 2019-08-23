@@ -10,7 +10,7 @@ const extraTimeSeconds = 10;
 const API_CONFIG = {
   baseUrl : "https://xsxgj1rqnc.execute-api.eu-central-1.amazonaws.com",
   basePath : "/dev/reward",
-  timeout: 6000,
+  timeout: 12000,
   headers: {"Content-Type":"application/json;charset=utf-8"}
 }
 
@@ -25,7 +25,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state =  {   claimUrls: [],
-                      currentUrl: "",
+                      currentUrl: {hashCode : "empty"},
                       currentUrlIndex: 0,
                       loading: true,
                       reloadTimer: startingTimerSeconds
@@ -33,17 +33,17 @@ export default class App extends Component {
   }
 
   getClaimUrls = async () => {
-      const queryParms = "?limit=1";
-      const response = await instance.get(API_CONFIG.basePath+queryParms); // no authorization on this endpoint
+      const response = await instance.get(API_CONFIG.basePath); // no authorization on this endpoint
       console.log("Reward API - getAll() - success, response : " + JSON.stringify(response));
       return response.data.rewards;    
   }
 
   reloadClaimUrls = async () => {
     this.setState({loading:true}, async () => {
+
       const claimUrls = await this.getClaimUrls();
 
-      if(claimUrls[claimUrls.length-1].hashCode !== this.state.currentUrl.hashCode){
+      if(claimUrls[claimUrls.length-1].hashCode !== (this.state.currentUrl.hashCode ? this.state.currentUrl.hashCode : "empty")){
         this.setState({claimUrls:claimUrls}, () => {
           this.setState({currentUrl: this.state.claimUrls[this.state.claimUrls.length - 1]}, () => {
             const currentUrlIndex = this.state.claimUrls.length;
@@ -65,7 +65,7 @@ export default class App extends Component {
     setInterval(()=>{
       const reloadTimer =this.state.reloadTimer - 1;
       this.setState({reloadTimer}, async () => {
-        if((reloadTimer===0) || this.state.loading){
+        if((reloadTimer===0)){
           await this.reloadClaimUrls();
           this.setState({reloadTimer:startingTimerSeconds});
         }
@@ -90,6 +90,7 @@ export default class App extends Component {
                     <p>Waiting for result...</p>
                     <p>¯\_(ツ)_/¯</p>
                     <img alt="loading" className="loadingImg" src={loadingImg} /> 
+                    <p>Checking for new result in {this.state.reloadTimer} seconds...</p>
                   </div>
                   :
                   <>                    
