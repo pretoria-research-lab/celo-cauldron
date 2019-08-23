@@ -8,8 +8,8 @@ const startingTimerSeconds = 30;
 const extraTimeSeconds = 10;
 
 const API_CONFIG = {
-  baseUrl : "https://xsxgj1rqnc.execute-api.eu-central-1.amazonaws.com",
-  basePath : "/dev/reward",
+  baseUrl : "https://pag1tn4xfk.execute-api.eu-central-1.amazonaws.com", //"https://xsxgj1rqnc.execute-api.eu-central-1.amazonaws.com",
+  basePath : "/prod/reward",  // "/dev/reward"
   timeout: 12000,
   headers: {"Content-Type":"application/json;charset=utf-8"}
 }
