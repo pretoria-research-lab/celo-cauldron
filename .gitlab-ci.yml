@@ -4,6 +4,7 @@ stages:
   - test
   - build
   - deploy-dev
+  - deploy-prod
 
 test:
   stage: test
@@ -86,9 +87,46 @@ deploy-dev:
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
     
     # Sync build/ to s3 bucket and invalidate cache
-    - serverless syncToS3
+    - aws s3 sync app/build/ s3://nbt-rowing-reward --delete
     - serverless invalidateCloudFrontCache
 
     - echo "DEPLOYMENT COMPLETE"
   environment:
     name: dev
+  only:
+    - develop    
+
+deploy-prod:
+  stage: deploy-prod
+  image: python:3.7-alpine
+  dependencies:
+    - build
+  script:
+    # Configure environment variables injected by GitLab
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       
+    - export AWS_SECRET_ACCESS_KEY=$AWS_ACCESS_KEY_SECRET
+
+    # Install awscli
+    - export PATH=~/.local/bin:$PATH    
+    - pip install awscli --upgrade --user
+
+    # Install npm, yarn, & serverless
+    - apk add --update nodejs nodejs-npm
+    - apk add --update yarn
+    - npm install -g serverless
+
+    # Make sure serverless s3 plugin is installed
+    - yarn
+
+    # Configure serverless using injected environment variables for AWS IAM setup
+    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
+    
+    # Sync build/ to s3 bucket and invalidate cache
+    - aws s3 sync app/build/ s3://nbt-rowing-reward-prod --delete
+    - serverless invalidateCloudFrontCache
+
+    - echo "DEPLOYMENT COMPLETE"
+  environment:
+    name: production   
+  only:
+    - master     
