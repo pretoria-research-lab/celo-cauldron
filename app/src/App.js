@@ -77,16 +77,17 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="Next Big Thing">          
-          <div>
+          <div className="container-fluid">
             <h1>xDAIRow</h1>
-            <hr />
+            <hr />            
+            {this.state.loading ? "" : <h2>You received {this.state.currentUrl.rewardInXDAI} xDAI</h2>}
           </div>          
         </header>
-        <div id="main" className="container">        
+        <div id="main" className="container-fluid">        
           <div className="row">            
             <div className="column col-sm-12">                
                 { this.state.loading ? 
-                  <div className="waiting container">
+                  <div className="waiting container-fluid">
                     <p>Waiting for result...</p>
                     <p>¯\_(ツ)_/¯</p>
                     <img alt="loading" className="loadingImg" src={loadingImg} /> 
@@ -100,15 +101,65 @@ export default class App extends Component {
                       <p>No reward for this attempt</p>
                     }
                     
-                    <div className='qrCode'>
-                      {this.state.currentUrl.claimUrl ? <QRCode size={256} bgColor="#000000" fgColor="#00FF33" includeMargin={false} value={this.state.currentUrl.claimUrl} />
+                    <div className='qrCode'>                      
+                      {this.state.currentUrl.claimUrl ? <QRCode size={384} bgColor="#000000" fgColor="#00FF33" includeMargin={false} value={this.state.currentUrl.claimUrl} />
                       : <h3>:(</h3>}
-                    </div>
-                    
-                      <p>You received {this.state.currentUrl.rewardInXDAI} xDAI</p>                
-                      <p>{"Attempt : " + this.state.currentUrlIndex}</p>
-                      <p>{"Timestamp : " + this.state.currentUrl.createdTimestamp}</p>
-                      <p>{"Hash (truncated) : " + this.state.currentUrl.hashCode.substring(0,12)}</p>
+                    </div>                    
+
+                    <div className="row">
+                        <div className="column col-sm-12">
+                          <table>
+                            <thead className="dark-highlight-bg">
+                              <tr>
+                                <th>Measure</th>
+                                <th>Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {this.state.currentUrl.gameData ? 
+                              <>
+                              <tr>
+                                <td>spm</td>
+                                <td>{this.state.currentUrl.gameData["spm"]}</td>
+                              </tr>
+                              <tr>
+                                <td>distance</td>
+                                <td>{this.state.currentUrl.gameData["distance"]}</td>
+                              </tr>
+                              <tr>
+                                <td>pace</td>
+                                <td>{this.state.currentUrl.gameData["pace"]}</td>
+                              </tr>
+                              <tr>
+                                <td>calhr</td>
+                                <td>{this.state.currentUrl.gameData["calhr"]}</td>
+                              </tr>
+                              <tr>
+                                <td>time</td>
+                                <td>{this.state.currentUrl.gameData["time"]}</td>
+                              </tr>
+                              <tr>
+                                <td>power</td>
+                                <td>{this.state.currentUrl.gameData["power"]}</td>
+                              </tr>
+                              <tr>
+                                <td>status</td>
+                                <td>{this.state.currentUrl.gameData["status"]}</td>
+                              </tr>
+                              </> : ""}
+                              <tr>
+                                <td>timestamp</td>
+                                <td>{this.state.currentUrl.createdTimestamp}</td>
+                              </tr>
+                              <tr>
+                                <td>hash</td>
+                                <td>{this.state.currentUrl.hashCode.substring(0,12)}</td>
+                              </tr>                            
+                            </tbody>                          
+                          </table>
+                        </div>  
+                      </div>                    
+
                       <p>Disappearing in {this.state.reloadTimer} seconds...</p>
                     
                     {/* <button className="btn-primary" onClick={(event)=>{
