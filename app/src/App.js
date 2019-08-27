@@ -3,16 +3,10 @@ import './App.css';
 import QRCode from 'qrcode.react';
 import loadingImg from './loading.svg';
 import axios from 'axios';
+import {API_CONFIG} from './config';
 
 const startingTimerSeconds = 30;
 const extraTimeSeconds = 10;
-
-const API_CONFIG = {
-  baseUrl : "https://pag1tn4xfk.execute-api.eu-central-1.amazonaws.com", //"https://xsxgj1rqnc.execute-api.eu-central-1.amazonaws.com",
-  basePath : "/prod/reward",  // "/dev/reward"
-  timeout: 12000,
-  headers: {"Content-Type":"application/json;charset=utf-8"}
-}
 
 const instance = axios.create({
   baseURL: API_CONFIG.baseUrl,
