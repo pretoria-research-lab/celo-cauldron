@@ -5,14 +5,15 @@ frameworkVersion: ">=1.2.0 <2.0.0"
 plugins:
   - serverless-single-page-app-plugin
 
-custom:
-  s3Bucket: nbt-rowing-reward
-
 provider:
   name: aws
   runtime: nodejs8.10
   profile: default
-  region: eu-central-1  
+  region: eu-central-1 
+  stage: ${opt:stage, 'dev'}
+
+custom:
+  s3Bucket: nbt-rowing-reward-${self:provider.stage}
 
 resources:
   Resources:
