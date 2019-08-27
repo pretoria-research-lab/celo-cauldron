@@ -83,6 +83,9 @@ deploy-dev:
     # Make sure serverless s3 plugin is installed
     - yarn
 
+    # Use dev API versions
+    - cp ./config_dev.js ./app/src/config.js
+
     # Configure serverless using injected environment variables for AWS IAM setup
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
 
@@ -120,6 +123,9 @@ deploy-prod:
 
     # Make sure serverless s3 plugin is installed
     - yarn
+
+    # Use prod API versions
+    - cp ./config_prod.js ./app/src/config.js
 
     # Configure serverless using injected environment variables for AWS IAM setup
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
