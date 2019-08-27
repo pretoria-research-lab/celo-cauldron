@@ -93,7 +93,7 @@ deploy-dev:
     - serverless deploy -v --stage dev
     
     # Sync build/ to s3 bucket and invalidate cache
-    - aws s3 sync app/build/ s3://nbt-rowing-reward --delete
+    - serverless syncToS3
     - serverless invalidateCloudFrontCache
 
     - echo "DEPLOYMENT COMPLETE"
