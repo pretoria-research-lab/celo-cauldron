@@ -1,12 +1,11 @@
 {
-    "name": "serverless-s3-cloudfront-single-page-app",
+    "name": "pretoria-celo-faucet",
     "version": "1.0.0",
-    "description": "Demonstrating how to deploy a Single Page Application with Serverless",
-    "repository": "<replace>",
-    "author": "",
+    "description": "Simple Celo testnet faucet",
+    "repository": "https://gitlab.com/aaron.boyd/celo-faucet",
+    "author": "Aaron Boyd",
     "license": "MIT",
     "devDependencies": {
       "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
     }
-  }
-  
+  }  

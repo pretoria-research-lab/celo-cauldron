@@ -1,0 +1,15 @@
+.image {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+img {
+    width: 50%;
+    object-fit: contain;
+}
+
+.navbar{
+    background-color: var(--celo-accent-cyan);
+    border-bottom: 3px solid var(--celo-dark);
+}

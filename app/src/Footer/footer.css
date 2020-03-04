@@ -1,0 +1,10 @@
+.page-footer {
+    color:var(--celo-dark);
+}
+a.footer {
+    color:var(--celo-dark); 
+}
+.page-footer {
+  background-color: var(--celo-accent-cyan);
+  border-top: solid 2px var(--celo-dark);
+}
