@@ -16,23 +16,68 @@ export default class FaucetService {
   }
 
   getAllRequests = async (config) => {
-    const instance = this.createInstance(config);
-    const response = await instance.get(config.host + config.basePath + REQUEST_PATH);
-    console.log("FaucetService - getAllRequests() - success, response : " + JSON.stringify(response));
-    return response;
+    try{
+      const instance = this.createInstance(config);
+      const response = await instance.get(config.host + config.basePath + REQUEST_PATH);
+      console.log("FaucetService - getAllRequests() - success, response : " + JSON.stringify(response));
+      return response;
+    }
+    catch (error) {
+      if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+      } else if (error.request) {
+          console.log(error.request);
+      } else {
+          console.log('Error', error.message);
+      }
+      console.log(error);
+      throw error;
+    }
   }  
 
   createRequest = async (config, address) => {
-    const instance = this.createInstance(config);
-    const response = await instance.post(config.host + config.basePath + REQUEST_PATH, {address: address});
-    console.log("FaucetService - createRequest() - success, response : " + JSON.stringify(response));
-    return response;
+    try{
+      const instance = this.createInstance(config);
+      const response = await instance.post(config.host + config.basePath + REQUEST_PATH, {address: address});
+      console.log("FaucetService - createRequest() - success, response : " + JSON.stringify(response));
+      return response;
+    }
+    catch (error) {
+      if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+      } else if (error.request) {
+          console.log(error.request);
+      } else {
+          console.log('Error', error.message);
+      }
+      console.log(error);
+      throw error;
+    }    
   }
 
   claimRequest = async (config, address) => {
-    const instance = this.createInstance(config);
-    const response = await instance.post(config.host + config.basePath + CLAIM_PATH, {address: address});
-    console.log("FaucetService - claimRequest() - success, response : " + JSON.stringify(response));
-    return response;
+    try{
+      const instance = this.createInstance(config);
+      const response = await instance.post(config.host + config.basePath + CLAIM_PATH, {address: address});
+      console.log("FaucetService - claimRequest() - success, response : " + JSON.stringify(response));
+      return response;
+    }
+    catch (error) {
+      if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+      } else if (error.request) {
+          console.log(error.request);          
+      } else {
+          console.log('Error', error.message);          
+      }
+      console.log(error);
+      throw error;
+    }      
   }
 }

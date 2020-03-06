@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.css';
 
 export default function Footer() {
-    return (<footer className="page-footer font-small blue pt-4">     
+    return (<footer className="page-footer font-small pt-4">     
         <div className="container-fluid text-center text-sm-left">
             <div className="row">
                 <div className="col-sm-6">

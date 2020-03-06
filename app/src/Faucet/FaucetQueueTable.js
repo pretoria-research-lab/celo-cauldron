@@ -1,18 +1,39 @@
-import React, { Component } from 'react';
-import FaucetQueueList from './FaucetQueueList';
+import React from 'react';
+import FaucetQueueRow from './FaucetQueueRow';
+import EmptyFaucetQueueRow from './EmptyFaucetQueueRow';
+import loadingImg from '../assets/loading.svg';
 
-export default class FaucetQueueTable extends Component {
+export default function FaucetQueueTable(props) {
 
-  render = () => {
+    const {faucetRequests, loading, claimRequest, createRequest} = props;
 
-    return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-sm-12 text-centre">
-              <FaucetQueueList faucetRequests={this.props.faucetRequests} claimRequest={this.props.claimRequest} />
-          </div>    
+		return (
+      <div className="row">
+        <div className="col-lg-12 text-center">
+          { loading ? 
+            <img id="loadingLogo" src={loadingImg} alt="Loading..." />
+              :
+            <div className="table-responsive">
+            <table className="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Request Address</th>
+                  <th>Requested Block</th>
+                  <th>Status</th>
+                  <th>Claimed Block</th>
+                  <th>Claimed txId</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <EmptyFaucetQueueRow onClick={createRequest}/>
+                {faucetRequests.map((fr, i) =><FaucetQueueRow onClick={claimRequest} key={i} faucetRequest={{...fr}} />)}
+              </tbody>
+            </table>
+            </div>        
+          }
         </div>
-    </div>);
-    }
+    </div>			
+	)
 }
 

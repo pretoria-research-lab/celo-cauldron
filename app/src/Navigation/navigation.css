@@ -13,3 +13,7 @@ img {
     background-color: var(--celo-accent-cyan);
     border-bottom: 3px solid var(--celo-dark);
 }
+
+.navbar li {
+    font-size: 24px;
+}

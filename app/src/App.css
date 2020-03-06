@@ -36,9 +36,9 @@ hr{
 }
 
 .btn-primary {
-  background-color: var(--celo-gray);
+  background-color: var(--celo-canvas-faint-gold);
   color: var(--celo-dark);
-  border: 1px solid var(--celo-green);
+  border: 1px solid var(--celo-dark);
   font-size: 24px;
   margin: 5px;
 }
@@ -52,7 +52,15 @@ hr{
 .column {
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 5px;
+  align-content: center;
+  
+}
+
+.row {  
+  display:flex;
+  flex-direction: row;
+  padding-bottom: 10px;
   align-content: center;
 }
 

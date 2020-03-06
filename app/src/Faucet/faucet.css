@@ -6,6 +6,10 @@
     max-width: 100px;
 }
 
+.jumbo-primary {
+    margin-top: 10px;
+}
+
 .jumbo-primary p {    
     font-size: 200%;
 }
@@ -15,12 +19,39 @@
     font-size: 400%;
 }
 
-th, td {    
-    font-family: "Jost";
-}
-
 .technical{
     font-family: "Jost"
 }
 
+#loadingLogo {
+    width: 150px;
+}
 
+thead {
+    background-color: var(--celo-canvas-faint-gold);
+}
+
+th, td {    
+    font-family: "Jost";
+    padding: 5px;
+}
+
+.address {
+    font-family: 'Courier New', Courier, monospace
+}
+ 
+button {
+    width: 150px;
+}
+
+p {
+    font-size: larger;
+}
+
+li {
+    font-size:larger;
+}
+
+#how-to-prepare {
+    text-align: left;
+}
