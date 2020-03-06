@@ -1,19 +1,19 @@
 stages:
-  # - test
+  - test
   - build
   - deploy
 
-# test:
-#   image: node:10.19.0-buster
-#   stage: test
-#   script:   
-#     - cd app
-#     - yarn
-#     - yarn test
-#   artifacts:
-#     paths:
-#       - app/node_modules/
-#     expire_in: 10 mins
+test:
+  image: node:10.19.0-buster
+  stage: test
+  script:   
+    - cd app
+    - yarn
+    - yarn test
+  artifacts:
+    paths:
+      - app/node_modules/
+    expire_in: 10 mins
 
 build:
   image: node:10.19.0-buster
