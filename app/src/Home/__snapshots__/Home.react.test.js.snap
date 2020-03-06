@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component matches snapshot 1`] = `
+<div
+  className="container-fluid"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-lg-12 text-center jumbo-primary"
+    >
+      <div
+        className="jumbotron"
+      >
+        <h1
+          className="mt"
+        >
+          Celo Cauldron
+        </h1>
+        <hr />
+        <p
+          className="lead"
+        >
+          <img
+            alt="Developer logo"
+            id="developer-logo"
+            src="01-Developers (light bg).png"
+          />
+          Community built tools for developers
+        </p>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,14 +1,12 @@
 import React from 'react';
-import Faucet from './index';
+import Home from './index';
 import renderer from 'react-test-renderer';
 
-const props = {
-  network: "Alfajores"
-}
+const faucets = ["Alfajores", "Baklava", "RC 1", "Mainnet"];
 
-test('Faucet component matches snapshot', () => {
+test('Home component matches snapshot', () => {
     const component = renderer.create(
-      <Faucet {...props}/>,
+      <Home faucets={faucets}/>,
     );
 
     let tree = component.toJSON();
