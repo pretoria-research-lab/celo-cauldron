@@ -41,8 +41,8 @@ deploy:
     - yarn
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
     - serverless deploy -v --stage $CI_COMMIT_REF_NAME
-    - serverless syncToS3
-    - serverless invalidateCloudFrontCache
+    - serverless syncToS3 -v --stage $CI_COMMIT_REF_NAME
+    - serverless invalidateCloudFrontCache -v --stage $CI_COMMIT_REF_NAME
   environment:
     name: $CI_COMMIT_REF_NAME
   only:
