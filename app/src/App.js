@@ -31,7 +31,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
               {faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
-              <Route path="*" render={(props) => {return <AsyncNotFound {...props} /> }}/>
+              <Route path="*" render={(props) => <AsyncHome {...props} />}/>
             </Switch>
             </div>
         </Router>
