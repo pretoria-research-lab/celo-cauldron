@@ -1,144 +1,50 @@
-image: docker:latest
-
 stages:
   - test
   - build
-  - deploy-dev
-  - deploy-prod
+  - deploy
 
 test:
+  image: node:10.19.0-buster
   stage: test
-  image: alpine
-  script:
-      # Install alpine-sdk
-      - apk add --update alpine-sdk
-  
-      # Install py-pip for some yarn dependencies
-      - apk add --update py-pip 
-      - pip install -U pip
-
-      # Install npm & yarn
-      - apk add --update nodejs nodejs-npm
-      - apk add --update yarn
-      - cd app 
-      - yarn
-      
-      - echo "FILES"
-      - ls
-      
-      # Create test
-      - echo "TEST START"
-      - yarn test
-      - echo "TEST COMPLETE" 
+  script:   
+    - cd app
+    - yarn
+    - yarn test
   artifacts:
     paths:
       - app/node_modules/
-    expire_in: 60 mins
+    expire_in: 10 mins
 
 build:
+  image: node:10.19.0-buster
   stage: build
-  image: alpine
   dependencies:
     - test
   script:
-      # Install npm, yarn
-      - apk add --update nodejs nodejs-npm
-      - apk add --update yarn
-
-      # create-react-app option GENERATE_SOURCEMAP=false can help with OOM issues on build for large apps
-      - export GENERATE_SOURCEMAP=false
-      
-      # Create build
       - cd app
-      - echo "BUILD START"
       - yarn build
-      - echo "BUILD COMPLETE"
   artifacts:
     paths:
       - app/build/
-    expire_in: 60 mins
-  only:
-    - master
-    - develop
-
-deploy-dev:
-  stage: deploy-dev
-  image: python:3.7-alpine
-  dependencies:
-    - build
-  script:
-    # Configure environment variables injected by GitLab
-    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       
-    - export AWS_SECRET_ACCESS_KEY=$AWS_ACCESS_KEY_SECRET
-
-    # Install awscli
-    - export PATH=~/.local/bin:$PATH    
-    - pip install awscli --upgrade --user
-
-    # Install npm, yarn, & serverless
-    - apk add --update nodejs nodejs-npm
-    - apk add --update yarn
-    - npm install -g serverless
-
-    # Make sure serverless s3 plugin is installed
-    - yarn
-
-    # Use dev API versions
-    - cp ./config_dev.js ./app/src/config.js
-
-    # Configure serverless using injected environment variables for AWS IAM setup
-    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
-
-    # Deploy s3 bucket and Cloudfront CDN
-    - serverless deploy -v --stage dev
-    
-    # Sync build/ to s3 bucket and invalidate cache
-    - serverless syncToS3
-    - serverless invalidateCloudFrontCache
-
-    - echo "DEPLOYMENT COMPLETE"
+    expire_in: 20 mins
   only:
     - develop    
-  environment:
-    name: dev
+    - master
 
-deploy-prod:
-  stage: deploy-prod
-  image: python:3.7-alpine
+deploy:
+  image: node:10.19.0-buster
+  stage: deploy
   dependencies:
-    - build
-  script:
-    # Configure environment variables injected by GitLab
-    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       
-    - export AWS_SECRET_ACCESS_KEY=$AWS_ACCESS_KEY_SECRET
-
-    # Install awscli
-    - export PATH=~/.local/bin:$PATH    
-    - pip install awscli --upgrade --user
-
-    # Install npm, yarn, & serverless
-    - apk add --update nodejs nodejs-npm
-    - apk add --update yarn
+    - build  
+  script:    
     - npm install -g serverless
-
-    # Make sure serverless s3 plugin is installed
     - yarn
-
-    # Use prod API versions
-    - cp ./config_prod.js ./app/src/config.js
-
-    # Configure serverless using injected environment variables for AWS IAM setup
     - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
-
-    # Deploy s3 bucket and Cloudfront CDN
-    - serverless deploy -v --stage prod
-    
-    # Sync build/ to s3 bucket and invalidate cache
+    - serverless deploy -v --stage $CI_COMMIT_REF_NAME
     - serverless syncToS3
     - serverless invalidateCloudFrontCache
-
-    - echo "DEPLOYMENT COMPLETE"
-  only:
-    - master
   environment:
-    name: production
+    name: $CI_COMMIT_REF_NAME
+  only:
+    - develop
+    - master

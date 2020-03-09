@@ -1,83 +1,44 @@
 body {
-  background-color: black;    
+  background-color:var(--celo-white);
 }
 
 .App {
   text-align: center;
-  background: black;
-  color: var(--terminal);
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-  margin:10px;
-  border: solid 2px var(--terminal);  
+  background: var(--celo-white);
+  font-family: "EB Garamond", "Jost";
+  margin:0px;
   height: 100%;
 }
 
 hr{
-  color: var(--terminal);
-}
-
-table{  
-  border: 1px solid var(--terminal);
-  margin:20px;
-}
-
-th, td {
-  text-align: left;
-  padding:5px;
-  border: 1px solid var(--terminal);
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  color: var(--celo-gray-heavy);
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:var(--celo-gray-heavy);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color:var(--celo-dark);
 }
 
 .main-bg {
-  background-color: white;
+  background-color:var(--celo-gray-faint);
 }
 .light-highlight-bg {
-  background-color: var(--med-gray-1); 
+  background-color: var(--celo-gray); 
 }
 .dark-highlight-bg {
-  background-color: var(--secondary-vida-loca); 
+  background-color: var(--celo-gray-heavy); 
 }
 
 .btn-primary {
-  background-color: grey;
-  color: var(--terminal);
-  border: 1px solid var(--terminal);
-  font-size: 24px;
-  margin: 5px;
-}
-
-.btn-secondary {
-  color: var(--terminal);
-  border: 1px solid var(--terminal);
+  background-color: var(--celo-canvas-faint-gold);
+  color: var(--celo-dark);
+  border: 1px solid var(--celo-dark);
   font-size: 24px;
   margin: 5px;
 }
@@ -91,12 +52,18 @@ th, td {
 .column {
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 5px;
+  align-content: center;
+  
+}
+
+.row {  
+  display:flex;
+  flex-direction: row;
+  padding-bottom: 10px;
   align-content: center;
 }
 
-.waiting {  
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+a {
+  color: var(--celo-accent-blue);
 }
