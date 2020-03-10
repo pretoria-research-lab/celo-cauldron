@@ -11,7 +11,7 @@ img {
 
 .navbar{
     background-color: var(--celo-accent-cyan);
-    border-bottom: 3px solid var(--celo-dark);
+    border-bottom: 3px solid var(--celo-dark);    
 }
 
 .navbar li {
