@@ -37,7 +37,8 @@ th, td {
 }
 
 .address {
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Courier New', Courier, monospace;
+    font-size: smaller;
 }
  
 button {

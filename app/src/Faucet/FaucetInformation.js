@@ -8,7 +8,7 @@ export default function FaucetInformation(props) {
           <div className="col-lg-4">
             <h2>{props.network + " Faucet Address"}</h2>
             <hr />
-            <p>{props.config ? <a href={props.config.blockExplorer + "/address/" + props.config.faucetAddress}>{props.config.faucetAddress}</a> : ""}</p>
+            <p className="address">{props.config ? <a href={props.config.blockExplorer + "/address/" + props.config.faucetAddress}>{props.config.faucetAddress}</a> : ""}</p>
             <hr />
             <div className='qrCode'>                      
                 {props.config.faucetAddress ? <QRCode size={150} bgColor="#FFFFFF" fgColor="#2E3338" includeMargin={false} value={props.config.faucetAddress} /> : "" }
