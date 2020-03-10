@@ -36,7 +36,9 @@ exports[`Faucet component matches snapshot 1`] = `
         Alfajores Faucet Address
       </h2>
       <hr />
-      <p>
+      <p
+        className="address"
+      >
         <a
           href="https://alfajores-blockscout.celo-testnet.org//address/0xC02b8b165CC5a2A731E9C2BD6fdF66eaBcfa8663"
         >

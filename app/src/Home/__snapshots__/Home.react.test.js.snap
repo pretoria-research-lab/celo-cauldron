@@ -31,6 +31,26 @@ exports[`Home component matches snapshot 1`] = `
         </p>
         <hr />
       </div>
+      <div
+        className="row"
+        id="home-info"
+      >
+        <div
+          className="col-lg-12"
+        >
+          <p>
+            A repository of useful tools, scripts, and information for developing on the Celo ecosystem.
+          </p>
+          <p>
+            Contributions are welcome at 
+            <a
+              href="https://gitlab.com/aaron.boyd/celo-cauldron"
+            >
+              https://gitlab.com/aaron.boyd/celo-cauldron
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
