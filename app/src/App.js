@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AsyncComponent from "./AsyncComponent";
 import Navigation from './Navigation';
 import Footer from './Footer';
-import history from './history';
 import './App.css';
+// import history from './history';
 
 // Use AsyncComponent to code split for Javascript load size, only load components on matching route
 // See: https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
@@ -25,13 +25,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router history={history}>
+        <Router>
           <div className="App-content">
           <Navigation faucets={faucets}/>
             <Switch>
               <Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
               {faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
-              <Route path="*" render={(props) => <AsyncHome {...props} />}/>
+              <Route path="*" render={(props) => {return <AsyncNotFound {...props} /> }}/>              
             </Switch>
             </div>
         </Router>

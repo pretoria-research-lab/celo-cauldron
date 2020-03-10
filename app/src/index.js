@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,8 +18,6 @@ WebFont.load({
 serviceWorker.unregister();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />  
-  </BrowserRouter>,
+  <App />,
   document.getElementById('root')
 );
