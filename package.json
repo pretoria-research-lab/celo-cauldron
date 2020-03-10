@@ -1,11 +1,11 @@
 {
-    "name": "pretoria-celo-faucet",
-    "version": "1.0.0",
-    "description": "Simple Celo testnet faucet",
-    "repository": "https://gitlab.com/aaron.boyd/celo-faucet",
-    "author": "Aaron Boyd",
-    "license": "MIT",
-    "devDependencies": {
-      "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
-    }
-  }  
+  "name": "pretoria-celo-faucet",
+  "version": "1.0.0",
+  "description": "Simple Celo testnet faucet",
+  "repository": "https://gitlab.com/aaron.boyd/celo-faucet",
+  "author": "Aaron Boyd",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
+  }
+}
