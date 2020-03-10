@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing and matches snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="App-content"
+  >
+    <nav
+      className="navbar navbar-expand-lg navbar-light static-top"
+    >
+      <div
+        className="container-fluid"
+      >
+        <a
+          className="navbar-brand"
+          href="/"
+        >
+          <img
+            alt="Celo Monochrome Logo"
+            src="Celo Logo Monochrome.svg"
+          />
+        </a>
+        <button
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          data-target="#navbarResponsive"
+          data-toggle="collapse"
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarResponsive"
+        >
+          <ul
+            className="navbar-nav ml-auto"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current="page"
+                className="nav-link active"
+                href="/"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Home
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current={null}
+                className="nav-link"
+                href="/alfajores-faucet"
+                onClick={[Function]}
+              >
+                Alfajores Faucet
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <footer
+    className="page-footer font-small pt-4"
+  >
+    <div
+      className="container-fluid text-center text-sm-left"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <p>
+            Built by 
+            <a
+              href="https:/pretoria.tech"
+            >
+              Pretoria GmbH
+            </a>
+            , a Next Big Thing AG venture
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
