@@ -11,16 +11,15 @@ exports[`Footer component matches snapshot 1`] = `
       className="row"
     >
       <div
-        className="col-sm-6"
+        className="col-sm-12"
       >
         <p>
           Built by 
           <a
             href="https:/pretoria.tech"
           >
-            Pretoria GmbH
+            Pretoria Research Lab GmbH
           </a>
-          , a Next Big Thing AG venture
         </p>
       </div>
     </div>
