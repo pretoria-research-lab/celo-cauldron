@@ -64,6 +64,9 @@ exports[`Faucet component matches snapshot 1`] = `
       <p>
         Balance 0 cGLD
       </p>
+      <p>
+        Block number -1
+      </p>
     </div>
     <div
       className="col-lg-8"
@@ -75,13 +78,13 @@ exports[`Faucet component matches snapshot 1`] = `
       <hr />
       <ul>
         <li>
-          Use the table below to request a small amount of cGLD for testing purposes
+          Use the table below to request a small amount (1.0) of cGLD for testing purposes
         </li>
         <li>
-          After you have requested, you must let the cGLD cool down for at least 12 blocks before claiming
+          After you have requested, the cGLD will cool down on the shelf for at least 12 blocks before being served
         </li>
         <li>
-          A maximum of 10 unclaimed requests can exist at once
+          A maximum of 10 requests can be queued at once
         </li>
         <li>
           This is a community kitchen - please return any cGLD crumbs if you are finished cooking

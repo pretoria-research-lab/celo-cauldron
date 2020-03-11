@@ -5,7 +5,7 @@ import loadingImg from '../assets/loading.svg';
 
 export default function FaucetQueueTable(props) {
 
-    const {faucetRequests, loading, claimRequest, createRequest} = props;
+    const {faucetRequests, loading, blockNumber, config, createRequest} = props;
 
 		return (
       <div className="row">
@@ -27,7 +27,7 @@ export default function FaucetQueueTable(props) {
               </thead>
               <tbody>
                 <EmptyFaucetQueueRow onClick={createRequest}/>
-                {faucetRequests.map((fr, i) =><FaucetQueueRow onClick={claimRequest} key={i} faucetRequest={{...fr}} />)}
+                {faucetRequests.map((fr, i) =><FaucetQueueRow config={config} blockNumber={blockNumber} key={i} faucetRequest={{...fr}} />)}
               </tbody>
             </table>
             </div>        

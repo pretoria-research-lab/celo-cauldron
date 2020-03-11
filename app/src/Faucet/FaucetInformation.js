@@ -15,14 +15,15 @@ export default function FaucetInformation(props) {
             </div>
             <hr />
             <p>{"Balance " + props.faucetBalance + " cGLD"}</p>
+            <p>{"Block number " + props.blockNumber}</p>
           </div>
           <div id="how-to-prepare" className="col-lg-8">
               <h2>How To Prepare</h2>
               <hr />
               <ul>                
-                <li>Use the table below to request a small amount of cGLD for testing purposes</li>
-                <li>After you have requested, you must let the cGLD cool down for at least 12 blocks before claiming</li>
-                <li>A maximum of 10 unclaimed requests can exist at once</li>
+                <li>Use the table below to request a small amount (1.0) of cGLD for testing purposes</li>
+                <li>After you have requested, the cGLD will cool down on the shelf for at least 12 blocks before being served</li>
+                <li>A maximum of 10 requests can be queued at once</li>
                 <li>This is a community kitchen - please return any cGLD crumbs if you are finished cooking</li>
               </ul>
               <hr />
