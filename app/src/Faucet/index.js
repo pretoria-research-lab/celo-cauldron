@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './faucet.css';
 import {API_CONFIG} from '../Utils/config';
 import {getCurrentBlockNumber} from '../Utils/utils';
@@ -17,38 +19,13 @@ class Faucet extends Component
       this.state = {faucetRequests: [], loading: false, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
   };
 
-  prepareReadyRequests = () => {
-
-    if(!this.state.processing) {
-      let processing = true;
-      this.setState({processing}, () => {
-        
-        const blockNumber = this.state.blockNumber;
-        console.log(`Processing current requests @ blockNumber ${blockNumber} ...`);        
-        const faucetRequests = this.state.faucetRequests;
-            
-        faucetRequests.forEach((fr) => {
-          if((fr.status === "REQUESTED") && (blockNumber - fr.createdBlockNumber) >= this.state.config.blocksCooldown){
-            this.claimRequest(fr);
-          }
-        });
-
-        processing = false;
-        this.setState({processing});    
-      });  
-    }
-    else {
-      console.log("Already processing, avoid reentrancy");
-    }
-  }
-
   getBlockNumber = async () => {
     try{
       const nodeProvider = this.state.config.remoteNode;
       const blockNumber = await getCurrentBlockNumber(nodeProvider);
-      this.setState({blockNumber: blockNumber}, () => this.prepareReadyRequests());
-    }catch(e){
-      console.log("Error retrieving block number:" + e);
+      this.setState({blockNumber: blockNumber});
+    }catch(error){
+      this.processError(error);
       this.setState({blockNumber: -1});
     }
   }
@@ -66,19 +43,34 @@ class Faucet extends Component
       });        
   }
 
+  processError = (error) => {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+      error.response.data.message ? toast.error(error.response.data.message) : toast.error(error.response.data);      
+    } else if (error.request) {
+      console.log(error.request);
+      toast.error(error.request);
+    } else {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  }
+
   claimRequest = (faucetRequest) => {
     this.setState({loading:true}, async () => 
     {
       try{
-        console.log("Claiming for request " + JSON.stringify(faucetRequest));
         const response = await faucetService.claimRequest(this.state.config, faucetRequest.address);
         const claimResult = response.data.claimResult;
         console.log(claimResult);
+        toast.info("Faucet request completed");
         this.getAllRequests();
-        this.setState({loading:false});
+        this.setState({loading:false});        
       }
       catch (error) {
-        alert("claimRequest - " + error);
+        this.processError(error);
         this.setState({loading:false});
       }
     });
@@ -88,15 +80,15 @@ class Faucet extends Component
     this.setState({loading:true}, async () => 
     {
       try{
-        console.log(this.state);
         const response = await faucetService.createRequest(this.state.config, address);
         const createResult = response.data;
         console.log(createResult);
         this.getAllRequests();
         this.setState({loading:false});
+        toast.info("Requested");
       }
       catch (error) {
-        alert("createRequest - " + error);
+        this.processError(error);
         this.setState({loading:false});
       }
     });
@@ -114,9 +106,10 @@ class Faucet extends Component
           element["txLink"] = this.state.config.blockExplorer + "tx/" + element.txId;
         });
         this.setState({faucetRequests}, () => this.setState({faucetBalance}, () => this.setState({loading:false})));
+        toast.info("Refreshed faucet requests");
       }
       catch (error) {
-        alert("getAllRequests - " + error);
+        toast.warn("Error retrieving faucet requests, please refresh");
         const faucetRequests = [];
         this.setState({faucetRequests}, () => this.setState({loading:false}));
       }
@@ -124,12 +117,12 @@ class Faucet extends Component
   } 
 
   render = () => {
-
     return ( 
       <div className="container-fluid">        
         <FaucetHeader config={this.state.config} network={this.props.network}/>
         <FaucetInformation config={this.state.config} blockNumber={this.state.blockNumber} network={this.props.network} faucetBalance={this.state.faucetBalance}/>
-        <FaucetQueueTable config={this.state.config} loading={this.state.loading} blockNumber={this.state.blockNumber} faucetRequests={this.state.faucetRequests} createRequest={this.createRequest}/>
+        <FaucetQueueTable config={this.state.config} loading={this.state.loading} blockNumber={this.state.blockNumber} faucetRequests={this.state.faucetRequests} claimRequest={this.claimRequest} createRequest={this.createRequest}/>
+        <ToastContainer autoClose={4000}/>
       </div>
     );
   }  

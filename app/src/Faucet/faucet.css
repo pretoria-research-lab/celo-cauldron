@@ -56,3 +56,8 @@ li {
 #how-to-prepare {
     text-align: left;
 }
+
+.nb {
+    color: var(--celo-accent-blue);
+    font-family: Jost;    
+}

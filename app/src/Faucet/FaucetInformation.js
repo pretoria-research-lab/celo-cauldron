@@ -21,12 +21,15 @@ export default function FaucetInformation(props) {
               <h2>How To Prepare</h2>
               <hr />
               <ul>                
-                <li>Use the table below to request a small amount (1.0) of cGLD for testing purposes</li>
-                <li>After you have requested, the cGLD will cool down on the shelf for at least 12 blocks before being served</li>
-                <li>A maximum of 10 requests can be queued at once</li>
-                <li>This is a community kitchen - please return any cGLD crumbs if you are finished cooking</li>
+                <li>Use the table below to request a small slice (0.01) cGLD for testing purposes</li>
+                <li>After requesting, the cGLD will cool down for 12 blocks before being served</li>
+                <li>Press the confirm button to claim your faucet amount after cooldown</li>
+                <li>A maximum of 10 requests can be queued at once</li>                
+                <li>If someone leaves without claiming, you may confirm for them at any time</li>
+                <li>Only the last 20 requests are visible on this dashboard</li>
               </ul>
               <hr />
+              <h5 className="nb">This is a community kitchen - please return any cGLD if you are finished cooking</h5>
           </div>
         </div>
     );
