@@ -61,3 +61,31 @@ li {
     color: var(--celo-accent-blue);
     font-family: Jost;    
 }
+
+.toastInfo {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-accent-cyan);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastWarn {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-gold);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastError {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-accent-red);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastSuccess {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-green);
+    border-bottom: solid 1px var(--celo-dark);
+}

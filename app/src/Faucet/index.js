@@ -19,6 +19,19 @@ class Faucet extends Component
       this.state = {faucetRequests: [], loading: false, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
   };
 
+  notify = (type, message) => {
+    if(type==="SUCCESS")
+      toast.success(message, {position: toast.POSITION.TOP_RIGHT, className: "toastSuccess"});
+    else if(type==="INFO")
+      toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
+    else if(type==="WARN")
+      toast.warn(message, {position: toast.POSITION.TOP_RIGHT, className: "toastWarn"});
+    else if(type==="ERROR")
+      toast.error(message, {position: toast.POSITION.TOP_RIGHT, className: "toastError"});
+    else
+      toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
+  }
+
   getBlockNumber = async () => {
     try{
       const nodeProvider = this.state.config.remoteNode;
@@ -48,7 +61,7 @@ class Faucet extends Component
       console.log(error.response.data);
       console.log(error.response.status);
       console.log(error.response.headers);
-      error.response.data.message ? toast.error(error.response.data.message) : toast.error(error.response.data);      
+      error.response.data.message ? this.notify("ERROR", error.response.data.message) : this.notify("ERROR", error.response.data);
     } else if (error.request) {
       console.log(error.request);
       toast.error(error.request);
@@ -65,7 +78,7 @@ class Faucet extends Component
         const response = await faucetService.claimRequest(this.state.config, faucetRequest.address);
         const claimResult = response.data.claimResult;
         console.log(claimResult);
-        toast.info("Faucet request completed");
+        this.notify("INFO", "Faucet request completed");
         this.getAllRequests();
         this.setState({loading:false});        
       }
@@ -85,7 +98,7 @@ class Faucet extends Component
         console.log(createResult);
         this.getAllRequests();
         this.setState({loading:false});
-        toast.info("Requested");
+        this.notify("INFO", "Requested");
       }
       catch (error) {
         this.processError(error);
@@ -106,7 +119,7 @@ class Faucet extends Component
           element["txLink"] = this.state.config.blockExplorer + "tx/" + element.txId;
         });
         this.setState({faucetRequests}, () => this.setState({faucetBalance}, () => this.setState({loading:false})));
-        toast.info("Refreshed faucet requests");
+        this.notify("INFO", "Refreshed faucet requests");
       }
       catch (error) {
         toast.warn("Error retrieving faucet requests, please refresh");
