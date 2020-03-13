@@ -8,48 +8,155 @@ exports[`Home component matches snapshot 1`] = `
     className="row"
   >
     <div
-      className="col-lg-12 text-center jumbo-primary"
+      className="col-lg-12 text-center"
+    >
+      <img
+        alt="Doers icon"
+        className="celoIcons"
+        src="04-Doers (light bg).png"
+      />
+      <h1
+        className="mt"
+      >
+        Celo Cauldron
+      </h1>
+      <hr />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="jost col-lg-12"
+    >
+      <h3>
+        A repository of useful tools, scripts, and information for developing on the Celo ecosystem.
+      </h3>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="column tools col-lg-12"
     >
       <div
-        className="jumbotron"
+        className="link-list col-lg-8"
       >
-        <h1
-          className="mt"
-        >
-          Celo Cauldron
-        </h1>
+        <h2>
+          Developer Resources
+        </h2>
         <hr />
-        <p
-          className="lead"
+        <table
+          className="responsive col-lg-12"
         >
-          <img
-            alt="Developer logo"
-            id="developer-logo"
-            src="01-Developers (light bg).png"
-          />
-          Community built tools for developers
-        </p>
-        <hr />
+          <tbody>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Celo Documentation
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://docs.celo.org/"
+                >
+                  https://docs.celo.org/
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Baklava Testnet block explorer
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://baklava-blockscout.celo-testnet.org/"
+                >
+                  https://baklava-blockscout.celo-testnet.org/
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Alfajores Testnet block explorer
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://alfajores-blockscout.celo-testnet.org/"
+                >
+                  https://alfajores-blockscout.celo-testnet.org/
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                RC1 block explorer
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://rc1-blockscout.celo-testnet.org/"
+                >
+                  https://rc1-blockscout.celo-testnet.org/
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div
-        className="row"
-        id="home-info"
+        className="link-list col-lg-8"
       >
-        <div
-          className="col-lg-12"
+        <h2>
+          Validator Resources
+        </h2>
+        <hr />
+        <table
+          className="responsive col-lg-12"
         >
-          <p>
-            A repository of useful tools, scripts, and information for developing on the Celo ecosystem.
-          </p>
-          <p>
-            Contributions are welcome at 
-            <a
-              href="https://gitlab.com/aaron.boyd/celo-cauldron"
+          <tbody>
+            <tr
+              className="small-padding"
             >
-              https://gitlab.com/aaron.boyd/celo-cauldron
-            </a>
-          </p>
-        </div>
+              <td
+                id="left"
+              >
+                Baklava tesnet validator statistics by Bi23
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://thecelo.org"
+                >
+                  https://thecelo.org
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

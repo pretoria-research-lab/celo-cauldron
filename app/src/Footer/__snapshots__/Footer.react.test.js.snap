@@ -2,7 +2,7 @@
 
 exports[`Footer component matches snapshot 1`] = `
 <footer
-  className="page-footer font-small pt-4"
+  className="footer"
 >
   <div
     className="container-fluid text-center text-sm-left"
@@ -11,7 +11,7 @@ exports[`Footer component matches snapshot 1`] = `
       className="row"
     >
       <div
-        className="col-sm-12"
+        className="col-sm-6"
       >
         <p>
           Built by 
@@ -19,6 +19,18 @@ exports[`Footer component matches snapshot 1`] = `
             href="https:/pretoria.tech"
           >
             Pretoria Research Lab GmbH
+          </a>
+        </p>
+      </div>
+      <div
+        className="col-sm-6"
+      >
+        <p>
+          Contribute to this codebase at 
+          <a
+            href="https://gitlab.com/aaron.boyd/celo-cauldron"
+          >
+            https://gitlab.com/aaron.boyd/celo-cauldron
           </a>
         </p>
       </div>

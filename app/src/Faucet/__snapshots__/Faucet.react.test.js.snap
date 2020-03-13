@@ -87,7 +87,7 @@ exports[`Faucet component matches snapshot 1`] = `
           Press the confirm button to claim your faucet amount after cooldown
         </li>
         <li>
-          A maximum of 10 requests can be queued at once
+          A maximum of 20 requests can be queued at once
         </li>
         <li>
           If someone leaves without claiming, you may confirm for them at any time
