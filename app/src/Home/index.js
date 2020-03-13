@@ -4,7 +4,7 @@ import HomeInformation from './HomeInformation';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import doersLogo from '../assets/04-Doers (light bg).png';
-import developerLogo from '../assets/01-Developers (light bg).png';
+// import developerLogo from '../assets/01-Developers (light bg).png';
 
 export default function Home() {
   return (
