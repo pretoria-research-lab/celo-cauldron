@@ -1,13 +1,40 @@
 import React from 'react';
+import {data} from '../Utils/data';
 
 export default function HomeInformation(props) {
 
     return (
-        <div id="home-info" className="row">
-          <div className="col-lg-12">
-              <p>A repository of useful tools, scripts, and information for developing on the Celo ecosystem.</p>
-              <p>Contributions are welcome at <a href="https://gitlab.com/aaron.boyd/celo-cauldron">https://gitlab.com/aaron.boyd/celo-cauldron</a></p>
-          </div>
+        <div className="column tools col-lg-12">
+            <div className="link-list col-lg-8">
+                <h2>Developer Resources</h2>
+                <hr />                
+                <table className="responsive col-lg-12">
+                    <tbody>
+                    {data.developerResources.map((item,i) =>
+                    <tr key={i} className="small-padding">
+                        <td id="left">{item.blurb}</td>
+                        <td id="right"><a href={item.link}>{item.link}</a></td>
+                    </tr>
+                    )}
+                    </tbody>
+                </table>   
+                
+            </div>
+
+            <div className="link-list col-lg-8">
+                <h2>Validator Resources</h2>
+                <hr />                        
+                <table className="responsive col-lg-12">
+                    <tbody>
+                    {data.validatorResources.map((item,i) =>
+                    <tr key={i} className="small-padding">
+                        <td id="left">{item.blurb}</td>
+                        <td id="right"><a href={item.link}>{item.link}</a></td>
+                    </tr>
+                    )}
+                    </tbody>
+                </table>  
+            </div>
         </div>
     );
 }

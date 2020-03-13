@@ -1,24 +1,29 @@
 import React from 'react';
-import {Jumbotron} from 'react-bootstrap';
 import './home.css';
 import HomeInformation from './HomeInformation';
-import developerLogo from '../assets/01-Developers (light bg).png'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
+import doersLogo from '../assets/04-Doers (light bg).png';
+import developerLogo from '../assets/01-Developers (light bg).png';
 
 export default function Home() {
-  return ( 
-
+  return (
   <div className="container-fluid">    
     <div className="row">
-      <div className="col-lg-12 text-center jumbo-primary">
-        <Jumbotron>          
-          <h1 className="mt">Celo Cauldron</h1>
-          < hr/>
-          <p className="lead"><img id="developer-logo" src={developerLogo} alt="Developer logo" />Community built tools for developers</p>
-          < hr/>          
-        </Jumbotron>
-        <HomeInformation />
+      <div className="col-lg-12 text-center">         
+        <img className="celoIcons" src={doersLogo} alt="Doers icon" /> 
+        <h1 className="mt">Celo Cauldron</h1>
+        <hr/> 
       </div>
     </div>
-  </div>
+    <div className="row">
+      <div className="jost col-lg-12">
+          <h3>A repository of useful tools, scripts, and information for developing on the Celo ecosystem.</h3>
+      </div>
+    </div>
+    <div className="row">
+      <HomeInformation />
+    </div>
+    </div>
   );
 }

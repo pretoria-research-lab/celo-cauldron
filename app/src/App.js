@@ -25,16 +25,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <div className="App-content">
+        <div className="App-content">
+        <Router>          
           <Navigation faucets={faucets}/>
             <Switch>
               <Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
               {faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
               <Route path="*" render={(props) => {return <AsyncNotFound {...props} /> }}/>              
             </Switch>
-            </div>
         </Router>
+        </div>
         <Footer />
       </div>                        
     );

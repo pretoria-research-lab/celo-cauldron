@@ -49,11 +49,15 @@ class Faucet extends Component
     return config;
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
       this.setState({config: this.getConfig(this.props.network)}, () => {
-        setInterval(this.getBlockNumber, refreshBlockNumberMillis);
-        this.getAllRequests();
+        const blockNumberIntervalID = setInterval(this.getBlockNumber, refreshBlockNumberMillis);
+        this.setState({blockNumberIntervalID:blockNumberIntervalID}, () => this.getAllRequests());
       });        
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.state.blockNumberIntervalID);
   }
 
   processError = (error) => {
