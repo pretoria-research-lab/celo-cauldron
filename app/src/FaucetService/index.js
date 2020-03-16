@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const TIMEOUT = 10000;
-const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
-const REQUEST_PATH = "/request";
-const CLAIM_PATH = "/claim";
-
 export default class FaucetService {
+
+  TIMEOUT = 10000;
+  HEADERS = {"Content-Type":"application/json;charset=utf-8"};
+  REQUEST_PATH = "/request";
+  CLAIM_PATH = "/claim"; 
 
   createInstance = (config) => {
     return axios.create({

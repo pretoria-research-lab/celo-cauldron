@@ -1,6 +1,16 @@
-import React from 'react';
-import checkMark from '../assets/10-Check (light-bg).png';
+import React from "react";
+import PropTypes from "prop-types";
+import checkMark from "../assets/10-Check (light-bg).png";
 import "./faucetqueuerow.css";
+
+FaucetQueueRow.propTypes = () => { 
+	return { 
+		faucetRequest: PropTypes.any,
+		blockNumber: PropTypes.any,
+		config: PropTypes.any,
+		onClick: PropTypes.func
+	}; 
+}	
 
 export default function FaucetQueueRow(props) {
 
@@ -19,18 +29,18 @@ export default function FaucetQueueRow(props) {
 				<td colSpan="3">{"Cooling down, ready in " + blocksUntilReady + " blocks"}</td>
 				:
 				<>
-				{ 	(!isComplete) ? 
-					<>
-						<td colSpan="2">Ready to claim</td>
-						<td><button onClick={() => onClick(faucetRequest)}>Confirm</button></td>
-					</>
-					:
-					<>
-						<td>{faucetRequest.claimedBlockNumber}</td>
-						<td className="address"><a href={faucetRequest.txLink}>{faucetRequest.txIdShort}</a></td>
-						<td><img id="checkmark" src={checkMark} alt="Claimed check mark" /></td>
-					</>
-				}
+					{ 	(!isComplete) ? 
+						<>
+							<td colSpan="2">Ready to claim</td>
+							<td><button onClick={() => onClick(faucetRequest)}>Confirm</button></td>
+						</>
+						:
+						<>
+							<td>{faucetRequest.claimedBlockNumber}</td>
+							<td className="address"><a href={faucetRequest.txLink}>{faucetRequest.txIdShort}</a></td>
+							<td><img id="checkmark" src={checkMark} alt="Claimed check mark" /></td>
+						</>
+					}
 				</>
 			}
 		</tr>			

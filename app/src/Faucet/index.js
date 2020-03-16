@@ -17,7 +17,7 @@ class Faucet extends Component
   constructor(props){
 	  super(props);
       this.state = {faucetRequests: [], loading: false, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
-  };
+  }
 
   notify = (type, message) => {
     if(type==="SUCCESS")
