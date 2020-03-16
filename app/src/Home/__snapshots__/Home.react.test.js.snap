@@ -41,7 +41,7 @@ exports[`Home component matches snapshot 1`] = `
       className="column tools col-lg-12"
     >
       <div
-        className="link-list col-lg-8"
+        className="link-list col-lg-7"
       >
         <h2>
           Developer Resources
@@ -123,11 +123,65 @@ exports[`Home component matches snapshot 1`] = `
                 </a>
               </td>
             </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Hackerone Celo Bug Bounty Program
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://hackerone.com/celo/"
+                >
+                  https://hackerone.com/celo/
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                cLabs Alfajores Faucet
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://celo.org/build/faucet"
+                >
+                  https://celo.org/build/faucet
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Community Alfajores Faucet
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet"
+                >
+                  https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet
+                </a>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div
-        className="link-list col-lg-8"
+        className="link-list col-lg-7"
       >
         <h2>
           Validator Resources
@@ -143,7 +197,7 @@ exports[`Home component matches snapshot 1`] = `
               <td
                 id="left"
               >
-                Baklava tesnet validator statistics by Bi23
+                Baklava Validator Statistics
               </td>
               <td
                 id="right"
@@ -152,6 +206,60 @@ exports[`Home component matches snapshot 1`] = `
                   href="https://thecelo.org"
                 >
                   https://thecelo.org
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Validator Rewards Calculator
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://observablehq.com/@celohq/validator-rewards-calculator"
+                >
+                  https://observablehq.com/@celohq/validator-rewards-calculator
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Baklava Network Statistics
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://baklava-celostats.celo-testnet.org/"
+                >
+                  https://baklava-celostats.celo-testnet.org/
+                </a>
+              </td>
+            </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Celo Validator Monitor Discord Bot
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://github.com/dsrvlabs/celo-validator-monitoring"
+                >
+                  https://github.com/dsrvlabs/celo-validator-monitoring
                 </a>
               </td>
             </tr>

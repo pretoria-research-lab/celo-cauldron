@@ -34,7 +34,7 @@ export default function FaucetQueueTable(props) {
 									<th>Status</th>
 									<th>Claimed Block</th>
 									<th>Claimed txId</th>
-									<th></th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>

@@ -5,7 +5,7 @@ export default function HomeInformation() {
 
 	return (
 		<div className="column tools col-lg-12">
-			<div className="link-list col-lg-8">
+			<div className="link-list col-lg-7">
 				<h2>Developer Resources</h2>
 				<hr />                
 				<table className="responsive col-lg-12">
@@ -17,11 +17,10 @@ export default function HomeInformation() {
 							</tr>
 						)}
 					</tbody>
-				</table>   
-                
+				</table>                
 			</div>
 
-			<div className="link-list col-lg-8">
+			<div className="link-list col-lg-7">
 				<h2>Validator Resources</h2>
 				<hr />                        
 				<table className="responsive col-lg-12">
