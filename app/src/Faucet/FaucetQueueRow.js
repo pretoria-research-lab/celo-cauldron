@@ -10,7 +10,7 @@ FaucetQueueRow.propTypes = () => {
 		config: PropTypes.any,
 		onClick: PropTypes.func
 	}; 
-}	
+};	
 
 export default function FaucetQueueRow(props) {
 

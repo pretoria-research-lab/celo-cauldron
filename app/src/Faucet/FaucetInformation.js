@@ -8,7 +8,7 @@ FaucetInformation.propTypes = () => {
 		blockNumber: PropTypes.any,
 		config: PropTypes.any
 	}; 
-}	
+};	
 
 export default function FaucetInformation(props) {
 

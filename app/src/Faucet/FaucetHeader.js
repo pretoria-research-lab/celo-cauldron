@@ -7,7 +7,7 @@ FaucetHeader.propTypes = () => {
 	return { 
 		network: PropTypes.any
 	}; 
-}	
+};	
 
 export default function FaucetHeader(props) {
 

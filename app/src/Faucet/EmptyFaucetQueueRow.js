@@ -10,7 +10,7 @@ EmptyFaucetQueueRow.propTypes = () => {
 	return { 
 		onClick: PropTypes.func
 	}; 
-}	
+};	
 
 export default function EmptyFaucetQueueRow(props) {
 

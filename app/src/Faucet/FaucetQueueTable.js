@@ -13,7 +13,7 @@ FaucetQueueTable.propTypes = () => {
 		claimRequest: PropTypes.func,
 		createRequest: PropTypes.func
 	}; 
-}	
+};	
 
 export default function FaucetQueueTable(props) {
 
