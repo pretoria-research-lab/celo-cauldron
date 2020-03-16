@@ -52,5 +52,8 @@
             "error", 
             "smart-tabs"
         ]
-    }
+    },
+    "settings": {"react": {
+        "version": "detect"
+    }}
 }

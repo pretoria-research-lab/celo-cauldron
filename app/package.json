@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint src --fix-dry-run",
+    "lint-fix": "npx eslint src --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0"
   }
 }

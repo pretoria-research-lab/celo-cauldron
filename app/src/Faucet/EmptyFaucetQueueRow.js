@@ -19,7 +19,7 @@ export default function EmptyFaucetQueueRow(props) {
 
 	return (
 		<tr>			
-			<td><input name="address" onChange={(event, type) => setAddress(event.target.value)} className="form-control address" value={address} id="address" type="text"></input></td>
+			<td><input name="address" onChange={(event) => setAddress(event.target.value)} className="form-control address" value={address} id="address" type="text"></input></td>
 			<td colSpan="4"><p>Enter a new faucet request here</p></td>
 			<td><button disabled={!isValid(address)} onClick={() => onClick(address)}>{isValid(address) ? "Request" : "Invalid Address"}</button></td>
 		</tr>			

@@ -9,9 +9,9 @@ import "./App.css";
 // See: https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 // and https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#analyzing-the-bundle-size
 // 
-const AsyncFaucet = AsyncComponent(() => {import("./Faucet");});
-const AsyncHome = AsyncComponent(() => {import("./Home");});
-const AsyncNotFound = AsyncComponent(() => {import("./NotFound");});
+const AsyncFaucet = AsyncComponent(() => import("./Faucet"));
+const AsyncHome = AsyncComponent(() => import("./Home"));
+const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
 
 const faucets = ["Alfajores" /*, "Baklava", "RC 1", "Mainnet"*/];
 
