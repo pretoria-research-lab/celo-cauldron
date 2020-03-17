@@ -47,6 +47,10 @@ export const data = {
 		{
 			link: "https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet",
 			blurb: "Community Alfajores Faucet"
+		},
+		{
+			link: "https://www.celocamp.com/",
+			blurb: "Mentorship and funding for your Celo project"
 		}
 	]
 };
