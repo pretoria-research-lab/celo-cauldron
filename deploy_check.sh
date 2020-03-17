@@ -3,7 +3,7 @@
 # First argument is stage identifer
 
 BUCKET=pretoria-celo-cauldron-$1
-STATUS=$(aws s3api head-bucket --bucket $BUCKET 2>&1)
+STATUS=$(aws s3api head-bucket --bucket $BUCKET)
 
 if echo "$STATUS" | grep 'Not Found';
 then
