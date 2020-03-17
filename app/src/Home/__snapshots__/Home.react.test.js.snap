@@ -177,6 +177,24 @@ exports[`Home component matches snapshot 1`] = `
                 </a>
               </td>
             </tr>
+            <tr
+              className="small-padding"
+            >
+              <td
+                id="left"
+              >
+                Mentorship and funding for your Celo project
+              </td>
+              <td
+                id="right"
+              >
+                <a
+                  href="https://www.celocamp.com/"
+                >
+                  https://www.celocamp.com/
+                </a>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
