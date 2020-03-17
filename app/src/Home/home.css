@@ -1,34 +1,43 @@
-.jumbo-primary p {    
-    font-size: 200%;
-}
-
-#small-logo {
+.celoIcons {
     max-width: 100px;
 }
 
-.jumbo-secondary p {    
-    margin-top: 30px;   
-    font-size: 150%;
+.tools {
+    align-items: center;
 }
 
-.jumbo-secondary h1 {    
-    color: var(--secondary-eastern-blue);
-    font-size: 300%;
+.link-list {    
+    background-color: var(--celo-canvas-faint-gold);   
+    border: solid 1px var(--celo-accent-cyan);
+    padding: 1%;
+    margin-top: 10px;
 }
 
-.jumbo-secondary img {
-    max-width: 250px;
+.jost {
+ font-family: Jost;
 }
 
-.jumbo-primary h1 {
-    color: var(--secondary-pelorous);
-    font-size: 400%;
+ul {
+    text-align: left;
+    font-size: larger;
 }
 
-#developer-logo {
-    max-width: 100px;
+#left {
+ text-align: right;
+ padding-left: 5px;
+ width: 40%;
 }
 
-#home-info {
-    font-size: smaller;
+td {
+    padding-right: 10px;
+}
+
+#right {
+    text-align: left;
+    padding-right: 5px;
+    width: 60%;
+}
+
+.small-padding {
+    padding-bottom: 0px;
 }

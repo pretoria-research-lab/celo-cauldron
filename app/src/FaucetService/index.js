@@ -1,83 +1,38 @@
-import axios from 'axios';
-
-const TIMEOUT = 10000;
-const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
-const REQUEST_PATH = "/request";
-const CLAIM_PATH = "/claim";
+import axios from "axios";
 
 export default class FaucetService {
 
-  createInstance = (config) => {
-    return axios.create({
-      baseUrl: config.host,
-      timeout: TIMEOUT,
-      headers: HEADERS
-    });
-  }
+	TIMEOUT = 10000;
+	HEADERS = {"Content-Type":"application/json;charset=utf-8"};
+	REQUEST_PATH = "/request";
+	CLAIM_PATH = "/claim";
 
-  getAllRequests = async (config) => {
-    try{
-      const instance = this.createInstance(config);
-      const response = await instance.get(config.host + config.basePath + REQUEST_PATH);
-      console.log("FaucetService - getAllRequests() - success, response : " + JSON.stringify(response));
-      return response;
-    }
-    catch (error) {
-      if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-      } else if (error.request) {
-          console.log(error.request);
-      } else {
-          console.log('Error', error.message);
-      }
-      console.log(error);
-      throw error;
-    }
-  }  
+	createInstance = (config) => {
+		return axios.create({
+			baseUrl: config.host,
+			timeout: this.TIMEOUT,
+			headers: this.HEADERS
+		});
+	}
 
-  createRequest = async (config, address) => {
-    try{
-      const instance = this.createInstance(config);
-      const response = await instance.post(config.host + config.basePath + REQUEST_PATH, {address: address});
-      console.log("FaucetService - createRequest() - success, response : " + JSON.stringify(response));
-      return response;
-    }
-    catch (error) {
-      if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-      } else if (error.request) {
-          console.log(error.request);
-      } else {
-          console.log('Error', error.message);
-      }
-      console.log(error);
-      throw error;
-    }    
-  }
+	getAllRequests = async (config) => {
+		const instance = this.createInstance(config);
+		const response = await instance.get(config.host + config.basePath + this.REQUEST_PATH);
+		console.log("FaucetService - getAllRequests() - success, response : " + JSON.stringify(response));
+		return response;
+	}  
 
-  claimRequest = async (config, address) => {
-    try{
-      const instance = this.createInstance(config);
-      const response = await instance.post(config.host + config.basePath + CLAIM_PATH, {address: address});
-      console.log("FaucetService - claimRequest() - success, response : " + JSON.stringify(response));
-      return response;
-    }
-    catch (error) {
-      if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-      } else if (error.request) {
-          console.log(error.request);          
-      } else {
-          console.log('Error', error.message);          
-      }
-      console.log(error);
-      throw error;
-    }      
-  }
+	createRequest = async (config, address) => {   
+		const instance = this.createInstance(config);
+		const response = await instance.post(config.host + config.basePath + this.REQUEST_PATH, {address: address});
+		console.log("FaucetService - createRequest() - success, response : " + JSON.stringify(response));
+		return response;    
+	}
+
+	claimRequest = async (config, address) => {  
+		const instance = this.createInstance(config);
+		const response = await instance.post(config.host + config.basePath + this.CLAIM_PATH, {address: address});
+		console.log("FaucetService - claimRequest() - success, response : " + JSON.stringify(response));
+		return response;    
+	}
 }

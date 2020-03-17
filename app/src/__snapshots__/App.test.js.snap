@@ -73,7 +73,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
     </nav>
   </div>
   <footer
-    className="page-footer font-small pt-4"
+    className="footer"
   >
     <div
       className="container-fluid text-center text-sm-left"
@@ -89,9 +89,20 @@ exports[`renders without crashing and matches snapshot 1`] = `
             <a
               href="https:/pretoria.tech"
             >
-              Pretoria GmbH
+              Pretoria Research Lab GmbH
             </a>
-            , a Next Big Thing AG venture
+          </p>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <p>
+            Contribute to this codebase at 
+            <a
+              href="https://gitlab.com/aaron.boyd/celo-cauldron"
+            >
+              https://gitlab.com/aaron.boyd/celo-cauldron
+            </a>
           </p>
         </div>
       </div>
