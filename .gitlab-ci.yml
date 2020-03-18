@@ -42,7 +42,7 @@ deploy:
     - ./aws/install
     - npm install -g serverless
     - yarn
-    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
+    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default --overwrite
     - ./deploy_stack.sh $CI_COMMIT_REF_NAME
     - serverless syncToS3 -v --stage $CI_COMMIT_REF_NAME
     - serverless invalidateCloudFrontCache -v --stage $CI_COMMIT_REF_NAME
