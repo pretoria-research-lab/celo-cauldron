@@ -1,24 +1,3 @@
-#small-logo {
-    max-width: 100px;
-}
-
-#developer-logo {
-    max-width: 100px;
-}
-
-.jumbo-primary {
-    margin-top: 10px;
-}
-
-.jumbo-primary p {    
-    font-size: 200%;
-}
-
-.jumbo-primary h1 {
-    color: var(--celo-dark);
-    font-size: 400%;
-}
-
 .technical{
     font-family: "Jost"
 }
@@ -55,6 +34,10 @@ li {
 
 #how-to-prepare {
     text-align: left;
+}
+
+#how-to-prepare li {
+    font-family: Jost;
 }
 
 .nb {

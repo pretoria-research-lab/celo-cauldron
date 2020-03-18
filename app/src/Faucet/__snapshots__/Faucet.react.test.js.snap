@@ -5,25 +5,22 @@ exports[`Faucet component matches snapshot 1`] = `
   className="container-fluid"
 >
   <div
-    className="row"
+    className="column centered"
   >
     <div
-      className="col-lg-12 text-center jumbo-primary"
+      className="row page-header"
     >
-      <div
-        className="jumbotron jumbotron-fluid"
+      <img
+        alt="Developer's icon"
+        className="celoIcons"
+        src="01-Developers (light bg).png"
+      />
+      <h1
+        className="mt"
       >
-        <h1
-          className="mt"
-        >
-          <img
-            alt="Developer logo"
-            id="developer-logo"
-            src="01-Developers (light bg).png"
-          />
-          Alfajores Community Faucet
-        </h1>
-      </div>
+        Alfajores Community Faucet
+      </h1>
+      <hr />
     </div>
   </div>
   <div
@@ -33,7 +30,7 @@ exports[`Faucet component matches snapshot 1`] = `
       className="col-lg-4"
     >
       <h2>
-        Alfajores Faucet Address
+        Faucet Address
       </h2>
       <hr />
       <p
@@ -61,12 +58,16 @@ exports[`Faucet component matches snapshot 1`] = `
         />
       </div>
       <hr />
-      <p>
-        Balance 0 cGLD
-      </p>
-      <p>
-        Block number -1
-      </p>
+      <div
+        className="technical"
+      >
+        <p>
+          Balance 0 cGLD
+        </p>
+        <p>
+          Block number -1
+        </p>
+      </div>
     </div>
     <div
       className="col-lg-8"

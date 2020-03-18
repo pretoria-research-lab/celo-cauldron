@@ -22,17 +22,7 @@ body {
 }
 
 hr{
-  color: var(--celo-gray-heavy);
-}
-
-.main-bg {
-  background-color:var(--celo-gray-faint);
-}
-.light-highlight-bg {
-  background-color: var(--celo-gray); 
-}
-.dark-highlight-bg {
-  background-color: var(--celo-gray-heavy); 
+  color: var(--celo-dark);
 }
 
 .btn-primary {
@@ -52,7 +42,7 @@ hr{
 .column {
   display: flex;
   flex-direction: column;
-  align-content: center;  
+  align-content: center;
   padding: 10px;
 }
 
@@ -63,6 +53,22 @@ hr{
   padding: 10px;
 }
 
+.centered {
+  align-items: center;
+}
+
 a {
   color: var(--celo-accent-blue);
 }
+
+.page-header {
+  align-items: center;
+}
+
+.celoIcons {
+  max-width: 100px;
+}
+
+.jost {
+  font-family: Jost;
+ }

@@ -10,6 +10,10 @@ export const data = {
 			blurb: "Validator Rewards Calculator"
 		},
 		{
+			link: "https://alfajores-celostats.celo-testnet.org/",
+			blurb: "Alfajores Network Statistics"
+		},		
+		{
 			link: "https://baklava-celostats.celo-testnet.org/",
 			blurb: "Baklava Network Statistics"
 		},
@@ -45,9 +49,13 @@ export const data = {
 			blurb: "cLabs Alfajores Faucet"
 		},
 		{
-			link: "https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet",
+			link: "https://cauldron.pretoria.tech/alfajores-faucet",
 			blurb: "Community Alfajores Faucet"
 		},
+		{
+			link: "https://cauldron.pretoria.tech/baklava-faucet",
+			blurb: "Community Baklava Faucet"
+		},		
 		{
 			link: "https://www.celocamp.com/",
 			blurb: "Mentorship and funding for your Celo project"

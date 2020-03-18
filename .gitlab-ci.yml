@@ -36,10 +36,15 @@ deploy:
   stage: deploy
   dependencies:
     - build  
-  script:    
+  script:
+    - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    - unzip awscliv2.zip
+    - ./aws/install
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_ACCESS_KEY_SECRET
     - npm install -g serverless
     - yarn
-    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default
+    - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_ACCESS_KEY_SECRET --profile default --overwrite
     - ./deploy_stack.sh $CI_COMMIT_REF_NAME
     - serverless syncToS3 -v --stage $CI_COMMIT_REF_NAME
     - serverless invalidateCloudFrontCache -v --stage $CI_COMMIT_REF_NAME
