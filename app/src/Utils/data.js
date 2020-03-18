@@ -69,12 +69,22 @@ export const data = {
 		{
 			community: false,
 			link: "https://www.celocamp.com/",
-			blurb: "Mentorship and funding for your Celo project"
+			blurb: "Mentorship and Funding @ Celo Camp"
 		},
 		{
 			community: true,
 			link: "https://thecelo.com/celo.html",
-			blurb: "Celo project and concepts mindmap"
+			blurb: "Project and Concepts Mindmap"
+		},
+		{
+			community: true,
+			link: "https://gist.github.com/yourcodesucks/374c30454ec1d93af028c153baae3bed",
+			blurb: "Celo Maintenance Scripts"
+		},
+		{
+			community: true,
+			link: "https://celowhale.com",
+			blurb: "Celo Validator Dashboard"
 		}
 	]
 };
