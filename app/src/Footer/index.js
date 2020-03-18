@@ -12,7 +12,7 @@ export default function Footer() {
 						<p>Built by <a href="https:/pretoria.tech">Pretoria Research Lab GmbH</a></p>
 					</div>
 					<div className="col-sm-6">
-						<p>Contribute to this codebase at <a href="https://gitlab.com/aaron.boyd/celo-cauldron">https://gitlab.com/aaron.boyd/celo-cauldron</a></p>
+						<p>Contribute to this codebase at <a href="https://gitlab.com/pretoria-research-lab/celo-cauldron">https://gitlab.com/pretoria-research-lab/celo-cauldron</a></p>
 					</div>               
 				</div>
 			</div>
