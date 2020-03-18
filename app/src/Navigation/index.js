@@ -34,10 +34,9 @@ class Navigation extends Component
         
 					<ul className="navbar-nav ml-auto">
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/">Home</NavLink>
+							<NavLink className="nav-link" to="/">Tools</NavLink>
 						</li>
 						{faucets.map((faucet, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + faucet.toLowerCase() + "-faucet"}>{faucet + " Faucet"}</NavLink></li> )}
-
 					</ul>
 				</div>
 

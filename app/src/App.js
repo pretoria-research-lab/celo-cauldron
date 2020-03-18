@@ -13,25 +13,25 @@ const AsyncFaucet = AsyncComponent(() => import("./Faucet"));
 const AsyncHome = AsyncComponent(() => import("./Home"));
 const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
 
-const faucets = ["Alfajores" , "Baklava"/*, "RC 1", &*/, "Mainnet"];
+const faucets = ["Alfajores" , "Baklava"/*, "RC 1", "Mainnet"*/];
 
 class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<div className="App-content">
-					<Router>          
+			<div className="App">				
+				<Router> 
+					<div className="App-content">         
 						<Navigation faucets={faucets}/>
 						<Switch>
 							<Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
 							{faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
 							<Route path="*" render={(props) => {return <AsyncNotFound {...props} />; }}/>              
 						</Switch>
-					</Router>
-				</div>
-				<Footer />
-			</div>                        
+					</div>
+					<Footer faucets={faucets}/>
+				</Router>						
+			</div>   
 		);
 	}
 }

@@ -2,8 +2,8 @@
 .link-list {    
     background-color: var(--celo-canvas-faint-gold);   
     border: solid 1px var(--celo-accent-cyan);
-    padding: 1%;
-    margin-top: 10px;
+    padding: 10px;
+    margin-top: 20px;
 }
 
 ul {

@@ -46,7 +46,7 @@ class Faucet extends Component
 			const blockNumber = await getCurrentBlockNumber(nodeProvider);
 			this.setState({blockNumber: blockNumber});
 		}catch(error){
-			this.processError(error);
+			this.notify("ERROR", this.props.network + " is not responding");
 			this.setState({blockNumber: -1});
 		}
 	}
@@ -76,10 +76,10 @@ class Faucet extends Component
 			error.response.data.message ? this.notify("ERROR", error.response.data.message) : this.notify("ERROR", error.response.data);
 		} else if (error.request) {
 			console.log(error.request);
-			toast.error(error.request);
+			this.notify("ERROR", error.request);
 		} else {
 			console.log(error.message);
-			toast.error(error.message);
+			this.notify("ERROR", error.message);
 		}
 	}
 
@@ -136,7 +136,7 @@ class Faucet extends Component
 			catch (error) {
 				this.notify("WARN","Error retrieving faucet requests, please refresh");
 				const faucetRequests = [];
-				this.setState({faucetRequests}, () => this.setState({loading:false}));
+				this.setState({faucetRequests}, () => this.setState({loading:true}));
 			}
 		});
 	} 
@@ -148,6 +148,7 @@ class Faucet extends Component
 				<FaucetInformation config={this.state.config} blockNumber={this.state.blockNumber} network={this.props.network} faucetBalance={this.state.faucetBalance}/>
 				<FaucetQueueTable config={this.state.config} loading={this.state.loading} blockNumber={this.state.blockNumber} faucetRequests={this.state.faucetRequests} claimRequest={this.claimRequest} createRequest={this.createRequest}/>
 				<ToastContainer autoClose={4000}/>
+				<hr />
 			</div>
 		);
 	}  
