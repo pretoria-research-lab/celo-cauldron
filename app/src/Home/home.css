@@ -11,6 +11,10 @@ ul {
     font-size: larger;
 }
 
+.tiny-icon {
+    max-width: 50px;
+}
+
 #left {
  text-align: right;
  padding-left: 5px;
@@ -24,7 +28,8 @@ td {
 #right {
     text-align: left;
     padding-right: 5px;
-    width: 60%;
+    width: 50%;
+    word-break: break-all;
 }
 
 .small-padding {

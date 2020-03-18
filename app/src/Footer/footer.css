@@ -11,3 +11,7 @@ a.footer {
   flex-shrink: 0;
   padding-top: 20px;
 }
+
+.footer p  {
+  font-size: smaller;
+}
