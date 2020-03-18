@@ -75,6 +75,11 @@ export const data = {
 			community: true,
 			link: "https://thecelo.com/celo.html",
 			blurb: "Celo project and concepts mindmap"
+		},
+		{
+			community: true,
+			link: "https://gist.github.com/yourcodesucks/374c30454ec1d93af028c153baae3bed",
+			blurb: "Celo Maintenance Scripts"
 		}
 	]
 };
