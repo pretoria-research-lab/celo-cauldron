@@ -28,9 +28,9 @@ exports[`Footer component matches snapshot 1`] = `
         <p>
           Contribute to this codebase at 
           <a
-            href="https://gitlab.com/aaron.boyd/celo-cauldron"
+            href="https://gitlab.com/pretoria-research-lab/celo-cauldron"
           >
-            https://gitlab.com/aaron.boyd/celo-cauldron
+            https://gitlab.com/pretoria-research-lab/celo-cauldron
           </a>
         </p>
       </div>

@@ -41,7 +41,12 @@ exports[`Home component matches snapshot 1`] = `
       className="link-list col-lg-8"
     >
       <h2>
-        Developer Resources
+        <img
+          alt="cLabs resource"
+          className="tiny-icon"
+          src="11-Security Check (light-bg).png"
+        />
+         cLabs
       </h2>
       <hr />
       <table
@@ -54,33 +59,15 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Celo Documentation
+              Alfajores Network Statistics
             </td>
             <td
               id="right"
             >
               <a
-                href="https://docs.celo.org/"
+                href="https://alfajores-celostats.celo-testnet.org/"
               >
-                https://docs.celo.org/
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Baklava Testnet block explorer
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://baklava-blockscout.celo-testnet.org/"
-              >
-                https://baklava-blockscout.celo-testnet.org/
+                https://alfajores-celostats.celo-testnet.org/
               </a>
             </td>
           </tr>
@@ -108,15 +95,51 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              RC1 block explorer
+              Baklava Network Statistics
             </td>
             <td
               id="right"
             >
               <a
-                href="https://rc1-blockscout.celo-testnet.org/"
+                href="https://baklava-celostats.celo-testnet.org/"
               >
-                https://rc1-blockscout.celo-testnet.org/
+                https://baklava-celostats.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Baklava Testnet block explorer
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://baklava-blockscout.celo-testnet.org/"
+              >
+                https://baklava-blockscout.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Celo Documentation
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://docs.celo.org/"
+              >
+                https://docs.celo.org/
               </a>
             </td>
           </tr>
@@ -144,6 +167,42 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              Mentorship and funding for your Celo project
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://www.celocamp.com/"
+              >
+                https://www.celocamp.com/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Validator Rewards Calculator
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://observablehq.com/@celohq/validator-rewards-calculator"
+              >
+                https://observablehq.com/@celohq/validator-rewards-calculator
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               cLabs Alfajores Faucet
             </td>
             <td
@@ -153,6 +212,79 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://celo.org/build/faucet"
               >
                 https://celo.org/build/faucet
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="link-list col-lg-8"
+    >
+      <h2>
+        <img
+          alt="Community based resource"
+          className="tiny-icon"
+          src="03-People (light-bg).png"
+        />
+         Community
+      </h2>
+      <hr />
+      <table
+        className="responsive col-lg-12"
+      >
+        <tbody>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Baklava Validator Group Topography
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://celomap.io"
+              >
+                https://celomap.io
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Baklava Validator Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://thecelo.org"
+              >
+                https://thecelo.org
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Celo Validator Monitor Discord Bot
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://github.com/dsrvlabs/celo-validator-monitoring"
+              >
+                https://github.com/dsrvlabs/celo-validator-monitoring
               </a>
             </td>
           </tr>
@@ -189,128 +321,6 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://cauldron.pretoria.tech/baklava-faucet"
               >
                 https://cauldron.pretoria.tech/baklava-faucet
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Mentorship and funding for your Celo project
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://www.celocamp.com/"
-              >
-                https://www.celocamp.com/
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div
-      className="link-list col-lg-8"
-    >
-      <h2>
-        Validator Resources
-      </h2>
-      <hr />
-      <table
-        className="responsive col-lg-12"
-      >
-        <tbody>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Baklava Validator Statistics
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://thecelo.org"
-              >
-                https://thecelo.org
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Validator Rewards Calculator
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://observablehq.com/@celohq/validator-rewards-calculator"
-              >
-                https://observablehq.com/@celohq/validator-rewards-calculator
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Alfajores Network Statistics
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://alfajores-celostats.celo-testnet.org/"
-              >
-                https://alfajores-celostats.celo-testnet.org/
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Baklava Network Statistics
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://baklava-celostats.celo-testnet.org/"
-              >
-                https://baklava-celostats.celo-testnet.org/
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Celo Validator Monitor Discord Bot
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://github.com/dsrvlabs/celo-validator-monitoring"
-              >
-                https://github.com/dsrvlabs/celo-validator-monitoring
               </a>
             </td>
           </tr>
