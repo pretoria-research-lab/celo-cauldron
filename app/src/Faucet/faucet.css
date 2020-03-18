@@ -48,7 +48,7 @@ li {
 .toastInfo {
     font-family: Jost;
     color: var(--celo-dark);
-    background-color: var(--celo-accent-cyan);
+    background-color: var(--celo-green);
     border-bottom: solid 1px var(--celo-dark);
 }
 

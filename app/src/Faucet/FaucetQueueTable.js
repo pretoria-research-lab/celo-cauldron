@@ -22,7 +22,7 @@ export default function FaucetQueueTable(props) {
 	return (
 		<div className="row">
 			<div className="col-lg-12 text-center">
-				{ loading ? 
+				{ loading || blockNumber === -1 ? 
 					<img id="loadingLogo" src={loadingImg} alt="Loading..." />
 					:
 					<div className="table-responsive">

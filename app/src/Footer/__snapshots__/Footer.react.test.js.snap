@@ -2,7 +2,7 @@
 
 exports[`Footer component matches snapshot 1`] = `
 <footer
-  className="footer"
+  className="footer jost"
 >
   <div
     className="container-fluid text-center text-sm-left"
@@ -21,12 +21,39 @@ exports[`Footer component matches snapshot 1`] = `
             Pretoria Research Lab GmbH
           </a>
         </p>
+        <p>
+          We are a DeFi and staking protocol start-up founded in February 2020 in Berlin, Germany by 
+          <a
+            href="https://www.nextbigthing.ag/"
+          >
+            Next Big Thing
+          </a>
+          , choosing to support the 
+          <a
+            href="https://celo.org"
+          >
+            Celo Protocol
+          </a>
+           with tooling and validating.
+        </p>
       </div>
       <div
         className="col-sm-6"
       >
         <p>
-          Contribute to this webpage at 
+          Built with 
+          <a
+            href="https://reactjs.org/"
+          >
+            React JS
+          </a>
+           and 
+          <a
+            href="https://serverless.com/"
+          >
+            Serverless Framework
+          </a>
+          . Help us improve this page - contribute at 
           <a
             href="https://gitlab.com/pretoria-research-lab/celo-cauldron"
           >

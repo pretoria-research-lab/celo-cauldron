@@ -13,7 +13,7 @@ const AsyncFaucet = AsyncComponent(() => import("./Faucet"));
 const AsyncHome = AsyncComponent(() => import("./Home"));
 const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
 
-const faucets = ["Alfajores" , "Baklava"/*, "RC 1", &*/, "Mainnet"];
+const faucets = ["Alfajores" , "Baklava"/*, "RC 1", "Mainnet"*/];
 
 class App extends Component {
 
