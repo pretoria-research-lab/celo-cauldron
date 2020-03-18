@@ -167,7 +167,7 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Mentorship and funding for your Celo project
+              Mentorship and Funding @ Celo Camp
             </td>
             <td
               id="right"
@@ -276,15 +276,15 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Celo Validator Monitor Discord Bot
+              Celo Maintenance Scripts
             </td>
             <td
               id="right"
             >
               <a
-                href="https://github.com/dsrvlabs/celo-validator-monitoring"
+                href="https://gist.github.com/yourcodesucks/374c30454ec1d93af028c153baae3bed"
               >
-                https://github.com/dsrvlabs/celo-validator-monitoring
+                https://gist.github.com/yourcodesucks/374c30454ec1d93af028c153baae3bed
               </a>
             </td>
           </tr>
@@ -294,15 +294,33 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Celo project and concepts mindmap
+              Celo Validator Dashboard
             </td>
             <td
               id="right"
             >
               <a
-                href="https://thecelo.com/celo.html"
+                href="https://celowhale.com"
               >
-                https://thecelo.com/celo.html
+                https://celowhale.com
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Celo Validator Monitor Discord Bot
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://github.com/dsrvlabs/celo-validator-monitoring"
+              >
+                https://github.com/dsrvlabs/celo-validator-monitoring
               </a>
             </td>
           </tr>
@@ -339,6 +357,24 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://cauldron.pretoria.tech/baklava-faucet"
               >
                 https://cauldron.pretoria.tech/baklava-faucet
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Project and Concepts Mindmap
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://thecelo.com/celo.html"
+              >
+                https://thecelo.com/celo.html
               </a>
             </td>
           </tr>
