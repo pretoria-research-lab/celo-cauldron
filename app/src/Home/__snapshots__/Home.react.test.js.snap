@@ -5,10 +5,10 @@ exports[`Home component matches snapshot 1`] = `
   className="container-fluid"
 >
   <div
-    className="row"
+    className="column centered"
   >
     <div
-      className="col-lg-12 text-center"
+      className="row page-header"
     >
       <img
         alt="Doers icon"
@@ -18,11 +18,11 @@ exports[`Home component matches snapshot 1`] = `
       <h1
         className="mt"
       >
-        Celo Cauldron
+        Cauldron
       </h1>
-      <hr />
     </div>
   </div>
+  <hr />
   <div
     className="row"
   >
@@ -35,255 +35,287 @@ exports[`Home component matches snapshot 1`] = `
     </div>
   </div>
   <div
-    className="row"
+    className="column centered"
   >
     <div
-      className="column tools col-lg-12"
+      className="link-list col-lg-8"
     >
-      <div
-        className="link-list col-lg-7"
+      <h2>
+        Developer Resources
+      </h2>
+      <hr />
+      <table
+        className="responsive col-lg-12"
       >
-        <h2>
-          Developer Resources
-        </h2>
-        <hr />
-        <table
-          className="responsive col-lg-12"
-        >
-          <tbody>
-            <tr
-              className="small-padding"
+        <tbody>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Celo Documentation
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://docs.celo.org/"
-                >
-                  https://docs.celo.org/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              Celo Documentation
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://docs.celo.org/"
               >
-                Baklava Testnet block explorer
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://baklava-blockscout.celo-testnet.org/"
-                >
-                  https://baklava-blockscout.celo-testnet.org/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+                https://docs.celo.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Alfajores Testnet block explorer
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://alfajores-blockscout.celo-testnet.org/"
-                >
-                  https://alfajores-blockscout.celo-testnet.org/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              Baklava Testnet block explorer
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://baklava-blockscout.celo-testnet.org/"
               >
-                RC1 block explorer
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://rc1-blockscout.celo-testnet.org/"
-                >
-                  https://rc1-blockscout.celo-testnet.org/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+                https://baklava-blockscout.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Hackerone Celo Bug Bounty Program
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://hackerone.com/celo/"
-                >
-                  https://hackerone.com/celo/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              Alfajores Testnet block explorer
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://alfajores-blockscout.celo-testnet.org/"
               >
-                cLabs Alfajores Faucet
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://celo.org/build/faucet"
-                >
-                  https://celo.org/build/faucet
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+                https://alfajores-blockscout.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Community Alfajores Faucet
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet"
-                >
-                  https://dev.cauldron.pretoriaresearchlab.io/alfajores-faucet
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              RC1 block explorer
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://rc1-blockscout.celo-testnet.org/"
               >
-                Mentorship and funding for your Celo project
-              </td>
-              <td
-                id="right"
+                https://rc1-blockscout.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Hackerone Celo Bug Bounty Program
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://hackerone.com/celo/"
               >
-                <a
-                  href="https://www.celocamp.com/"
-                >
-                  https://www.celocamp.com/
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div
-        className="link-list col-lg-7"
+                https://hackerone.com/celo/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              cLabs Alfajores Faucet
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://celo.org/build/faucet"
+              >
+                https://celo.org/build/faucet
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Community Alfajores Faucet
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://cauldron.pretoria.tech/alfajores-faucet"
+              >
+                https://cauldron.pretoria.tech/alfajores-faucet
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Community Baklava Faucet
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://cauldron.pretoria.tech/baklava-faucet"
+              >
+                https://cauldron.pretoria.tech/baklava-faucet
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Mentorship and funding for your Celo project
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://www.celocamp.com/"
+              >
+                https://www.celocamp.com/
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="link-list col-lg-8"
+    >
+      <h2>
+        Validator Resources
+      </h2>
+      <hr />
+      <table
+        className="responsive col-lg-12"
       >
-        <h2>
-          Validator Resources
-        </h2>
-        <hr />
-        <table
-          className="responsive col-lg-12"
-        >
-          <tbody>
-            <tr
-              className="small-padding"
+        <tbody>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Baklava Validator Statistics
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://thecelo.org"
-                >
-                  https://thecelo.org
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              Baklava Validator Statistics
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://thecelo.org"
               >
-                Validator Rewards Calculator
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://observablehq.com/@celohq/validator-rewards-calculator"
-                >
-                  https://observablehq.com/@celohq/validator-rewards-calculator
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+                https://thecelo.org
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
             >
-              <td
-                id="left"
-              >
-                Baklava Network Statistics
-              </td>
-              <td
-                id="right"
-              >
-                <a
-                  href="https://baklava-celostats.celo-testnet.org/"
-                >
-                  https://baklava-celostats.celo-testnet.org/
-                </a>
-              </td>
-            </tr>
-            <tr
-              className="small-padding"
+              Validator Rewards Calculator
+            </td>
+            <td
+              id="right"
             >
-              <td
-                id="left"
+              <a
+                href="https://observablehq.com/@celohq/validator-rewards-calculator"
               >
-                Celo Validator Monitor Discord Bot
-              </td>
-              <td
-                id="right"
+                https://observablehq.com/@celohq/validator-rewards-calculator
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Alfajores Network Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://alfajores-celostats.celo-testnet.org/"
               >
-                <a
-                  href="https://github.com/dsrvlabs/celo-validator-monitoring"
-                >
-                  https://github.com/dsrvlabs/celo-validator-monitoring
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                https://alfajores-celostats.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Baklava Network Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://baklava-celostats.celo-testnet.org/"
+              >
+                https://baklava-celostats.celo-testnet.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Celo Validator Monitor Discord Bot
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://github.com/dsrvlabs/celo-validator-monitoring"
+              >
+                https://github.com/dsrvlabs/celo-validator-monitoring
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
