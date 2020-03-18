@@ -88,18 +88,18 @@ exports[`renders without crashing and matches snapshot 1`] = `
     className="footer jost"
   >
     <div
-      className="container-fluid text-center text-sm-left"
+      className="container-fluid text-sm-left"
     >
       <div
         className="row"
       >
         <div
-          className="col-sm-6"
+          className="col-sm-3"
         >
           <p>
             Built by 
             <a
-              href="https:/pretoria.tech"
+              href="https://cauldron.pretoria.tech"
             >
               Pretoria Research Lab GmbH
             </a>
@@ -121,7 +121,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
           </p>
         </div>
         <div
-          className="col-sm-6"
+          className="col-sm-3"
         >
           <p>
             Built with 
@@ -130,19 +130,62 @@ exports[`renders without crashing and matches snapshot 1`] = `
             >
               React JS
             </a>
-             and 
+            , 
             <a
               href="https://serverless.com/"
             >
               Serverless Framework
             </a>
-            . Help us improve this page - contribute at 
+            , and 
+            <a
+              href="https://docs.gitlab.com/ee/ci/"
+            >
+              GitLab CI
+            </a>
+            . Icons used with limited permission as per the 
+            <a
+              href="https://celo.org/code-of-conduct"
+            >
+              Celo Code of Conduct.
+            </a>
+          </p>
+          <p>
+            Help us improve this page. Contribute at 
             <a
               href="https://gitlab.com/pretoria-research-lab/celo-cauldron"
             >
               https://gitlab.com/pretoria-research-lab/celo-cauldron
             </a>
           </p>
+        </div>
+        <div
+          className="col-sm-2"
+        >
+          <a
+            aria-current="page"
+            className="nav-link active"
+            href="/"
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Tools
+          </a>
+          <a
+            aria-current={null}
+            className="nav-link"
+            href="/alfajores-faucet"
+            onClick={[Function]}
+          >
+            Alfajores Faucet
+          </a>
+          <a
+            aria-current={null}
+            className="nav-link"
+            href="/baklava-faucet"
+            onClick={[Function]}
+          >
+            Baklava Faucet
+          </a>
         </div>
       </div>
     </div>
