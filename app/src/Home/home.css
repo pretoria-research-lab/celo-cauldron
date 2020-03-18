@@ -1,20 +1,9 @@
-.celoIcons {
-    max-width: 100px;
-}
-
-.tools {
-    align-items: center;
-}
 
 .link-list {    
     background-color: var(--celo-canvas-faint-gold);   
     border: solid 1px var(--celo-accent-cyan);
     padding: 1%;
     margin-top: 10px;
-}
-
-.jost {
- font-family: Jost;
 }
 
 ul {

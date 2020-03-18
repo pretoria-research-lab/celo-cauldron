@@ -4,8 +4,8 @@ import {data} from "../Utils/data";
 export default function HomeInformation() {
 
 	return (
-		<div className="column tools col-lg-12">
-			<div className="link-list col-lg-7">
+			<div className="column centered">
+			<div className="link-list col-lg-8">
 				<h2>Developer Resources</h2>
 				<hr />                
 				<table className="responsive col-lg-12">
@@ -20,7 +20,7 @@ export default function HomeInformation() {
 				</table>                
 			</div>
 
-			<div className="link-list col-lg-7">
+			<div className="link-list col-lg-8">
 				<h2>Validator Resources</h2>
 				<hr />                        
 				<table className="responsive col-lg-12">
@@ -34,6 +34,7 @@ export default function HomeInformation() {
 					</tbody>
 				</table>  
 			</div>
-		</div>
+
+			</div>
 	);
 }

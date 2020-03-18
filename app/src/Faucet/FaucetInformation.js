@@ -15,7 +15,7 @@ export default function FaucetInformation(props) {
 	return (
 		<div className="row">
 			<div className="col-lg-4">
-				<h2>{props.network + " Faucet Address"}</h2>
+				<h2>Faucet Address</h2>
 				<hr />
 				<p className="address">{props.config ? <a href={props.config.blockExplorer + "/address/" + props.config.faucetAddress}>{props.config.faucetAddress}</a> : ""}</p>
 				<hr />
@@ -23,8 +23,10 @@ export default function FaucetInformation(props) {
 					{props.config.faucetAddress ? <QRCode size={150} bgColor="#FFFFFF" fgColor="#2E3338" includeMargin={false} value={props.config.faucetAddress} /> : "" }
 				</div>
 				<hr />
-				<p>{"Balance " + props.faucetBalance + " cGLD"}</p>
-				<p>{"Block number " + props.blockNumber}</p>
+				<div className="technical">
+					<p>{"Balance " + props.faucetBalance + " cGLD"}</p>
+					<p>{"Block number " + props.blockNumber}</p>
+				</div>
 			</div>
 			<div id="how-to-prepare" className="col-lg-8">
 				<h2>How To Prepare</h2>

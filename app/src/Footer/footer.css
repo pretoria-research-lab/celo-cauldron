@@ -9,5 +9,5 @@ a.footer {
   width: 100%;
   margin-top: auto;
   flex-shrink: 0;
-
+  padding-top: 20px;
 }

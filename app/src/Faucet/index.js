@@ -24,7 +24,7 @@ class Faucet extends Component
 
 	constructor(props){
 		super(props);
-		this.state = {faucetRequests: [], loading: false, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
+		this.state = {faucetRequests: [], loading: true, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
 	}
 
 	notify = (type, message) => {
@@ -134,7 +134,7 @@ class Faucet extends Component
 				this.notify("INFO", "Refreshed faucet requests");
 			}
 			catch (error) {
-				toast.warn("Error retrieving faucet requests, please refresh");
+				this.notify("WARN","Error retrieving faucet requests, please refresh");
 				const faucetRequests = [];
 				this.setState({faucetRequests}, () => this.setState({loading:false}));
 			}
