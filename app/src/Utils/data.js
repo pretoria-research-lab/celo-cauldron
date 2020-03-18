@@ -70,6 +70,11 @@ export const data = {
 			community: false,
 			link: "https://www.celocamp.com/",
 			blurb: "Mentorship and funding for your Celo project"
+		},
+		{
+			community: true,
+			link: "https://thecelo.com/celo.html",
+			blurb: "Celo project and concepts mindmap"
 		}
 	]
 };

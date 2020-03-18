@@ -3,8 +3,7 @@ import "./footer.css";
 
 export default function Footer() {
     
-	return (
-    
+	return (    
 		<footer className="footer">     
 			<div className="container-fluid text-center text-sm-left">
 				<div className="row">
@@ -12,11 +11,10 @@ export default function Footer() {
 						<p>Built by <a href="https:/pretoria.tech">Pretoria Research Lab GmbH</a></p>
 					</div>
 					<div className="col-sm-6">
-						<p>Contribute to this codebase at <a href="https://gitlab.com/pretoria-research-lab/celo-cauldron">https://gitlab.com/pretoria-research-lab/celo-cauldron</a></p>
-					</div>               
+						<p>Contribute to this webpage at <a href="https://gitlab.com/pretoria-research-lab/celo-cauldron">https://gitlab.com/pretoria-research-lab/celo-cauldron</a></p>						
+					</div>      
 				</div>
 			</div>
-		</footer>
-    
+		</footer>    
 	);
 }

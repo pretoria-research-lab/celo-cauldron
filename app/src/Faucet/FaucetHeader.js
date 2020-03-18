@@ -14,7 +14,7 @@ export default function FaucetHeader(props) {
 		<div className="column centered">
 			<div className="row page-header">       
 				<img className="celoIcons" src={developerLogo} alt="Developer's icon" /> 
-				<h1 className="mt">{props.network + " Community Faucet"}</h1>
+				<h1 className="mt">{props.network + " Faucet"}</h1>
 				<hr/> 
 			</div>
 		</div>

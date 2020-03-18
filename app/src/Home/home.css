@@ -29,6 +29,7 @@ td {
     text-align: left;
     padding-right: 5px;
     width: 50%;
+    word-break: break-all;
 }
 
 .small-padding {

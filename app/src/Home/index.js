@@ -21,6 +21,7 @@ export default function Home() {
 				</div>
 			</div>
 			<HomeInformation />
+			<hr/>
 		</div>
 	);
 }
