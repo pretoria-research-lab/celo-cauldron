@@ -18,7 +18,7 @@ exports[`Faucet component matches snapshot 1`] = `
       <h1
         className="mt"
       >
-        Alfajores Community Faucet
+        Alfajores Faucet
       </h1>
       <hr />
     </div>

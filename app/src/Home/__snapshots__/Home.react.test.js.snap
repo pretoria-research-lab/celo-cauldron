@@ -294,6 +294,24 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              Celo project and concepts mindmap
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://thecelo.com/celo.html"
+              >
+                https://thecelo.com/celo.html
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               Community Alfajores Faucet
             </td>
             <td
@@ -328,5 +346,6 @@ exports[`Home component matches snapshot 1`] = `
       </table>
     </div>
   </div>
+  <hr />
 </div>
 `;

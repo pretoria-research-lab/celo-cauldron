@@ -26,7 +26,7 @@ exports[`Footer component matches snapshot 1`] = `
         className="col-sm-6"
       >
         <p>
-          Contribute to this codebase at 
+          Contribute to this webpage at 
           <a
             href="https://gitlab.com/pretoria-research-lab/celo-cauldron"
           >
