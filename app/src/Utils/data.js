@@ -85,6 +85,11 @@ export const data = {
 			community: true,
 			link: "https://celowhale.com",
 			blurb: "Celo Validator Dashboard"
+		},
+		{
+			community: true,
+			link: "https://github.com/jim380/node_tooling/tree/master/Celo",
+			blurb: "Celo Node DevOps Tooling and Infrastructure"
 		}
 	]
 };
