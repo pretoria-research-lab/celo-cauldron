@@ -294,6 +294,24 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              Celo Node DevOps Tooling and Infrastructure
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://github.com/jim380/node_tooling/tree/master/Celo"
+              >
+                https://github.com/jim380/node_tooling/tree/master/Celo
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               Celo Validator Dashboard
             </td>
             <td
