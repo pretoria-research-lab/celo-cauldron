@@ -3,7 +3,7 @@ export const data = {
 	resources: [
 		{
 			community: true,
-			link: "https://thecelo.org",
+			link: "https://thecelo.com",
 			blurb: "Baklava Validator Statistics"
 		},
 		{

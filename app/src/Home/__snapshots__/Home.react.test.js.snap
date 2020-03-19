@@ -264,9 +264,9 @@ exports[`Home component matches snapshot 1`] = `
               id="right"
             >
               <a
-                href="https://thecelo.org"
+                href="https://thecelo.com"
               >
-                https://thecelo.org
+                https://thecelo.com
               </a>
             </td>
           </tr>
