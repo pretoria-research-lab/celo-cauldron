@@ -1,7 +1,7 @@
 
 .link-list {    
     background-color: var(--celo-canvas-faint-gold);   
-    border: solid 1px var(--celo-accent-cyan);
+    /* border: solid 1px var(--celo-accent-cyan); */
     padding: 10px;
     margin-top: 20px;
 }

@@ -4,7 +4,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import "jquery";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import logo from "../assets/Celo Logo Package/Monochrome Logo/Celo Logo Monochrome.svg";
+import pretoriaLogo from "../assets/Pretoria_Logo_black.png";
 import "./navigation.css";
 
 class Navigation extends Component 
@@ -22,8 +22,9 @@ class Navigation extends Component
 		return (<nav className="navbar navbar-expand-lg navbar-light static-top">
 			<div className="container-fluid">
       
-				<a className="navbar-brand" href="/">
-					<img alt="Celo Monochrome Logo" src={logo} />
+				<a className="navbar-brand" href="/">	
+					<img className="header-logo" alt="Pretoria Monochrome Logo" src={pretoriaLogo} />
+					{/* <img alt="Celo Monochrome Logo" src={logo} /> */}
 				</a>
 
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

@@ -18,8 +18,9 @@ exports[`renders without crashing and matches snapshot 1`] = `
           href="/"
         >
           <img
-            alt="Celo Monochrome Logo"
-            src="Celo Logo Monochrome.svg"
+            alt="Pretoria Monochrome Logo"
+            className="header-logo"
+            src="Pretoria_Logo_black.png"
           />
         </a>
         <button
@@ -96,6 +97,20 @@ exports[`renders without crashing and matches snapshot 1`] = `
         <div
           className="col-sm-3"
         >
+          <a
+            className="navbar-brand"
+            href="/"
+          >
+            <img
+              alt="Pretoria Monochrome Logo"
+              className="header-logo"
+              src="Pretoria_Logo_black.png"
+            />
+          </a>
+        </div>
+        <div
+          className="col-sm-3"
+        >
           <p>
             Built by 
             <a
@@ -119,6 +134,19 @@ exports[`renders without crashing and matches snapshot 1`] = `
             </a>
              with tooling and validating.
           </p>
+        </div>
+        <div
+          className="col-sm-3"
+        >
+          <a
+            href="https://celo.org/"
+          >
+            <img
+              alt="Celo Monochrome Logo"
+              className="header-logo"
+              src="Celo Logo Monochrome.svg"
+            />
+          </a>
         </div>
         <div
           className="col-sm-3"
@@ -157,35 +185,6 @@ exports[`renders without crashing and matches snapshot 1`] = `
               https://gitlab.com/pretoria-research-lab/celo-cauldron
             </a>
           </p>
-        </div>
-        <div
-          className="col-sm-2"
-        >
-          <a
-            aria-current="page"
-            className="nav-link active"
-            href="/"
-            onClick={[Function]}
-            style={Object {}}
-          >
-            Tools
-          </a>
-          <a
-            aria-current={null}
-            className="nav-link"
-            href="/alfajores-faucet"
-            onClick={[Function]}
-          >
-            Alfajores Faucet
-          </a>
-          <a
-            aria-current={null}
-            className="nav-link"
-            href="/baklava-faucet"
-            onClick={[Function]}
-          >
-            Baklava Faucet
-          </a>
         </div>
       </div>
     </div>
