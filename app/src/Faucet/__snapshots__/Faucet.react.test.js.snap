@@ -20,9 +20,16 @@ exports[`Faucet component matches snapshot 1`] = `
       >
         Alfajores Faucet
       </h1>
-      <hr />
+    </div>
+    <div
+      className="row"
+    >
+      <h4>
+        A community funded faucet to receive nominal amounts of cGLD for testing and development on the Celo Alfajores network
+      </h4>
     </div>
   </div>
+  <hr />
   <div
     className="row"
   >

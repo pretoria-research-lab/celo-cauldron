@@ -18,22 +18,18 @@ exports[`Home component matches snapshot 1`] = `
       <h1
         className="mt"
       >
-        Cauldron
+        Celo Cauldron
       </h1>
+    </div>
+    <div
+      className="row"
+    >
+      <h4>
+        An independent community list of useful tools, scripts, and information for developing on the Celo ecosystem.
+      </h4>
     </div>
   </div>
   <hr />
-  <div
-    className="row"
-  >
-    <div
-      className="jost col-lg-12"
-    >
-      <h3>
-        A repository of useful tools, scripts, and information for developing on the Celo ecosystem.
-      </h3>
-    </div>
-  </div>
   <div
     className="column centered"
   >

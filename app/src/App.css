@@ -72,3 +72,9 @@ a {
 .jost {
   font-family: Jost;
  }
+
+ .header-logo {
+  display: flex;
+  max-width: 300px;
+  max-height: 80%;
+}
