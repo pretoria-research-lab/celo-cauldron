@@ -22,7 +22,7 @@ export default function Footer() {
 						</a>
 					</div>
 					<div className="col-sm-3">
-						<p>Built by <a href="https://cauldron.pretoria.tech">Pretoria Research Lab GmbH</a></p>
+						<p>Built by <a href="https://pretoriaresearchlab.io">Pretoria Research Lab GmbH</a></p>
 						<p>We are a DeFi and staking protocol start-up founded in February 2020 in Berlin, Germany by <a href="https://www.nextbigthing.ag/">Next Big Thing</a> 
 							, choosing to support the <a href="https://celo.org">Celo Protocol</a> with tooling and validating.</p>
 					</div>
@@ -37,10 +37,6 @@ export default function Footer() {
 						</p>
 						<p>Help us improve this page. Contribute at <a href="https://gitlab.com/pretoria-research-lab/celo-cauldron">https://gitlab.com/pretoria-research-lab/celo-cauldron</a></p>
 					</div>
-					{/* <div className="col-sm-2">
-						<NavLink className="nav-link" to="/">Tools</NavLink>
-						{faucets.map((faucet, i) => <NavLink key={i} className="nav-link" to={"/" + faucet.toLowerCase() + "-faucet"}>{faucet + " Faucet"}</NavLink> )}
-					</div> */}
 				</div>
 			</div>
 		</footer>    

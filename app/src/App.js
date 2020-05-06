@@ -12,24 +12,28 @@ import "./App.css";
 const AsyncFaucet = AsyncComponent(() => import("./Faucet"));
 const AsyncHome = AsyncComponent(() => import("./Home"));
 const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
+const AsyncSignedBlocks = AsyncComponent(() => import("./SignedBlocks"));
 
-const faucets = [/*"Alfajores" ,*/ "Baklava"/*, "RC 1", "Mainnet"*/];
+const faucets = [/*"Alfajores",*/"Baklava"/*, "RC1", "Mainnet"*/];
+const signedBlocks = ["RC1"];
 
 class App extends Component {
 
 	render() {
+
 		return (
 			<div className="App">				
 				<Router> 
 					<div className="App-content">         
-						<Navigation faucets={faucets}/>
+						<Navigation faucets={faucets} signedBlocks={signedBlocks}/>
 						<Switch>
 							<Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
 							{faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
+							{signedBlocks.map((sb, i) => <Route key={i} path={"/" + sb.toLowerCase() + "-block-map"} render={(props) => (<AsyncSignedBlocks key={i} network={sb} lookback={100} {...props} />)} />)}
 							<Route path="*" render={(props) => {return <AsyncNotFound {...props} />; }}/>              
 						</Switch>
 					</div>
-					<Footer faucets={faucets}/>
+					<Footer faucets={faucets} signedBlocks={signedBlocks}/>
 				</Router>						
 			</div>   
 		);

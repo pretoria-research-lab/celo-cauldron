@@ -1,0 +1,126 @@
+.technical{
+    font-family: "Jost"
+}
+
+.address {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: smaller;
+}
+
+#loadingLogo {
+    width: 150px;
+}
+
+.signed-blocks th {    
+    font-family: "Jost";
+}
+
+.signed-blocks thead {
+    background-color: var(--celo-canvas-faint-gold);
+}
+
+.blockMapInfo {
+    padding: 0.50rem !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: smaller;
+}
+
+.signature {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.15rem !important;
+    font-size: 3px;
+}
+
+.missed {
+    background-color: var(--celo-accent-red);
+    color: var(--celo-accent-red);
+}
+
+.signed {
+    background-color: var(--celo-green);
+    color: var(--celo-green);
+}
+
+.other {
+    background-color: var(--celo-accent-cyan);
+    color: var(--celo-accent-cyan);
+}
+
+p {
+    font-size: larger;
+}
+
+li {
+    font-size:larger;
+}
+
+.nb {
+    color: var(--celo-accent-blue);
+    font-family: Jost;    
+}
+
+.toastInfo {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-green);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastWarn {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-gold);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastError {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-accent-red);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.toastSuccess {
+    font-family: Jost;
+    color: var(--celo-dark);
+    background-color: var(--celo-green);
+    border-bottom: solid 1px var(--celo-dark);
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+#react-paginate {
+    margin: auto;
+}
+
+.signed-blocks-content {
+    align-self: center;
+    align-content: center;
+    align-items: center;
+}
+
+.page-link {
+    color: var(--celo-accent-blue);
+}
+
+.page-item.active .page-link {
+    background-color:  var(--celo-accent-blue);
+}
+
+.jump {
+    color: var(--celo-accent-blue);
+    /* font-weight: bold
+    ; */
+}
+
+.btn-secondary {
+    border-radius: 7%;
+    background-color: var(--celo-canvas-faint-gold);
+    color: var(--celo-dark);
+}
+
+button {
+    width: 150px;
+}
