@@ -62,6 +62,18 @@ exports[`renders without crashing and matches snapshot 1`] = `
               <a
                 aria-current={null}
                 className="nav-link"
+                href="/rc1-block-map"
+                onClick={[Function]}
+              >
+                RC1 Block Map
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current={null}
+                className="nav-link"
                 href="/baklava-faucet"
                 onClick={[Function]}
               >
@@ -102,7 +114,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
           <p>
             Built by 
             <a
-              href="https://cauldron.pretoria.tech"
+              href="https://pretoriaresearchlab.io"
             >
               Pretoria Research Lab GmbH
             </a>

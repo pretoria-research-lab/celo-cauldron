@@ -18,6 +18,8 @@ export const API_CONFIG = [
 	{   network : "rc1",
 		host: "https://cuzea5un8e.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/rc1",
+		remoteNode: "https://rc1-forno.celo-testnet.org/",
+		blockExplorer: "https://explorer.celo.org/",
 		blocksCooldown: 12
 	},
 	{   network : "mainnet",
@@ -26,5 +28,14 @@ export const API_CONFIG = [
 		faucetAddress: "0xC02b8b165CC5a2A731E9C2BD6fdF66eaBcfa8663",
 		remoteNode: "https://forno.celo-testnet.org",
 		blocksCooldown: 12
+	}
+];
+
+export const SIGNED_BLOCKS_API_CONFIG = [
+	{   network : "rc1",
+		host: "https://394txl34uf.execute-api.eu-central-1.amazonaws.com",
+		basePath: "/mainnet",
+		firstBlock: 3200,
+		paginationListLength: 12
 	}
 ];

@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signed Blocks component matches snapshot 1`] = `
+<div
+  className="container-fluid signed-blocks-content"
+>
+  <div
+    className="column centered"
+  >
+    <div
+      className="row page-header"
+    >
+      <img
+        alt="Developer's icon"
+        className="celoIcons"
+        src="04-Doers (light bg).png"
+      />
+      <h1
+        className="mt"
+      >
+        RC1 Signed Blocks Map
+      </h1>
+    </div>
+    <div
+      className="row"
+    >
+      <h4>
+        A visual map of validator signatures for the RC1 network
+      </h4>
+    </div>
+    <div
+      className="row jump"
+    >
+      <div
+        className="col-sm-4"
+      >
+        <p>
+          Current block 0
+        </p>
+      </div>
+      <div
+        className="col-sm-4"
+      >
+        <input
+          className="form-control"
+          defaultValue={-1}
+          id="jumpToBlock"
+          name="jumpToBlock"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+      <div
+        className="col-sm-4"
+      >
+        <button
+          className="btn-secondary"
+          onClick={[Function]}
+        >
+          Jump to block
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div
+    className="row"
+  >
+    <div
+      className="col-lg-12 text-center"
+    >
+      <img
+        alt="Loading..."
+        id="loadingLogo"
+        src="loading.svg"
+      />
+    </div>
+  </div>
+  <div
+    className="Toastify"
+  />
+  <hr />
+</div>
+`;
