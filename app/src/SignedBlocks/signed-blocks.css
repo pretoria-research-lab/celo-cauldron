@@ -11,6 +11,10 @@
     width: 150px;
 }
 
+#sortIcon {
+    width: 20px;
+}
+
 .signed-blocks th {    
     font-family: "Jost";
 }
