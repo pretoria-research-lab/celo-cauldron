@@ -154,21 +154,39 @@ class SignedBlocks extends Component
 		return validatorAddress;
 	}
 
-	sortByValidatorName = () => {
+	sortByValidatorName = (flip) => {
 		const signatures = this.state.signatures;
 		signatures.signatures.sort((x, y) => {
-			let a = (x.validatorName ? x.validatorName : x.validatorAddress).toLowerCase(),
-				b = (y.validatorName ? y.validatorName : y.validatorAddress).toLowerCase();
-			return a === b ? 0 : a > b ? 1 : -1;
+			let a = (x.validatorName ? x.validatorName : x.validatorAddress).toLowerCase(),	b = (y.validatorName ? y.validatorName : y.validatorAddress).toLowerCase();
+			if(flip){a = (y.validatorName ? y.validatorName : y.validatorAddress).toLowerCase(); b = (x.validatorName ? x.validatorName : x.validatorAddress).toLowerCase();}
+			return (a === b ? 0 : a > b ? 1 : -1);
 		});
 		this.setState({signatures});
 	}
-	sortBySignerAddress = () => {
+	sortBySignerAddress = (flip) => {
 		const signatures = this.state.signatures;
 		signatures.signatures.sort((x, y) => {			
-			let a = x.signer.toLowerCase(),
-				b = y.signer.toLowerCase();
-			return a === b ? 0 : a > b ? 1 : -1;
+			let a = x.signer.toLowerCase(),	b = y.signer.toLowerCase();
+			if(flip){a = y.signer.toLowerCase(); b = x.signer.toLowerCase();}
+			return (a === b ? 0 : a > b ? 1 : -1);
+		});
+		this.setState({signatures});
+	}
+	sortBySignedCount = (flip) => {
+		const signatures = this.state.signatures;
+		signatures.signatures.sort((x, y) => {
+			let a = x.counts.signatures, b = y.counts.signatures;
+			if(flip){a = y.counts.signatures; b = x.counts.signatures;}
+			return (a === b ? 0 : a > b ? 1 : -1);
+		});
+		this.setState({signatures});
+	}
+	sortByMissedCount = (flip) => {
+		const signatures = this.state.signatures;
+		signatures.signatures.sort((x, y) => {
+			let a = x.counts.missedSignatures, b = y.counts.missedSignatures;
+			if(flip){ a = y.counts.missedSignatures; b = x.counts.missedSignatures}
+			return (a === b ? 0 : a > b ? 1 : -1);
 		});
 		this.setState({signatures});
 	}
@@ -212,10 +230,10 @@ class SignedBlocks extends Component
 							element["validatorName"] = await this.getAccountName(element["validatorAddress"], this.state.atBlock);
 						}							
 					});
-					this.notify("INFO", "Retrieving validator names (current)");
 				
 					this.setState({signatures: data}, () => {
 						console.log(this.state);
+						this.sortByMissedCount(true);
 						this.setState({loading:false});}
 					);
 				}
@@ -363,6 +381,8 @@ class SignedBlocks extends Component
 				<SignedBlocksTable 
 					sortByValidatorName={this.sortByValidatorName} 
 					sortBySignerAddress={this.sortBySignerAddress}
+					sortBySignedCount={this.sortBySignedCount}
+					sortByMissedCount={this.sortByMissedCount}
 					config={this.state.remoteNodeConfig} 
 					loading={this.state.loading} 
 					lookback={this.state.lookback} 
