@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ReactGA from "react-ga";
+import {GA_TAG} from "./Utils/config";
 
 export default function asyncComponent(importComponent) {
 	class AsyncComponent extends Component {
@@ -12,6 +14,9 @@ export default function asyncComponent(importComponent) {
 
 		async componentDidMount() {
 			const { default: component } = await importComponent();
+
+			ReactGA.initialize(GA_TAG);
+			ReactGA.pageview(window.location.pathname + window.location.search);
 
 			this.setState({
 				component: component
