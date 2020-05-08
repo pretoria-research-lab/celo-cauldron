@@ -39,3 +39,5 @@ export const SIGNED_BLOCKS_API_CONFIG = [
 		paginationListLength: 12
 	}
 ];
+
+export const GA_TAG = "UA-165916679-1";
