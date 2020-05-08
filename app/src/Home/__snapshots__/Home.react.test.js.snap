@@ -73,7 +73,7 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Alfajores Testnet block explorer
+              Alfajores Testnet Block Explorer
             </td>
             <td
               id="right"
@@ -109,7 +109,7 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Baklava Testnet block explorer
+              Baklava Testnet Block Explorer
             </td>
             <td
               id="right"
@@ -172,6 +172,42 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://www.celocamp.com/"
               >
                 https://www.celocamp.com/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Release Candidate 1 Block Explorer
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://explorer.celo.org/"
+              >
+                https://explorer.celo.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Release Candidate 1 Network Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://stats.celo.org/"
+              >
+                https://stats.celo.org/
               </a>
             </td>
           </tr>
@@ -254,24 +290,6 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Baklava Validator Statistics
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://thecelo.com"
-              >
-                https://thecelo.com
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
               Celo Maintenance Scripts
             </td>
             <td
@@ -344,15 +362,33 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              Celo Validator Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://thecelo.com"
+              >
+                https://thecelo.com
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               Community Alfajores Faucet
             </td>
             <td
               id="right"
             >
               <a
-                href="https://cauldron.pretoria.tech/alfajores-faucet"
+                href="https://cauldron.pretoriaresearchlab.io/alfajores-faucet"
               >
-                https://cauldron.pretoria.tech/alfajores-faucet
+                https://cauldron.pretoriaresearchlab.io/alfajores-faucet
               </a>
             </td>
           </tr>
@@ -368,9 +404,9 @@ exports[`Home component matches snapshot 1`] = `
               id="right"
             >
               <a
-                href="https://cauldron.pretoria.tech/baklava-faucet"
+                href="https://cauldron.pretoriaresearchlab.io/baklava-faucet"
               >
-                https://cauldron.pretoria.tech/baklava-faucet
+                https://cauldron.pretoriaresearchlab.io/baklava-faucet
               </a>
             </td>
           </tr>
