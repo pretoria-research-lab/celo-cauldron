@@ -4,7 +4,7 @@ export const data = {
 		{
 			community: true,
 			link: "https://thecelo.com",
-			blurb: "Baklava Validator Statistics"
+			blurb: "Celo Validator Statistics"
 		},
 		{
 			community: true,
@@ -25,6 +25,11 @@ export const data = {
 			community: false,
 			link: "https://baklava-celostats.celo-testnet.org/",
 			blurb: "Baklava Network Statistics"
+		},		
+		{	
+			community: false,
+			link: "https://stats.celo.org/",
+			blurb: "Release Candidate 1 Network Statistics"
 		},
 		{
 			community: true,
@@ -39,12 +44,17 @@ export const data = {
 		{
 			community: false,
 			link: "https://baklava-blockscout.celo-testnet.org/",
-			blurb: "Baklava Testnet block explorer"
+			blurb: "Baklava Testnet Block Explorer"
 		},
 		{
 			community: false,
 			link: "https://alfajores-blockscout.celo-testnet.org/",
-			blurb: "Alfajores Testnet block explorer"
+			blurb: "Alfajores Testnet Block Explorer"
+		},
+		{
+			community: false,
+			link: "https://explorer.celo.org/",
+			blurb: "Release Candidate 1 Block Explorer"
 		},
 		{
 			community: false,
@@ -58,12 +68,12 @@ export const data = {
 		},
 		{
 			community: true,
-			link: "https://cauldron.pretoria.tech/alfajores-faucet",
+			link: "https://cauldron.pretoriaresearchlab.io/alfajores-faucet",
 			blurb: "Community Alfajores Faucet"
 		},
 		{
 			community: true,
-			link: "https://cauldron.pretoria.tech/baklava-faucet",
+			link: "https://cauldron.pretoriaresearchlab.io/baklava-faucet",
 			blurb: "Community Baklava Faucet"
 		},		
 		{
