@@ -14,7 +14,7 @@ const AsyncHome = AsyncComponent(() => import("./Home"));
 const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
 const AsyncSignedBlocks = AsyncComponent(() => import("./SignedBlocks"));
 
-const faucets = [/*"Alfajores",*/"Baklava"/*, "RC1", "Mainnet"*/];
+const faucets = ["Alfajores","Baklava"/*, "RC1", "Mainnet"*/];
 const signedBlocks = ["RC1"];
 
 class App extends Component {
