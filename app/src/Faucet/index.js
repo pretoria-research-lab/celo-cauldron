@@ -83,6 +83,16 @@ class Faucet extends Component
 		}
 	}
 
+	sortByRequestedBlock = (flip) => {
+		const requests = this.state.faucetRequests;
+		requests.sort((x, y) => {
+			let a = x.createdBlockNumber, b = y.createdBlockNumber;
+			if(flip){a = y.createdBlockNumber; b = x.createdBlockNumber;}
+			return (a === b ? 0 : a > b ? 1 : -1);
+		});
+		this.setState({faucetRequests: requests});
+	}	
+
 	claimRequest = (faucetRequest) => {
 		this.setState({loading:true}, async () => 
 		{
@@ -130,7 +140,12 @@ class Faucet extends Component
 					element["addressLink"] = this.state.config.blockExplorer + "address/" + element.address;
 					element["txLink"] = this.state.config.blockExplorer + "tx/" + element.txId;
 				});
-				this.setState({faucetRequests}, () => this.setState({faucetBalance}, () => this.setState({loading:false})));
+				this.setState({faucetRequests}, 
+					() => this.setState({faucetBalance},
+						() => 	{	this.sortByRequestedBlock(true) 
+									this.setState({loading:false});
+								}));
+
 				this.notify("INFO", "Refreshed faucet requests");
 			}
 			catch (error) {
