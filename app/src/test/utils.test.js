@@ -1,6 +1,6 @@
 const assert = require("assert");
 const utils = require("../Utils/utils");
-const fornoTimeout = 30000; //ms
+const fornoTimeout = 40000; //ms
 const config = require('../Utils/config');
 
 const baklavaForno = config.API_CONFIG.filter((element) => element.network === 'baklava')[0].remoteNode;
@@ -15,7 +15,7 @@ test("Alfajores - getValidatorGroups()", async () => {
 test("Alfajores - getCurrentBlockNumber()", async () => {    
 	const result = await utils.getCurrentBlockNumber(alfajoresForno);
 	assert(result > 0);
-});
+}, fornoTimeout);
 
 test("Baklava - getValidatorGroups()", async () => {
 	const result = await utils.getValidatorGroups(baklavaForno);
