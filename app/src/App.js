@@ -15,7 +15,7 @@ const AsyncNotFound = AsyncComponent(() => import("./NotFound"));
 const AsyncSignedBlocks = AsyncComponent(() => import("./SignedBlocks"));
 
 const faucets = ["Alfajores","Baklava"/*, "RC1", "Mainnet"*/];
-const signedBlocks = ["RC1"];
+const signedBlocks = ["Mainnet", "Baklava"];
 
 class App extends Component {
 
@@ -29,7 +29,7 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" render={(props) => <AsyncHome {...props} />} />              
 							{faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
-							{signedBlocks.map((sb, i) => <Route key={i} path={"/" + sb.toLowerCase() + "-block-map"} render={(props) => (<AsyncSignedBlocks key={i} network={sb} lookback={100} {...props} />)} />)}
+							{signedBlocks.map((sb, i) => <Route key={i} path={"/" + (sb.toLowerCase() === "mainnet" ? "" : (sb.toLowerCase() + "-")) + "block-map"} render={(props) => (<AsyncSignedBlocks key={i} network={sb} lookback={100} {...props} />)} />)}
 							<Route path="*" render={(props) => {return <AsyncNotFound {...props} />; }}/>              
 						</Switch>
 					</div>

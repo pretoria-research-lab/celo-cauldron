@@ -25,7 +25,6 @@ class Navigation extends Component
       
 				<a className="navbar-brand" href="/">	
 					<img className="header-logo" alt="Pretoria Monochrome Logo" src={pretoriaLogo} />
-					{/* <img alt="Celo Monochrome Logo" src={logo} /> */}
 				</a>
 
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +37,7 @@ class Navigation extends Component
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/">Tools</NavLink>
 						</li>
-						{signedBlocks.map((sb, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + sb.toLowerCase() + "-block-map"}>{sb + " Block Map"}</NavLink></li> )}
+						{signedBlocks.map((sb, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + (sb.toLowerCase() === "mainnet" ? "" : (sb.toLowerCase() + "-")) + "block-map"}>{(sb.toLowerCase() === "mainnet" ? "" : (sb + " ")) + "Block Map"}</NavLink></li> )}
 						{faucets.map((faucet, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + faucet.toLowerCase() + "-faucet"}>{faucet + " Faucet"}</NavLink></li> )}
 					</ul>
 				</div>
