@@ -94,7 +94,7 @@ class SignedBlocks extends Component
 		
 		this.setState({remoteNodeConfig: this.getRemoteNodeConfig(this.props.network)}, () => {
 			this.setState({signedBlocksAPIConfig: this.getSignedBlocksAPIConfig(this.props.network)}, () => {				
-					this.initialiseStartingBlockNumber();
+				this.initialiseStartingBlockNumber();
 			});			
 		});    
 	}
@@ -164,7 +164,7 @@ class SignedBlocks extends Component
 		const signatures = this.state.signatures;
 		signatures.sort((x, y) => {
 			let a = x.counts.missedSignatures, b = y.counts.missedSignatures;
-			if(flip){ a = y.counts.missedSignatures; b = x.counts.missedSignatures}
+			if(flip){ a = y.counts.missedSignatures; b = x.counts.missedSignatures;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
 		this.setState({signatures});
@@ -350,7 +350,7 @@ class SignedBlocks extends Component
 			console.log("Changing stayAtHead to " + stayAtHead);
 			this.setState({stayAtHead}, () => {
 				if(this.state.stayAtHead === true)
-					this.changeToLastPage()
+					this.changeToLastPage();
 			});
 		}
 	}

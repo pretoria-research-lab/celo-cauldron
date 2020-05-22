@@ -3,7 +3,7 @@ import SignedBlocks from "./index";
 import renderer from "react-test-renderer";
 
 const props = {
-	network: "RC1"
+	network: "Baklava"
 };
 
 test("Signed Blocks component matches snapshot", () => {

@@ -114,9 +114,9 @@ class Faucet extends Component
 				});
 				this.setState({faucetRequests}, 
 					() => this.setState({faucetBalance},
-						() => 	{	this.sortByRequestedBlock(true) 
-									this.setState({loading:false});
-								}));
+						() => 	{	this.sortByRequestedBlock(true); 
+							this.setState({loading:false});
+						}));
 
 				toast.notify("INFO", "Refreshed faucet requests");
 			}

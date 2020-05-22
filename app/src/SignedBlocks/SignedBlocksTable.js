@@ -51,27 +51,27 @@ export default function SignedBlocksTable(props) {
 									<th><img id="favouriteIconTableHeader" src={favouriteIcon} alt="Favourite this row" /></th>
 									<th onClick={() => {setSortUp(!sortUp); sortByValidator(true); sortBySigner(false); sortBySignedBlocks(false); sortByMissedBlocks(false); sortByValidatorName(sortUp);}}>
 										<>
-										<span>Validator     </span>										
-										{isSortedByValidator ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by validator" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by validator" /> : ""}
+											<span>Validator     </span>										
+											{isSortedByValidator ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by validator" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by validator" /> : ""}
 										</>
 									</th>
 									<th onClick={() => {setSortUp(!sortUp); sortByValidator(false); sortBySigner(true); sortBySignedBlocks(false); sortByMissedBlocks(false); sortBySignerAddress(sortUp);}}>
 										<>
-										<span>Signer      </span>
-										{isSortedBySigner ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by signer" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by signer" /> : ""}
+											<span>Signer      </span>
+											{isSortedBySigner ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by signer" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by signer" /> : ""}
 										</>	
 									</th>			
 									<th colSpan={colSpan}>{"Block " + (+atBlock- +lookback) + " to " + +atBlock}</th>						
 									<th onClick={() => {setSortUp(!sortUp); sortByValidator(false); sortBySigner(false); sortBySignedBlocks(true); sortByMissedBlocks(false); sortBySignedCount(sortUp);}}>
 										<>
-										<span>Signed      </span>
-										{isSortedBySignedBlocks ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by signed blocks" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by signed blocks" /> : ""}
+											<span>Signed      </span>
+											{isSortedBySignedBlocks ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by signed blocks" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by signed blocks" /> : ""}
 										</>	
 									</th>	
 									<th onClick={() => {setSortUp(!sortUp); sortByValidator(false); sortBySigner(false); sortBySignedBlocks(false); sortByMissedBlocks(true); sortByMissedCount(sortUp);}}>
 										<>
-										<span>Missed      </span>
-										{isSortedByMissedBlocks ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by missed signatures" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by missed signatures" /> : ""}
+											<span>Missed      </span>
+											{isSortedByMissedBlocks ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by missed signatures" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by missed signatures" /> : ""}
 										</>	
 									</th>
 									{/* <th>Other</th> */}

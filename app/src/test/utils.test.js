@@ -1,11 +1,11 @@
 const assert = require("assert");
 const utils = require("../Utils/utils");
 const fornoTimeout = 40000; //ms
-const config = require('../Utils/config');
+const config = require("../Utils/config");
 
-const baklavaForno = config.API_CONFIG.filter((element) => element.network === 'baklava')[0].remoteNode;
-const alfajoresForno = config.API_CONFIG.filter((element) => element.network === 'alfajores')[0].remoteNode;
-const rc1Forno = config.API_CONFIG.filter((element) => element.network === 'rc1')[0].remoteNode;
+const baklavaForno = config.API_CONFIG.filter((element) => element.network === "baklava")[0].remoteNode;
+const alfajoresForno = config.API_CONFIG.filter((element) => element.network === "alfajores")[0].remoteNode;
+const mainnetForno = config.API_CONFIG.filter((element) => element.network === "mainnet")[0].remoteNode;
 
 test("Alfajores - getValidatorGroups()", async () => {
 	const result = await utils.getValidatorGroups(alfajoresForno);
@@ -26,16 +26,15 @@ test("Baklava - getValidatorGroups()", async () => {
 test("Baklava - getCurrentBlockNumber()", async () => {    
 	const result = await utils.getCurrentBlockNumber(baklavaForno);
 	assert(result > 0);
-});
+}, fornoTimeout);
 
-test("RC1 - getValidatorGroups()", async () => {
-	const result = await utils.getValidatorGroups(rc1Forno);
-	console.log(JSON.stringify(result));
-	assert(result.length > 0);
-}, fornoTimeout); 
+// test("Mainnet - getValidatorGroups()", async () => {
+// 	const result = await utils.getValidatorGroups(mainnetForno);
+// 	console.log(JSON.stringify(result));
+// 	assert(result.length > 0);
+// }, fornoTimeout); 
 
-test("RC1 - getCurrentBlockNumber()", async () => {    
-	const result = await utils.getCurrentBlockNumber(rc1Forno);
-	assert(result > 0);
-});
-
+// test("Mainnet - getCurrentBlockNumber()", async () => {    
+// 	const result = await utils.getCurrentBlockNumber(mainnetForno);
+// 	assert(result > 0);
+// }, fornoTimeout);

@@ -62,10 +62,22 @@ exports[`renders without crashing and matches snapshot 1`] = `
               <a
                 aria-current={null}
                 className="nav-link"
-                href="/rc1-block-map"
+                href="/block-map"
                 onClick={[Function]}
               >
-                RC1 Block Map
+                Block Map
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current={null}
+                className="nav-link"
+                href="/baklava-block-map"
+                onClick={[Function]}
+              >
+                Baklava Block Map
               </a>
             </li>
             <li
@@ -150,15 +162,16 @@ exports[`renders without crashing and matches snapshot 1`] = `
         <div
           className="col-sm-3"
         >
-          <a
-            href="https://celo.org/"
-          >
-            <img
-              alt="Celo Monochrome Logo"
-              className="header-logo"
-              src="Celo Logo Monochrome.svg"
-            />
-          </a>
+          <p>
+            If you find this page useful, please consider supporting Pretoria by voting for our Celo validator group:
+          </p>
+          <p>
+            <a
+              href="https://explorer.celo.org/address/0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c/celo"
+            >
+              0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c
+            </a>
+          </p>
         </div>
         <div
           className="col-sm-3"
@@ -186,8 +199,9 @@ exports[`renders without crashing and matches snapshot 1`] = `
             <a
               href="https://celo.org/code-of-conduct"
             >
-              Celo Code of Conduct.
+              Celo Code of Conduct
             </a>
+            . Best viewed on desktop.
           </p>
           <p>
             Help us improve this page. Contribute at 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import doersLogo from "../assets/04-Doers (light bg).png";
 import Slider from "rc-slider";
 import RefreshSwitch from "./RefreshSwitch";
-import 'rc-slider/assets/index.css';
+import "rc-slider/assets/index.css";
 
 SignedBlocksHeader.propTypes = () => { 
 	return { 
@@ -22,14 +22,14 @@ export default function SignedBlocksHeader(props) {
 
 	const marks = 
 	{ 0: { style: {
-			color: "var(--celo-blue)",
-			},
-			label: <strong>100</strong>
-		},
+		color: "var(--celo-blue)",
+	},
+	label: <strong>100</strong>
+	},
 	  1: { style: {
 		color: "var(--celo-blue)",
-		},
-		label: <strong>1000</strong>
+	},
+	label: <strong>1000</strong>
 	}
 	// ,
 	//   2: { style: {
