@@ -29,7 +29,7 @@ export const data = {
 		{	
 			community: false,
 			link: "https://stats.celo.org/",
-			blurb: "Release Candidate 1 Network Statistics"
+			blurb: "Celo Network Statistics"
 		},
 		{
 			community: true,
@@ -54,7 +54,7 @@ export const data = {
 		{
 			community: false,
 			link: "https://explorer.celo.org/",
-			blurb: "Release Candidate 1 Block Explorer"
+			blurb: "Celo Block Explorer"
 		},
 		{
 			community: false,

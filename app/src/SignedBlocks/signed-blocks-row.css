@@ -1,4 +1,29 @@
-#checkmark {
-    max-height: 25px;
+#favouriteIcon {
+    width: 12px;
+    display: table-cell;
 }
 
+.favourite-on img {
+    margin: auto;
+    cursor: pointer;
+}
+.favourite-off img {
+    margin: auto;
+    cursor: pointer;
+}
+
+.favourite-off img {
+    opacity: 0;
+}
+
+.favourite-off img:hover {
+    opacity: 1;
+}
+
+.favourite-on img {
+    opacity: 1;
+}
+
+.favourite-on img:hover {
+    opacity: 1;
+}

@@ -73,8 +73,8 @@ a {
   font-family: Jost;
  }
 
- .header-logo {
+.header-logo {
   display: flex;
-  max-width: 300px;
+  max-width: 250px;
   max-height: 80%;
 }

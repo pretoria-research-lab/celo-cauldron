@@ -127,6 +127,24 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              Celo Block Explorer
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://explorer.celo.org/"
+              >
+                https://explorer.celo.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               Celo Documentation
             </td>
             <td
@@ -136,6 +154,24 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://docs.celo.org/"
               >
                 https://docs.celo.org/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Celo Network Statistics
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://stats.celo.org/"
+              >
+                https://stats.celo.org/
               </a>
             </td>
           </tr>
@@ -172,42 +208,6 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://www.celocamp.com/"
               >
                 https://www.celocamp.com/
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Release Candidate 1 Block Explorer
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://explorer.celo.org/"
-              >
-                https://explorer.celo.org/
-              </a>
-            </td>
-          </tr>
-          <tr
-            className="small-padding"
-          >
-            <td
-              id="left"
-            >
-              Release Candidate 1 Network Statistics
-            </td>
-            <td
-              id="right"
-            >
-              <a
-                href="https://stats.celo.org/"
-              >
-                https://stats.celo.org/
               </a>
             </td>
           </tr>
