@@ -4,7 +4,7 @@ export const API_CONFIG = [
 		basePath: "/alfajores",
 		blockExplorer: "https://alfajores-blockscout.celo-testnet.org/",
 		faucetAddress: "0xC02b8b165CC5a2A731E9C2BD6fdF66eaBcfa8663",
-		remoteNode: "https://cors-anywhere.herokuapp.com/https://alfajores-forno.celo-testnet.org",
+		remoteNode: "https://alfajores-forno.celo-testnet.org",
 		blocksCooldown: 12
 	},
 	{   network : "baklava",
