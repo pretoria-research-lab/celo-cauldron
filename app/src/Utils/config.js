@@ -40,6 +40,5 @@ export const SIGNED_BLOCKS_API_CONFIG = [
 ];
 
 export const GA_TAG = "UA-165916679-1";
-
 export const validatorGroupLink = "https://explorer.celo.org/address/0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c/celo";
 export const validatorGroup = "0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c";
