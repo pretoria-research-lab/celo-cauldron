@@ -17,6 +17,8 @@
 
 .signed-blocks th {    
     font-family: "Jost";
+    font-size: smaller;
+    cursor: pointer;
 }
 
 .signed-blocks thead {
@@ -24,15 +26,25 @@
 }
 
 .blockMapInfo {
-    padding: 0.50rem !important;
+    /* padding: 0.20rem !important; */
     font-family: 'Courier New', Courier, monospace;
-    font-size: smaller;
+    font-size: 12px;
+    vertical-align: middle !important;
+    /* padding-bottom: 0; */
 }
 
-.signature {
-    font-family: 'Courier New', Courier, monospace;
+.signature-10000 {
+    padding: 0.01rem !important;
+    font-size: 0px;
+}
+
+.signature-1000 {
+    padding: 0.01rem !important;
+    font-size: 0px;
+}
+
+.signature-100 {
     padding: 0.15rem !important;
-    font-size: 3px;
 }
 
 .missed {
@@ -61,34 +73,6 @@ li {
 .nb {
     color: var(--celo-accent-blue);
     font-family: Jost;    
-}
-
-.toastInfo {
-    font-family: Jost;
-    color: var(--celo-dark);
-    background-color: var(--celo-green);
-    border-bottom: solid 1px var(--celo-dark);
-}
-
-.toastWarn {
-    font-family: Jost;
-    color: var(--celo-dark);
-    background-color: var(--celo-gold);
-    border-bottom: solid 1px var(--celo-dark);
-}
-
-.toastError {
-    font-family: Jost;
-    color: var(--celo-dark);
-    background-color: var(--celo-accent-red);
-    border-bottom: solid 1px var(--celo-dark);
-}
-
-.toastSuccess {
-    font-family: Jost;
-    color: var(--celo-dark);
-    background-color: var(--celo-green);
-    border-bottom: solid 1px var(--celo-dark);
 }
 
 .text-align-left {
@@ -122,9 +106,14 @@ li {
 .btn-secondary {
     border-radius: 7%;
     background-color: var(--celo-canvas-faint-gold);
-    color: var(--celo-dark);
+    color: var(--celo-blue);
+    border-color: var(--celo-blue);
 }
 
-button {
-    width: 150px;
+.controls {
+    align-items: center;
+}
+
+#favouriteIconTableHeader {
+    width: 12px;
 }
