@@ -384,8 +384,8 @@ class SignedBlocks extends Component
 		}
 		else {
 			const maxPage =  this.calculateMaxAtBlock(this.state.blockNumber);
-			if(atBlock < this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale){
-				toast.notify("WARN","Block cannot be less than " + this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale);
+			if(atBlock < (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale)){
+				toast.notify("WARN","Block cannot be less than " + (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale));
 			}
 			else if (atBlock > maxPage){
 				toast.notify("WARN","Block cannot be greater than " + maxPage);
