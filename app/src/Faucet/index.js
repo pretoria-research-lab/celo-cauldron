@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import * as toast from "../Common/Notification";
 import "./faucet.css";
 import {API_CONFIG} from "../Utils/config";
 import {getCurrentBlockNumber} from "../Utils/utils";
@@ -27,26 +27,13 @@ class Faucet extends Component
 		this.state = {faucetRequests: [], loading: true, faucetBalance: 0, config: {}, blockNumber: -1, processing: false};
 	}
 
-	notify = (type, message) => {
-		if(type==="SUCCESS")
-			toast.success(message, {position: toast.POSITION.TOP_RIGHT, className: "toastSuccess"});
-		else if(type==="INFO")
-			toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
-		else if(type==="WARN")
-			toast.warn(message, {position: toast.POSITION.TOP_RIGHT, className: "toastWarn"});
-		else if(type==="ERROR")
-			toast.error(message, {position: toast.POSITION.TOP_RIGHT, className: "toastError"});
-		else
-			toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
-	}
-
 	getBlockNumber = async () => {
 		try{
 			const nodeProvider = this.state.config.remoteNode;
 			const blockNumber = await getCurrentBlockNumber(nodeProvider);
 			this.setState({blockNumber: blockNumber});
 		}catch(error){
-			this.notify("ERROR", this.props.network + " is not responding");
+			toast.notify("ERROR", this.props.network + " is not responding");
 			this.setState({blockNumber: -1});
 		}
 	}
@@ -68,21 +55,6 @@ class Faucet extends Component
 		clearInterval(this.state.blockNumberIntervalID);
 	}
 
-	processError = (error) => {
-		if (error.response) {
-			console.log(error.response.data);
-			console.log(error.response.status);
-			console.log(error.response.headers);
-			error.response.data.message ? this.notify("ERROR", error.response.data.message) : this.notify("ERROR", error.response.data);
-		} else if (error.request) {
-			console.log(error.request);
-			this.notify("ERROR", error.request);
-		} else {
-			console.log(error.message);
-			this.notify("ERROR", error.message);
-		}
-	}
-
 	sortByRequestedBlock = (flip) => {
 		const requests = this.state.faucetRequests;
 		requests.sort((x, y) => {
@@ -100,12 +72,12 @@ class Faucet extends Component
 				const response = await faucetService.claimRequest(this.state.config, faucetRequest.address);
 				const claimResult = response.data.claimResult;
 				console.log(claimResult);
-				this.notify("INFO", "Faucet request completed");
+				toast.notify("INFO", "Faucet request completed");
 				this.getAllRequests();
 				this.setState({loading:false});        
 			}
 			catch (error) {
-				this.processError(error);
+				toast.processError(error);
 				this.setState({loading:false});
 			}
 		});
@@ -120,10 +92,10 @@ class Faucet extends Component
 				console.log(createResult);
 				this.getAllRequests();
 				this.setState({loading:false});
-				this.notify("INFO", "Requested");
+				toast.notify("INFO", "Requested");
 			}
 			catch (error) {
-				this.processError(error);
+				toast.processError(error);
 				this.setState({loading:false});
 			}
 		});
@@ -146,10 +118,10 @@ class Faucet extends Component
 									this.setState({loading:false});
 								}));
 
-				this.notify("INFO", "Refreshed faucet requests");
+				toast.notify("INFO", "Refreshed faucet requests");
 			}
 			catch (error) {
-				this.notify("WARN","Error retrieving faucet requests, please refresh");
+				toast.notify("WARN","Error retrieving faucet requests, please refresh");
 				const faucetRequests = [];
 				this.setState({faucetRequests}, () => this.setState({loading:true}));
 			}
@@ -162,7 +134,7 @@ class Faucet extends Component
 				<FaucetHeader config={this.state.config} network={this.props.network}/>
 				<FaucetInformation config={this.state.config} blockNumber={this.state.blockNumber} network={this.props.network} faucetBalance={this.state.faucetBalance}/>
 				<FaucetQueueTable config={this.state.config} loading={this.state.loading} blockNumber={this.state.blockNumber} faucetRequests={this.state.faucetRequests} claimRequest={this.claimRequest} createRequest={this.createRequest}/>
-				<ToastContainer autoClose={4000}/>
+				<ToastContainer autoClose={toast.DEFAULT_AUTOCLOSE}/>
 				<hr />
 			</div>
 		);
