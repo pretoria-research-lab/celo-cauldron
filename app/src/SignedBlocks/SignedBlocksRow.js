@@ -8,13 +8,14 @@ SignedBlocksRow.propTypes = () => {
 		signedBlocksRow: PropTypes.any,
 		lookback: PropTypes.any,
 		loading: PropTypes.bool,
-		toggleFavourite: PropTypes.func
+		toggleFavourite: PropTypes.func,
+		atBlock: PropTypes.any
 	}; 
 };
 
 export default function SignedBlocksRow(props) {
 
-	const { signedBlocksRow, lookback, loading, toggleFavourite } = props;
+	const { signedBlocksRow, lookback, loading, toggleFavourite, atBlock } = props;
 
 	return (
 		<>
@@ -32,17 +33,17 @@ export default function SignedBlocksRow(props) {
 						<a rel="noopener noreferrer" target="_blank" href={signedBlocksRow.signerLink}>{signedBlocksRow.signer}</a>
 					</td>
 
-					{signedBlocksRow.tickArray.map((t, i) => <td className={"signature-" + lookback + " " + (t === "." ? "signed" : t === "✘" ? "missed" : "other")} key={i}>{}</td>)}
-
-					{/* {lookback === 100 ?
-				(signedBlocksRow.tickArray.map((t, i) => <td className={"signature-" + lookback + " " + (t === "." ? "signed" : t === "✘" ? "missed" : "other")} key={i}>{}</td>))
-				:
-				(signedBlocksRow.signedArray.map((t, i) => <td className={"large-scale signature " + (t >= 88 ? "signed" : "missed")} key={i}>{t}</td>))		
-			}													 */}
+					{signedBlocksRow.tickArray.map((t, i) => 
+						<td 
+							title={"Signer " + signedBlocksRow.signer + ", block " + (atBlock - (+lookback) + i + 1) + " (" + t + ")"} 
+							className={"signature-" + lookback + " " + (t === "." ? "signed" : t === "✘" ? "missed" : "other")} 
+							key={i}>
+							{}
+						</td>)}
 			
 					<td className="blockMapInfo">{signedBlocksRow.counts.signatures}</td>
 					<td className="blockMapInfo">{signedBlocksRow.counts.missedSignatures}</td>
-					{/* <td className="blockMapInfo">{signedBlocksRow.counts.notASigner}</td>			 */}
+
 				</tr>
 			}
 		</>
