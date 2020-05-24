@@ -30,13 +30,8 @@ export default function SignedBlocksTable(props) {
 	const {signatures, loading, blockNumber, atBlock, lookback, sortByValidatorName, sortBySignerAddress, sortBySignedCount, sortByMissedCount, toggleFavourite} = props;
 
 	const colSpan = lookback;
-	// console.log("Setting colSpan for signed blocks display to " + colSpan);
-
 	const favourites = signatures.filter((e,i) => e.favourite === true);
-	// console.log("There are " + favourites.length + " favourites");
-
 	const nonFavourites = signatures.filter((e,i) => e.favourite === false);
-	// console.log("There are " + nonFavourites.length + " non-favourites");
 
 	return (
 		<div className="row">
@@ -78,8 +73,8 @@ export default function SignedBlocksTable(props) {
 								</tr>
 							</thead>
 							<tbody>
-								{favourites.map((row, i) =><SignedBlocksRow key={i} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} signedBlocksRow={{...row}} />)}						
-								{nonFavourites.map((row, i) =><SignedBlocksRow key={i} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} signedBlocksRow={{...row}} />)}
+								{favourites.map((row, i) =><SignedBlocksRow key={i} atBlock={atBlock} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} signedBlocksRow={{...row}} />)}						
+								{nonFavourites.map((row, i) =><SignedBlocksRow key={i} atBlock={atBlock} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} signedBlocksRow={{...row}} />)}
 							</tbody>
 						</table>
 					</div>        
