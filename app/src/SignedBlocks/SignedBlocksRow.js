@@ -24,12 +24,12 @@ export default function SignedBlocksRow(props) {
 					<td onClick={() => toggleFavourite(signedBlocksRow.signer)} className={"favourite-" + (signedBlocksRow.favourite ? "on" :"off")}>
 						<img id="favouriteIcon" src={favouriteIcon} alt="Click to favourite this row" />
 					</td>
-					<td className="address blockMapInfo text-align-left">
+					<td className="blockMapInfo text-align-left">
 						<a rel="noopener noreferrer" target="_blank" href={signedBlocksRow.validatorLink}>
 							{signedBlocksRow.validatorName ? signedBlocksRow.validatorName : signedBlocksRow.validatorAddress}
 						</a>
 					</td>
-					<td className="address blockMapInfo">
+					<td className="blockMapInfo">
 						<a rel="noopener noreferrer" target="_blank" href={signedBlocksRow.signerLink}>{signedBlocksRow.signer}</a>
 					</td>
 

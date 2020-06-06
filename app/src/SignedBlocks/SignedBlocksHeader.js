@@ -21,60 +21,61 @@ export default function SignedBlocksHeader(props) {
 	const [atBlock, setAtBlock] = useState(0);
 
 	const marks = 
-	{ 0: { style: {
-		color: "var(--celo-blue)",
-	},
-	label: <strong>100</strong>
-	},
-	  1: { style: {
-		color: "var(--celo-blue)",
-	},
-	label: <strong>1000</strong>
-	}
-	// ,
-	//   2: { style: {
-	// 	color: "var(--celo-blue)",
-	// 	},
-	// 	label: <strong>10000</strong>
-	// },
+	{ 
+		0:	{	style: {
+			color: "var(--celo-blue)",},
+		label: <strong>100</strong>
+		},
+		1:	{	style: {
+			color: "var(--celo-blue)",},
+		label: <strong>200</strong>
+		},
+		2:	{	style: {
+			color: "var(--celo-blue)",},
+		label: <strong>300</strong>
+		},
 	};
 
 	const title = props.network.toLowerCase() === "mainnet" ? "" : (props.network + " ");
 
 	return (
 		<>
-			<div className="column centered">
-				<div className="row page-header">
-					<img className="celoIcons" src={doersLogo} alt="Developer's icon" /> 
-					<h1 className="mt">{title + "Signed Blocks Map"}</h1>
-				</div>
-				<div className="row">
-					<h4>{"A visual map of validator signatures for the " + props.network + " network. Data is updated every 100 blocks."}</h4>
-				</div>
-
-				<div className="row jump controls">
-					<div className="col-sm-3">			
-						<p>{"Current block " + props.blockNumber}</p>
+			<div className="row headerRow centered">
+				<div className="col-sm-6">
+					<div className="row page-header">
+						<img className="celoIcons" src={doersLogo} alt="Developer's icon" /> 
+						<h2 className="mt">{"Celo " + title + "Signed Blocks Map"}</h2>
 					</div>
-					<div className="col-sm-3">			
-						<RefreshSwitch stayAtHead={props.stayAtHead} checked={props.checked}/>
-					</div>					
-					<div className="col-sm-3">					
-						<div className="column">
-							<input defaultValue={0} onChange={(event, type)=>{
-								event.preventDefault();
-								event.persist();
-								setAtBlock(event.target.value);
-							}} name="jumpToBlock" className="form-control" id="jumpToBlock" type="text"></input>
-							<button onClick={()=> props.jumpToBlock(atBlock)} className="btn-secondary">Jump to block</button>
+					{/* <div className="row">
+						<p>{"A visual map of validator signatures for the " + props.network + " network"}</p>
+					</div> */}
+				</div>
+				<div className="col-sm-6">
+					<div className="row jump controls">
+						<div className="col-sm-3">			
+							<p>{"Current block " + props.blockNumber}</p>
 						</div>
-					</div>
-					<div className="col-sm-3">
-						<p>Map Scale</p>
-						<Slider min={0} max={1} step={1} marks={marks} onAfterChange={(value) => props.changeMapScale(value)}/>
-					</div>
+						<div className="col-sm-3">			
+							<RefreshSwitch stayAtHead={props.stayAtHead} checked={props.checked}/>
+						</div>					
+						<div className="col-sm-3">					
+							<div className="column">
+								<input defaultValue={0} onChange={(event, type)=>{
+									event.preventDefault();
+									event.persist();
+									setAtBlock(event.target.value);
+								}} name="jumpToBlock" className="form-control" id="jumpToBlock" type="text"></input>
+								<button onClick={()=> props.jumpToBlock(atBlock)} className="btn-secondary">Jump to block</button>
+							</div>
+						</div>
+						<div className="col-sm-3">
+							<p>Map Scale</p>
+							<Slider min={0} max={2} step={1} marks={marks} onAfterChange={(value) => props.changeMapScale(value)}/>
+						</div>
+					</div>					
 				</div>
-			</div>			
+			</div>	
+			<hr />		
 		</> 
 	);
 }

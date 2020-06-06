@@ -5,6 +5,7 @@ import loadingImg from "../assets/loading.svg";
 import sortDownIcon from "../assets/sort-down.svg";
 import sortUpIcon from "../assets/sort-up.svg";
 import favouriteIcon from "../assets/favorite.svg";
+import "./signed-blocks-table.css";
 
 SignedBlocksTable.propTypes = () => { 
 	return { 
@@ -56,7 +57,7 @@ export default function SignedBlocksTable(props) {
 											{isSortedBySigner ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by signer" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by signer" /> : ""}
 										</>	
 									</th>			
-									<th colSpan={colSpan}>{"Block " + (+atBlock- +lookback) + " to " + +atBlock}</th>						
+									<th colSpan={colSpan}>{"Block " + (+atBlock- +lookback + 1) + " to " + +atBlock}</th>						
 									<th onClick={() => {setSortUp(!sortUp); sortByValidator(false); sortBySigner(false); sortBySignedBlocks(true); sortByMissedBlocks(false); sortBySignedCount(sortUp);}}>
 										<>
 											<span>Signed      </span>
@@ -69,7 +70,6 @@ export default function SignedBlocksTable(props) {
 											{isSortedByMissedBlocks ? sortUp ? <img id="sortIcon" src={sortDownIcon} alt="Sorted by missed signatures" /> : <img id="sortIcon" src={sortUpIcon} alt="Sorted by missed signatures" /> : ""}
 										</>	
 									</th>
-									{/* <th>Other</th> */}
 								</tr>
 							</thead>
 							<tbody>

@@ -1,10 +1,11 @@
 import axios from "axios";
-
 export default class SignedBlocksService {
 
 	TIMEOUT = 29000;
 	HEADERS = {"Content-Type":"application/json;charset=utf-8"};
 	REQUEST_PATH = "/signed-blocks";
+	RANGE_PATH = "/blocks";
+	HIGHWATER_PATH = "/highwatermark";
 
 	createInstance = (config) => {
 		return axios.create({
@@ -29,4 +30,23 @@ export default class SignedBlocksService {
 		console.log("SignedBlocksService - getSingle() - success");
 		return response;
 	}
+
+	getBlocks = async (config, fromBlock, toBlock) => {
+		const instance = this.createInstance(config);
+		const queryString = config.host + config.basePath + this.RANGE_PATH + "?from=" + fromBlock + "&to=" + toBlock;
+		console.log("Calling SignedBlocksService with " + queryString);
+		const response = await instance.get(queryString);
+		console.log("SignedBlocksService - getBlocks() - success");
+		return response;
+	}
+
+	getHighwatermark = async (config) => {
+		const instance = this.createInstance(config);
+		const queryString = config.host + config.basePath + this.HIGHWATER_PATH;
+		console.log("Calling SignedBlocksService with " + queryString);
+		const response = await instance.get(queryString);
+		console.log("SignedBlocksService - getHighwatermark() - success");
+		return response;
+	}
+
 }
