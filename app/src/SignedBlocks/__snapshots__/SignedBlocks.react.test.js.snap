@@ -363,7 +363,6 @@ exports[`Signed Blocks component matches snapshot 1`] = `
       </div>
     </div>
   </div>
-  <hr />
   
   <div
     className="row"

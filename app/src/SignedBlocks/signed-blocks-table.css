@@ -17,3 +17,15 @@ th:nth-child(3) {
   position: sticky;
   top: 0;
 }
+
+.signed-blocks td,th {
+  padding: 0.3rem;
+}
+
+.missedNumber {
+  width: 12ch;
+}
+
+.signedNumber {
+  width: 12ch;
+}

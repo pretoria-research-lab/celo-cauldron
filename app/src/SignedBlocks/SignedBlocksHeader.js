@@ -46,9 +46,6 @@ export default function SignedBlocksHeader(props) {
 						<img className="celoIcons" src={doersLogo} alt="Developer's icon" /> 
 						<h2 className="mt">{"Celo " + title + "Signed Blocks Map"}</h2>
 					</div>
-					{/* <div className="row">
-						<p>{"A visual map of validator signatures for the " + props.network + " network"}</p>
-					</div> */}
 				</div>
 				<div className="col-sm-6">
 					<div className="row jump controls">
@@ -75,7 +72,6 @@ export default function SignedBlocksHeader(props) {
 					</div>					
 				</div>
 			</div>	
-			<hr />		
 		</> 
 	);
 }

@@ -2,43 +2,50 @@
 
 exports[`Faucet component matches snapshot 1`] = `
 <div
-  className="container-fluid"
+  className="container-fluid faucet-content"
 >
   <div
-    className="column centered"
+    className="row centered"
   >
     <div
-      className="row page-header"
+      className="col-sm-4"
     >
-      <img
-        alt="Developer's icon"
-        className="celoIcons"
-        src="01-Developers (light bg).png"
-      />
-      <h1
-        className="mt"
+      <div
+        className="row page-header"
       >
-        Alfajores Faucet
-      </h1>
+        <img
+          alt="Developer's icon"
+          className="celoIcons"
+          src="13-Airdrop Green Coin (light bg).png"
+        />
+        <h2
+          className="mt"
+        >
+          Celo Alfajores Faucet
+        </h2>
+      </div>
     </div>
     <div
-      className="row"
+      className="col-sm-8"
     >
-      <h4>
-        A community funded faucet to receive nominal amounts of cGLD for testing and development on the Celo Alfajores network
-      </h4>
+      <div
+        className="row"
+      >
+        <p>
+          A community funded faucet to receive nominal amounts of cGLD for testing and development on the Celo Alfajores network
+        </p>
+      </div>
     </div>
   </div>
-  <hr />
   <div
     className="row"
   >
     <div
       className="col-lg-4"
     >
-      <h2>
+      <h3>
         Faucet Address
-      </h2>
+      </h3>
       <hr />
       <p
         className="address"
@@ -64,7 +71,6 @@ exports[`Faucet component matches snapshot 1`] = `
           width={150}
         />
       </div>
-      <hr />
       <div
         className="technical"
       >
@@ -80,9 +86,9 @@ exports[`Faucet component matches snapshot 1`] = `
       className="col-lg-8"
       id="how-to-prepare"
     >
-      <h2>
+      <h3>
         How To Prepare
-      </h2>
+      </h3>
       <hr />
       <ul>
         <li>
@@ -104,7 +110,6 @@ exports[`Faucet component matches snapshot 1`] = `
           Only the last 20 requests are visible on this dashboard
         </li>
       </ul>
-      <hr />
       <h5
         className="nb"
       >

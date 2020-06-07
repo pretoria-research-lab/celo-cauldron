@@ -21,10 +21,6 @@ body {
   flex: 1 0 auto;
 }
 
-hr{
-  color: var(--celo-dark);
-}
-
 .btn-primary {
   background-color: var(--celo-canvas-faint-gold);
   color: var(--celo-dark);

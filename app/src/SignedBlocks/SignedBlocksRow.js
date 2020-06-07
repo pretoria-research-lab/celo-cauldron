@@ -41,8 +41,8 @@ export default function SignedBlocksRow(props) {
 							{}
 						</td>)}
 			
-					<td className="blockMapInfo">{signedBlocksRow.counts.signatures}</td>
-					<td className="blockMapInfo">{signedBlocksRow.counts.missedSignatures}</td>
+					<td className="signedNumber blockMapInfo">{signedBlocksRow.counts.signatures}</td>
+					<td className="missedNumber blockMapInfo">{signedBlocksRow.counts.missedSignatures}</td>
 
 				</tr>
 			}

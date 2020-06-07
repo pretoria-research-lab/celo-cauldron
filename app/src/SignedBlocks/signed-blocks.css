@@ -87,6 +87,7 @@ li {
     align-self: center;
     align-content: center;
     align-items: center;
+    width: 92%;
 }
 
 .page-link {
@@ -121,4 +122,8 @@ li {
 .headerRow {
     margin-left: auto;
     margin-right: auto;
+}
+
+ul {
+    margin-bottom: 0rem;
 }

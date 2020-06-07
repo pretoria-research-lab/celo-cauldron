@@ -44,3 +44,7 @@ li {
     color: var(--celo-accent-blue);
     font-family: Jost;    
 }
+
+.faucet-content {
+    width: 85%;
+}
