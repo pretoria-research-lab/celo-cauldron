@@ -15,11 +15,11 @@ exports[`Home component matches snapshot 1`] = `
         className="celoIcons"
         src="04-Doers (dark bg).png"
       />
-      <h1
+      <h2
         className="mt"
       >
         Celo Cauldron
-      </h1>
+      </h2>
     </div>
     <div
       className="row"
@@ -271,15 +271,15 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              Baklava Validator Group Topography
+              Celo Discord Validator Digest
             </td>
             <td
               id="right"
             >
               <a
-                href="https://celomap.io"
+                href="https://moonlime.substack.com/"
               >
-                https://celomap.io
+                https://moonlime.substack.com/
               </a>
             </td>
           </tr>
@@ -379,6 +379,24 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
+              CeloVote - automatically delegate cGLD maximize returns
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://celovote.com/"
+              >
+                https://celovote.com/
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
               Community Alfajores Faucet
             </td>
             <td
@@ -424,6 +442,42 @@ exports[`Home component matches snapshot 1`] = `
                 href="https://thecelo.com/celo.html"
               >
                 https://thecelo.com/celo.html
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Signed Blocks Real-time Visualizer
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://cauldron.pretoriaresearchlab.io/block-map"
+              >
+                https://cauldron.pretoriaresearchlab.io/block-map
+              </a>
+            </td>
+          </tr>
+          <tr
+            className="small-padding"
+          >
+            <td
+              id="left"
+            >
+              Validator Group Topography
+            </td>
+            <td
+              id="right"
+            >
+              <a
+                href="https://celomap.io"
+              >
+                https://celomap.io
               </a>
             </td>
           </tr>
