@@ -100,6 +100,11 @@ export const data = {
 			community: true,
 			link: "https://github.com/jim380/node_tooling/tree/master/Celo",
 			blurb: "Celo Node DevOps Tooling and Infrastructure"
+		},
+		{
+			community: true,
+			link: "https://celovote.com/",
+			blurb: "CeloVote - automatically delegate cGLD maximize returns"
 		}
 	]
 };
