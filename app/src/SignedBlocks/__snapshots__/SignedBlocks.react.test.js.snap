@@ -35,14 +35,14 @@ exports[`Signed Blocks component matches snapshot 1`] = `
           className="col-sm-2"
         >
           <p>
-            Epoch undefined
+            Epoch loading...
           </p>
         </div>
         <div
           className="col-sm-3"
         >
           <p>
-            Current block 0
+            Current block loading...
           </p>
         </div>
         <div
