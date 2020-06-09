@@ -71,10 +71,10 @@ export default function SignedBlocksHeader(props) {
 				<div className="col-sm-7">
 					<div className="row controls">
 						<div className="col-sm-2">			
-							<p>{"Epoch " + props.epochNumber}</p>
+							<p>{"Epoch " + (props.epochNumber ? props.epochNumber : "loading...")}</p>
 						</div>
 						<div className="col-sm-3">			
-							<p>{"Current block " + props.blockNumber}</p>
+							<p>{"Current block " + (props.blockNumber ? props.blockNumber : "loading...")}</p>
 						</div>
 						<div className="col-sm-2">			
 							<RefreshSwitch stayAtHead={props.stayAtHead} checked={props.checked}/>

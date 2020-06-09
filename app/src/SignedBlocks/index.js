@@ -44,7 +44,8 @@ class SignedBlocks extends Component
 			blockNumber: 0, 
 			processing: false,
 			stayAtHead: stayAtHead,
-			highwatermark: { atBlock: 0}
+			highwatermark: { atBlock: 0},
+			epoch: -1
 		};
 	}
 
