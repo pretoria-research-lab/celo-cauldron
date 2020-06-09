@@ -8,7 +8,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
     className="row headerRow centered"
   >
     <div
-      className="col-sm-6"
+      className="col-sm-5"
     >
       <div
         className="row page-header"
@@ -16,7 +16,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
         <img
           alt="Developer's icon"
           className="celoIcons"
-          src="04-Doers (light bg).png"
+          src="04-Doers (dark bg).png"
         />
         <h2
           className="mt"
@@ -26,11 +26,18 @@ exports[`Signed Blocks component matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="col-sm-6"
+      className="col-sm-7"
     >
       <div
-        className="row jump controls"
+        className="row controls"
       >
+        <div
+          className="col-sm-2"
+        >
+          <p>
+            Epoch undefined
+          </p>
+        </div>
         <div
           className="col-sm-3"
         >
@@ -39,7 +46,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
           </p>
         </div>
         <div
-          className="col-sm-3"
+          className="col-sm-2"
         >
           <label>
             <p>
@@ -206,7 +213,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
           </label>
         </div>
         <div
-          className="col-sm-3"
+          className="col-sm-2"
         >
           <div
             className="column"
@@ -223,7 +230,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
               className="btn-secondary"
               onClick={[Function]}
             >
-              Jump to block
+              To block
             </button>
           </div>
         </div>
@@ -312,7 +319,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
                 onTouchStart={[Function]}
                 style={
                   Object {
-                    "color": "var(--celo-blue)",
+                    "color": "var(--celo-green)",
                     "left": "0%",
                     "msTransform": "translateX(-50%)",
                     "transform": "translateX(-50%)",
@@ -329,7 +336,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
                 onTouchStart={[Function]}
                 style={
                   Object {
-                    "color": "var(--celo-blue)",
+                    "color": "var(--celo-green)",
                     "left": "50%",
                     "msTransform": "translateX(-50%)",
                     "transform": "translateX(-50%)",
@@ -346,7 +353,7 @@ exports[`Signed Blocks component matches snapshot 1`] = `
                 onTouchStart={[Function]}
                 style={
                   Object {
-                    "color": "var(--celo-blue)",
+                    "color": "var(--celo-green)",
                     "left": "100%",
                     "msTransform": "translateX(-50%)",
                     "transform": "translateX(-50%)",

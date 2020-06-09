@@ -13,7 +13,7 @@ exports[`Home component matches snapshot 1`] = `
       <img
         alt="Doers icon"
         className="celoIcons"
-        src="04-Doers (light bg).png"
+        src="04-Doers (dark bg).png"
       />
       <h1
         className="mt"
@@ -29,7 +29,6 @@ exports[`Home component matches snapshot 1`] = `
       </h4>
     </div>
   </div>
-  <hr />
   <div
     className="column centered"
   >
@@ -40,7 +39,7 @@ exports[`Home component matches snapshot 1`] = `
         <img
           alt="cLabs resource"
           className="tiny-icon"
-          src="11-Security Check (light-bg).png"
+          src="11-Security Check (dark-bg).png"
         />
          cLabs
       </h2>
@@ -257,7 +256,7 @@ exports[`Home component matches snapshot 1`] = `
         <img
           alt="Community based resource"
           className="tiny-icon"
-          src="03-People (light-bg).png"
+          src="03-People (dark-bg).png"
         />
          Community
       </h2>

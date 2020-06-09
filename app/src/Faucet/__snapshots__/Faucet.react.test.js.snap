@@ -16,7 +16,7 @@ exports[`Faucet component matches snapshot 1`] = `
         <img
           alt="Airdrop icon"
           className="celoIcons"
-          src="13-Airdrop Green Coin (light bg).png"
+          src="13-Airdrop Green Coin (dark bg).png"
         />
         <h2
           className="mt"

@@ -8,7 +8,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
     className="App-content"
   >
     <nav
-      className="navbar navbar-expand-lg navbar-light static-top"
+      className="navbar navbar-expand-lg navbar-dark static-top"
     >
       <div
         className="container-fluid"
@@ -20,7 +20,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
           <img
             alt="Pretoria Monochrome Logo"
             className="header-logo"
-            src="Pretoria_Logo_black.png"
+            src="Pretoria_Logo_color_02.png"
           />
         </a>
         <button
@@ -128,7 +128,7 @@ exports[`renders without crashing and matches snapshot 1`] = `
             <img
               alt="Pretoria Monochrome Logo"
               className="header-logo"
-              src="Pretoria_Logo_black.png"
+              src="Pretoria_Logo_color_02.png"
             />
           </a>
         </div>
