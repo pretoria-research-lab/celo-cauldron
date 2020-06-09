@@ -19,18 +19,18 @@
     font-family: "Jost";
     font-size: smaller;
     cursor: pointer;
+    word-wrap: none;
 }
 
 .signed-blocks thead {
-    background-color: var(--celo-canvas-faint-gold);
+    background-color: var(--celo-gray-heavy);
+    color: var(--celo-dark);
 }
 
 .blockMapInfo {
-    /* padding: 0.20rem !important; */
     font-family: 'Courier New', Courier, monospace;
     font-size: 10px;
     vertical-align: middle !important;
-    /* padding-bottom: 0; */
 }
 
 .signature-300 {
@@ -71,7 +71,7 @@ li {
 }
 
 .nb {
-    color: var(--celo-accent-blue);
+    color: var(--celo-white);
     font-family: Jost;    
 }
 
@@ -91,28 +91,24 @@ li {
 }
 
 .page-link {
-    color: var(--celo-accent-blue);
+    color: var(--celo-accent-cyan);
+    background-color: var(--celo-dark);
 }
 
 .page-item.active .page-link {
     background-color:  var(--celo-accent-blue);
 }
 
-.jump {
-    color: var(--celo-accent-blue);
-    /* font-weight: bold
-    ; */
-}
-
 .btn-secondary {
     border-radius: 7%;
-    background-color: var(--celo-canvas-faint-gold);
-    color: var(--celo-blue);
+    background-color: var(--celo-green);
+    color: var(--celo-dark);
     border-color: var(--celo-blue);
 }
 
 .controls {
     align-items: center;
+    color: var(--celo-white);
 }
 
 #favouriteIconTableHeader {

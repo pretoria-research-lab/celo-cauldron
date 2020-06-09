@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./signed-blocks-row.css";
-import favouriteIcon from "../assets/favorite.svg";
+import favouriteIcon from "../assets/favorite_white.svg";
 
 SignedBlocksRow.propTypes = () => { 
 	return { 

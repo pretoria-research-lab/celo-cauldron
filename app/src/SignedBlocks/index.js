@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import * as toast from "../Common/Notification";
 import "./signed-blocks.css";
 import {API_CONFIG, SIGNED_BLOCKS_API_CONFIG} from "../Utils/config";
-import {getCurrentBlockNumber} from "../Utils/utils";
+import {getCurrentBlockNumber, getCurrentEpochNumber} from "../Utils/utils";
 import SignedBlocksService from "../SignedBlocksService";
 import SignedBlocksTable from "./SignedBlocksTable";
 import SignedBlocksHeader from "./SignedBlocksHeader";
@@ -29,8 +29,13 @@ class SignedBlocks extends Component
 
 	constructor(props){
 		super(props);
+
+		const stayAtHead = localStorage.getItem("stayAtHead") === "true" ? true : false;
+		const scale = parseInt(localStorage.getItem("scale")) || this.props.lookback;
+		console.log(`Retrieved previous settings, stayAtHead ${stayAtHead}, scale ${scale}`);
+
 		this.state	=	{	pageList: [], 
-			lookback: this.props.lookback, 
+			lookback: scale, 
 			atBlock: -1, 
 			signatures: [], 
 			loading: true, 
@@ -38,7 +43,7 @@ class SignedBlocks extends Component
 			remoteNodeConfig: {}, 
 			blockNumber: 0, 
 			processing: false,
-			stayAtHead: false,
+			stayAtHead: stayAtHead,
 			highwatermark: { atBlock: 0}
 		};
 	}
@@ -47,7 +52,8 @@ class SignedBlocks extends Component
 		try{
 			const nodeProvider = this.state.remoteNodeConfig.remoteNode;
 			const blockNumber = await getCurrentBlockNumber(nodeProvider);
-			this.setState({blockNumber: blockNumber});
+			const epochNumber = await getCurrentEpochNumber(nodeProvider, blockNumber);
+			this.setState({blockNumber: blockNumber}, () => this.setState({epochNumber: epochNumber}));
 		}catch(error){
 			toast.notify("ERROR", this.props.network + " is not responding");
 			this.setState({blockNumber: -1});
@@ -79,14 +85,12 @@ class SignedBlocks extends Component
 				
 				if(this.state.stayAtHead && (previousHighwatermark.atBlock !== highwatermark.atBlock)) {
 	
-					// console.log("New highwatermark " + JSON.stringify(highwatermark));	
 					const from = highwatermark.atBlock - this.state.lookback + 1;
 					const to = highwatermark.atBlock;
 					const results = await signedBlocksAPI.getBlocks(this.state.signedBlocksAPIConfig, from, to);
 					
 					this.enrichData(results.data);
 
-					// console.log("New signatures " + JSON.stringify(results.data));
 					this.setState({signatures: results.data}, 
 						() => this.setState({atBlock: highwatermark.atBlock},
 							() => this.setState({pageList: this.createPageList()},
@@ -100,7 +104,7 @@ class SignedBlocks extends Component
 		}	
 	}
 
-	initialiseStartingBlockNumber = async () => {
+	initialise = async () => {
 	
 		await this.getHighwatermark();
 		const atBlock = this.getHeadBlock();
@@ -111,19 +115,20 @@ class SignedBlocks extends Component
 		const highwatermarkIntervalID = setInterval(this.getHighwatermark, highwatermarkRefreshMillis);
 		this.setState({highwatermarkIntervalID:highwatermarkIntervalID});
 		
-		this.setState({atBlock}, () => {			
-			const pageList = this.createPageList();
-			this.setState({pageList}, () => this.getSignatures());
-		});
+		this.setState({atBlock}, 
+			() => this.setState({currentSortFunction: this.sortByMissedCount}, 
+				() => {	const pageList = this.createPageList();
+						this.setState({pageList}, () => this.getSignatures());
+				}
+		));
 	}
 
 	componentDidMount = () => {
-		
-		this.setState({remoteNodeConfig: this.getRemoteNodeConfig(this.props.network)}, () => {
-			this.setState({signedBlocksAPIConfig: this.getSignedBlocksAPIConfig(this.props.network)}, () => {				
-				this.initialiseStartingBlockNumber();
-			});			
-		});
+
+		this.setState({remoteNodeConfig: this.getRemoteNodeConfig(this.props.network)}, 
+			() => this.setState({signedBlocksAPIConfig: this.getSignedBlocksAPIConfig(this.props.network)}, 
+				() => this.initialise()
+		));		
 	}
 
 	componentWillUnmount = () => {
@@ -210,33 +215,18 @@ class SignedBlocks extends Component
 		return this.state.remoteNodeConfig.blockExplorer + "address/" + address + "/celo";
 	}
 
-	enrichData = (data) => {
-		// Enrich with signer link
+	enrichData = (data) => {		
 		data.forEach(element => {
 			element["signerLink"] = this.getLinkForAddress(element.signer);
+			element["validatorLink"] = this.getLinkForValidatorAddress(element.validatorAddress);
 			element["favourite"] = localStorage.getItem(element.signer);
+			
 			if(element.favourite === null)
 				element.favourite = false;
-			else{
-				if(element.favourite === "true")
-					element.favourite = true;
-				else
-					element.favourite = false;
-			}
-		});								
-
-		// Enrich with validator address and name if they haven't been supplied
-		data.forEach(async element => {
-			// if(!element.validatorName){
-			// 	element["validatorAddress"] = "Loading ...";
-			// 	element["validatorAddress"] = await this.getValidatorFromSigner(element.signer, this.state.atBlock);
-			// }
-			element["validatorLink"] = this.getLinkForValidatorAddress(element.validatorAddress);						
-			
-			// if(!element.validatorName){
-			// 	element["validatorName"] = "Loading ...";
-			// 	element["validatorName"] = await this.getAccountName(element["validatorAddress"], this.state.atBlock);
-			// }							
+			else if(element.favourite === "true")
+				element.favourite = true;
+			else
+				element.favourite = false;
 		});
 	}
 
@@ -247,7 +237,6 @@ class SignedBlocks extends Component
 		else{
 			this.setState({loading:true}, async () => {
 				try{
-					// const response = await signedBlocksAPI.getSingle(this.state.signedBlocksAPIConfig, this.state.atBlock, this.state.lookback);
 					const response = await signedBlocksAPI.getBlocks(this.state.signedBlocksAPIConfig, this.state.atBlock-this.state.lookback+1, this.state.atBlock);
 					var data = response.data;
 					
@@ -322,13 +311,10 @@ class SignedBlocks extends Component
 		// If we haven't filled up length of pages, add in remainder (on either side of the pivot)
 		if(pageList.length < (listLength+1)){
 
-			// console.log("pageList.length == " +pageList.length);
-			// console.log("listLength + 1 == " + (listLength + 1));
 			const iterations = ((listLength+1)-pageList.length); 
 
 			for(let i=0; i < iterations; i++){
 				if(addedPrevious){
-					// console.log("Adding " + (pageList[0].atBlock-lookback));
 					const newPageList = [
 						{   atBlock: (pageList[0].atBlock-lookback),
 							active: false
@@ -345,9 +331,6 @@ class SignedBlocks extends Component
 				}
 			}
 		}
-		// Log
-		// console.table(pageList);
-
 		return pageList;
 	}
 
@@ -361,7 +344,7 @@ class SignedBlocks extends Component
 	}
 
 	changePage = (atBlock) => {
-		console.log(`Changing block map to atBlock ${atBlock} with lookback ${this.state.lookback}`);
+		console.log(`Changing block map to atBlock ${atBlock} with range of ${this.state.lookback}`);
 		this.setState({atBlock}, 
 			async () => 
 			{	const pageList = this.createPageList();
@@ -373,6 +356,7 @@ class SignedBlocks extends Component
 	changeMapScale = (scale) => {
 		
 		let lookback;
+		clearInterval(this.state.highwatermarkIntervalID);
 
 		switch (scale) {
 		case 0:
@@ -388,20 +372,26 @@ class SignedBlocks extends Component
 			lookback = 100;
 		}
 
-		this.setState({loading:true}, () => {
-			toast.notify("INFO","Scale updated to " + lookback);
-			this.setState({lookback}, () => {
-				this.createPageList();
-				this.changePage(this.state.atBlock);
+		if(lookback !== this.state.lookback){
+			this.setState({loading:true}, () => {
+				toast.notify("INFO","Scale updated to " + lookback);
+				localStorage.setItem("scale", lookback);
+				this.setState({lookback}, () => {
+					this.createPageList();
+					this.changePage(this.state.atBlock);
+					const highwatermarkIntervalID = setInterval(this.getHighwatermark, highwatermarkRefreshMillis);
+					this.setState({highwatermarkIntervalID:highwatermarkIntervalID});
+				});
 			});
-		});
+		}
 	}
 
-	stayAtHead = async (stayAtHead, event) => {
-		event.preventDefault();
+	stayAtHead = async (stayAtHead) => {
+		// event.preventDefault();
 		console.log("Stay at head =" + stayAtHead);
 		if(this.state.stayAtHead !== stayAtHead){
 			console.log("Changing stayAtHead to " + stayAtHead);
+			localStorage.setItem("stayAtHead", stayAtHead);
 			this.setState({stayAtHead}, () => {
 				if(this.state.stayAtHead === true)
 					this.changeToLastPage();
@@ -431,18 +421,18 @@ class SignedBlocks extends Component
 
 	jumpToBlock = (atBlock) => {
 
+		this.stayAtHead(false);
 		console.log("Jumping to block " + atBlock);
 
 		const maxPage =  this.getHeadBlock();
-		if(atBlock < (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale)){
+		
+		if(atBlock < (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale))
 			toast.notify("WARN","Block cannot be less than " + (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale));
-		}
-		else if (atBlock > maxPage){
+		else if (atBlock > maxPage)
 			toast.notify("WARN","Block cannot be greater than " + maxPage);
-		}
-		else{
+		else
 			this.changePage(+atBlock);
-		}
+
 	}
 
 	render = () => {
@@ -450,8 +440,10 @@ class SignedBlocks extends Component
 			<div className="container-fluid signed-blocks-content">   
 				<SignedBlocksHeader
 					jumpToBlock={this.jumpToBlock} 
+					epochNumber={this.state.epochNumber}
 					atBlock={this.state.atBlock}
 					changeMapScale={this.changeMapScale}
+					scale={this.state.lookback}
 					stayAtHead={this.stayAtHead}
 					checked={this.state.stayAtHead}
 					blockNumber={this.state.blockNumber}

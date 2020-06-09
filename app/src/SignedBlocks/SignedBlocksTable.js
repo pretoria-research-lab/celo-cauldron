@@ -4,7 +4,7 @@ import SignedBlocksRow from "./SignedBlocksRow";
 import loadingImg from "../assets/loading.svg";
 import sortDownIcon from "../assets/sort-down.svg";
 import sortUpIcon from "../assets/sort-up.svg";
-import favouriteIcon from "../assets/favorite.svg";
+import favouriteIcon from "../assets/favorite_black.svg";
 import "./signed-blocks-table.css";
 
 SignedBlocksTable.propTypes = () => { 
@@ -41,7 +41,7 @@ export default function SignedBlocksTable(props) {
 					<img id="loadingLogo" src={loadingImg} alt="Loading..." />
 					:
 					<div className="table-responsive">
-						<table className="signed-blocks table table-bordered table-hover">
+						<table className="signed-blocks table table-dark table-bordered table-hover">
 							<thead>
 								<tr>
 									<th><img id="favouriteIconTableHeader" src={favouriteIcon} alt="Favourite this row" /></th>

@@ -4,7 +4,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import "jquery";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import pretoriaLogo from "../assets/Pretoria_Logo_black.png";
+import pretoriaLogo from "../assets/Pretoria_Logo_color_02.png";
 import "./navigation.css";
 
 class Navigation extends Component 
@@ -20,7 +20,7 @@ class Navigation extends Component
 
 		const { faucets, signedBlocks } = this.props;
        
-		return (<nav className="navbar navbar-expand-lg navbar-light static-top">
+		return (<nav className="navbar navbar-expand-lg navbar-dark static-top">
 			<div className="container-fluid">
       
 				<a className="navbar-brand" href="/">	
@@ -35,7 +35,7 @@ class Navigation extends Component
         
 					<ul className="navbar-nav ml-auto">
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/">Tools</NavLink>
+							<NavLink className="nav-link" exact={true} to="/">Tools</NavLink>
 						</li>
 						{signedBlocks.map((sb, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + (sb.toLowerCase() === "mainnet" ? "" : (sb.toLowerCase() + "-")) + "block-map"}>{(sb.toLowerCase() === "mainnet" ? "" : (sb + " ")) + "Block Map"}</NavLink></li> )}
 						{faucets.map((faucet, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + faucet.toLowerCase() + "-faucet"}>{faucet + " Faucet"}</NavLink></li> )}

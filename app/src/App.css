@@ -3,31 +3,32 @@ html, body {
 }
 
 body {
-  background-color:var(--celo-white);
+  background-color:var(--celo-dark);
 }
 
 .App {
   text-align: center;
-  background: var(--celo-white);
+  background: var(--celo-dark);
   font-family: "EB Garamond", "Jost";
   margin: 0px;
   height: 100%;
   display: flex;
   flex-direction: column;
   height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+  color: white;
 }
 
 .App-content {
   flex: 1 0 auto;
 }
 
-.btn-primary {
+/* .btn-primary {
   background-color: var(--celo-canvas-faint-gold);
   color: var(--celo-dark);
   border: 1px solid var(--celo-dark);
   font-size: 24px;
   margin: 5px;
-}
+} */
 
 .container {
   display: flex;
@@ -54,6 +55,9 @@ body {
 }
 
 a {
+  color: var(--celo-accent-cyan);
+}
+a:hover {
   color: var(--celo-accent-blue);
 }
 
@@ -73,4 +77,12 @@ a {
   display: flex;
   max-width: 250px;
   max-height: 80%;
+}
+
+h1, h2, h3, h4, h5 {
+  color: white;
+}
+
+.table {
+  word-wrap: none;
 }

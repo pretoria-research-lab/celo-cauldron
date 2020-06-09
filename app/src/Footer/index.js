@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./footer.css";
-import pretoriaLogo from "../assets/Pretoria_Logo_black.png";
+import pretoriaLogo from "../assets/Pretoria_Logo_color_02.png";
 import {validatorGroupLink, validatorGroup} from "../Utils/config";
 
 Footer.propTypes = () => { 

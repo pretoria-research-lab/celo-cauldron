@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import airdropIcon from "../assets/13-Airdrop Green Coin (light bg).png";
+import airdropIcon from "../assets/13-Airdrop Green Coin (dark bg).png";
 
 FaucetHeader.propTypes = () => { 
 	return { 

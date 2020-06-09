@@ -1,6 +1,6 @@
 .navbar{
-    background-color: var(--celo-accent-cyan);
-    border-bottom: 3px solid var(--celo-dark);
+    background-color: black;
+    border-bottom: 3px solid var(--celo-accent-cyan);
     padding-bottom: 20px;
     padding-top: 20px;
 }
