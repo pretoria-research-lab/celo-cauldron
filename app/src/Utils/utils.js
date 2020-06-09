@@ -6,6 +6,12 @@ export const getCurrentBlockNumber = async (nodeProvider) => {
 	return blockNumber;
 };
 
+export const getCurrentEpochNumber = async (nodeProvider, currentBlockNumber) => {    
+	const kit = contractkit.newKit(nodeProvider);
+	const epochNumber = await kit.getEpochNumberOfBlock(currentBlockNumber);
+	return epochNumber;
+};
+
 export const getValidatorGroups = async (nodeProvider) => {
 	const kit = contractkit.newKit(nodeProvider);
 	const election = await kit.contracts.getElection();

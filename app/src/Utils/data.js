@@ -9,7 +9,7 @@ export const data = {
 		{
 			community: true,
 			link: "https://celomap.io",
-			blurb: "Baklava Validator Group Topography"
+			blurb: "Validator Group Topography"
 		},
 		{
 			community: false,
@@ -100,6 +100,21 @@ export const data = {
 			community: true,
 			link: "https://github.com/jim380/node_tooling/tree/master/Celo",
 			blurb: "Celo Node DevOps Tooling and Infrastructure"
+		},
+		{
+			community: true,
+			link: "https://celovote.com/",
+			blurb: "CeloVote - automatically delegate cGLD maximize returns"
+		},
+		{
+			community: true,
+			link: "https://moonlime.substack.com/",
+			blurb: "Celo Discord Validator Digest"
+		},
+		{
+			community: true,
+			link: "https://cauldron.pretoriaresearchlab.io/block-map",
+			blurb: "Signed Blocks Real-time Visualizer"
 		}
 	]
 };

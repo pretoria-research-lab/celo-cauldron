@@ -28,13 +28,13 @@ export const SIGNED_BLOCKS_API_CONFIG = [
 	{   network : "mainnet",
 		host: "https://394txl34uf.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/mainnet",
-		firstBlock: 3200,
+		firstBlock: 100,
 		paginationListLength: 12
 	},
 	{   network : "baklava",
 		host: "https://tqgd1io8a4.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/baklava",
-		firstBlock: 1000,
+		firstBlock: 100,
 		paginationListLength: 12
 	}
 ];

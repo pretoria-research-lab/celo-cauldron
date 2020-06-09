@@ -1,7 +1,7 @@
 import React from "react";
 import {data} from "../Utils/data";
-import communityIcon from "../assets/03-People (light-bg).png";
-import securityIcon from "../assets/11-Security Check (light-bg).png";
+import communityIcon from "../assets/03-People (dark-bg).png";
+import securityIcon from "../assets/11-Security Check (dark-bg).png";
 
 const alphaSort = (a,b) => {
 	if(a < b) return -1;

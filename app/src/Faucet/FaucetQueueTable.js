@@ -26,7 +26,7 @@ export default function FaucetQueueTable(props) {
 					<img id="loadingLogo" src={loadingImg} alt="Loading..." />
 					:
 					<div className="table-responsive">
-						<table className="table table-striped table-bordered table-hover">
+						<table className="table table-striped table-dark table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>Request Address</th>

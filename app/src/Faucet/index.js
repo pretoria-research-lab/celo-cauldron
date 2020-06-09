@@ -130,7 +130,7 @@ class Faucet extends Component
 
 	render = () => {
 		return ( 
-			<div className="container-fluid">        
+			<div className="container-fluid faucet-content">        
 				<FaucetHeader config={this.state.config} network={this.props.network}/>
 				<FaucetInformation config={this.state.config} blockNumber={this.state.blockNumber} network={this.props.network} faucetBalance={this.state.faucetBalance}/>
 				<FaucetQueueTable config={this.state.config} loading={this.state.loading} blockNumber={this.state.blockNumber} faucetRequests={this.state.faucetRequests} claimRequest={this.claimRequest} createRequest={this.createRequest}/>

@@ -1,0 +1,31 @@
+.signed-blocks table {
+  table-layout: fixed;
+  width: 50%;
+}
+
+.signed-blocks td:nth-child(2),
+th:nth-child(2) {
+  width: 40ch;
+}
+
+.signed-blocks td:nth-child(3),
+th:nth-child(3) {
+  width: 40ch;
+}
+
+.signed-blocks thead tr th {
+  position: sticky;
+  top: 0;
+}
+
+.signed-blocks td,th {
+  padding: 0.3rem;
+}
+
+.missedNumber {
+  width: 16ch;
+}
+
+.signedNumber {
+  width: 16ch;
+}
