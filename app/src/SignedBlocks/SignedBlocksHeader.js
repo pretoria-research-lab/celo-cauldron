@@ -21,34 +21,34 @@ const getIndexFromValue = (value) => {
 	var index = 0;
 	var intValue = parseInt(value); 
 	switch (intValue) {
-		case 100:
-			index = 0;
-			break;
-		case 200:
-			index = 1;
-			break;
-		case 300:
-			index = 2;
-			break;
-		default:
-			index = 0;
+	case 100:
+		index = 0;
+		break;
+	case 200:
+		index = 1;
+		break;
+	case 300:
+		index = 2;
+		break;
+	default:
+		index = 0;
 	}
 	return index;
-}
+};
 
 const marks = 
 { 
 	0:	{	style: {
-			color: "var(--celo-green)",},
-			label: <strong>100</strong>
+		color: "var(--celo-green)",},
+	label: <strong>100</strong>
 	},
 	1:	{	style: {
-			color: "var(--celo-green)",},
-			label: <strong>200</strong>
+		color: "var(--celo-green)",},
+	label: <strong>200</strong>
 	},
 	2:	{	style: {
-			color: "var(--celo-green)",},
-			label: <strong>300</strong>
+		color: "var(--celo-green)",},
+	label: <strong>300</strong>
 	},
 };	
 
@@ -70,7 +70,7 @@ export default function SignedBlocksHeader(props) {
 				</div>
 				<div className="col-sm-7">
 					<div className="row controls">
-					<div className="col-sm-2">			
+						<div className="col-sm-2">			
 							<p>{"Epoch " + props.epochNumber}</p>
 						</div>
 						<div className="col-sm-3">			

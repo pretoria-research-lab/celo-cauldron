@@ -118,9 +118,9 @@ class SignedBlocks extends Component
 		this.setState({atBlock}, 
 			() => this.setState({currentSortFunction: this.sortByMissedCount}, 
 				() => {	const pageList = this.createPageList();
-						this.setState({pageList}, () => this.getSignatures());
+					this.setState({pageList}, () => this.getSignatures());
 				}
-		));
+			));
 	}
 
 	componentDidMount = () => {
@@ -128,7 +128,7 @@ class SignedBlocks extends Component
 		this.setState({remoteNodeConfig: this.getRemoteNodeConfig(this.props.network)}, 
 			() => this.setState({signedBlocksAPIConfig: this.getSignedBlocksAPIConfig(this.props.network)}, 
 				() => this.initialise()
-		));		
+			));		
 	}
 
 	componentWillUnmount = () => {
