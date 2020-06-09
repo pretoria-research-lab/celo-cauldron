@@ -35,7 +35,7 @@ export default function SignedBlocksRow(props) {
 
 					{signedBlocksRow.tickArray.map((t, i) => 
 						<td 
-							title={"Signer " + signedBlocksRow.signer + ", block " + (atBlock - (+lookback) + i + 1) + " (" + t + ")"} 
+							title={"Signer " + signedBlocksRow.signer + ", block " + (atBlock - (+lookback) + i) + " (" + t + ")"} 
 							className={"signature-" + lookback + " " + (t === "." ? "signed" : t === "✘" ? "missed" : "other")} 
 							key={i}>
 							{}
