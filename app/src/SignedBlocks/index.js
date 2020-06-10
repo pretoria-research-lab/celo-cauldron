@@ -13,8 +13,8 @@ import SignedBlocksPaginator from "./SignedBlocksPaginator";
 import * as contractkit from "@celo/contractkit";
 
 const signedBlocksAPI = new SignedBlocksService();
-const refreshBlockNumberMillis = 2500;
-const highwatermarkRefreshMillis = 2500;
+const refreshBlockNumberMillis = 1000;
+const highwatermarkRefreshMillis = 1000;
 const baseScale = 100;
 
 class SignedBlocks extends Component 
@@ -422,7 +422,6 @@ class SignedBlocks extends Component
 
 	jumpToBlock = (atBlock) => {
 
-		this.stayAtHead(false);
 		console.log("Jumping to block " + atBlock);
 
 		const maxPage =  this.getHeadBlock();
@@ -433,7 +432,6 @@ class SignedBlocks extends Component
 			toast.notify("WARN","Block cannot be greater than " + maxPage);
 		else
 			this.changePage(+atBlock);
-
 	}
 
 	render = () => {
