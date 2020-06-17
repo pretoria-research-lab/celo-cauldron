@@ -31,8 +31,9 @@ class SignedBlocks extends Component
 		super(props);
 
 		const stayAtHead = localStorage.getItem("stayAtHead") === "true" ? true : false;
+		const onlyFavourites = localStorage.getItem("onlyFavourites") === "true" ? true : false;
 		const scale = parseInt(localStorage.getItem("scale")) || this.props.lookback;
-		console.log(`Retrieved previous settings, stayAtHead ${stayAtHead}, scale ${scale}`);
+		console.log(`Retrieved previous settings, stayAtHead ${stayAtHead}, scale ${scale}, onlyFavourites ${onlyFavourites}`);
 
 		this.state	=	{	pageList: [], 
 			lookback: scale, 
@@ -45,7 +46,8 @@ class SignedBlocks extends Component
 			processing: false,
 			stayAtHead: stayAtHead,
 			highwatermark: { atBlock: 0},
-			epoch: -1
+			epoch: -1,
+			onlyFavourites: onlyFavourites
 		};
 	}
 
@@ -238,7 +240,12 @@ class SignedBlocks extends Component
 		else{
 			this.setState({loading:true}, async () => {
 				try{
-					const response = await signedBlocksAPI.getBlocks(this.state.signedBlocksAPIConfig, this.state.atBlock-this.state.lookback+1, this.state.atBlock);
+					const response = await signedBlocksAPI.getBlocks(
+						this.state.signedBlocksAPIConfig, 
+						this.state.atBlock-this.state.lookback+1, 
+						this.state.atBlock, 
+						(this.state.onlyFavourites ? this.state.signatures.filter((e,i) => e.favourite === true) : []));
+						
 					var data = response.data;
 					
 					toast.notify("INFO", "Retrieved signatures at block " + this.state.atBlock);	
@@ -387,8 +394,7 @@ class SignedBlocks extends Component
 		}
 	}
 
-	stayAtHead = async (stayAtHead) => {
-		// event.preventDefault();
+	setStayAtHead = async (stayAtHead) => {
 		console.log("Stay at head =" + stayAtHead);
 		if(this.state.stayAtHead !== stayAtHead){
 			console.log("Changing stayAtHead to " + stayAtHead);
@@ -397,6 +403,15 @@ class SignedBlocks extends Component
 				if(this.state.stayAtHead === true)
 					this.changeToLastPage();
 			});
+		}
+	}
+
+	setOnlyFavourites = (onlyFavourites) => {
+		console.log("Only favourites =" + onlyFavourites);
+		if(this.state.onlyFavourites !== onlyFavourites){
+			console.log("Changing onlyFavourites to " + onlyFavourites);
+			localStorage.setItem("onlyFavourites", onlyFavourites);
+			this.setState({onlyFavourites});
 		}
 	}
 
@@ -443,10 +458,12 @@ class SignedBlocks extends Component
 					atBlock={this.state.atBlock}
 					changeMapScale={this.changeMapScale}
 					scale={this.state.lookback}
-					stayAtHead={this.stayAtHead}
-					checked={this.state.stayAtHead}
 					blockNumber={this.state.blockNumber}
 					config={this.state.remoteNodeConfig} network={this.props.network}
+					setStayAtHead={this.setStayAtHead}
+					stayAtHead={this.state.stayAtHead}
+					setOnlyFavourites={this.setOnlyFavourites}
+					onlyFavourites={this.state.onlyFavourites}					
 				/>
 				{this.state.loading ? "" : 
 					<SignedBlocksPaginator 
@@ -466,7 +483,7 @@ class SignedBlocks extends Component
 					lookback={this.state.lookback} 
 					atBlock={this.state.atBlock} 
 					blockNumber={this.state.blockNumber} 
-					signatures={this.state.signatures}/>
+					signatures={this.state.onlyFavourites ? this.state.signatures.filter((e,i) => e.favourite === true) : this.state.signatures}/>
 				<ToastContainer autoClose={toast.DEFAULT_AUTOCLOSE}/>
 				<hr />
 			</div>

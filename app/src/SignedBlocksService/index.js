@@ -31,9 +31,19 @@ export default class SignedBlocksService {
 		return response;
 	}
 
-	getBlocks = async (config, fromBlock, toBlock) => {
+	getBlocks = async (config, fromBlock, toBlock, filteredAddresses) => {
 		const instance = this.createInstance(config);
-		const queryString = config.host + config.basePath + this.RANGE_PATH + "?from=" + fromBlock + "&to=" + toBlock;
+
+		let filteredAddressesQueryString = "&filteredAddresses=";
+		if(filteredAddresses && filteredAddresses.length > 0){
+			for(let i =0; i<filteredAddresses.length; i++)
+				filteredAddressesQueryString += (i > 0 ? "," : "") + filteredAddresses[i];
+		}
+		else {
+			filteredAddresses="";
+		}
+
+		const queryString = config.host + config.basePath + this.RANGE_PATH + "?from=" + fromBlock + "&to=" + toBlock + filteredAddressesQueryString;
 		console.log("Calling SignedBlocksService with " + queryString);
 		const response = await instance.get(queryString);
 		console.log("SignedBlocksService - getBlocks() - success");
