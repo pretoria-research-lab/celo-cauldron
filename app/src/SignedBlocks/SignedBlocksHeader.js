@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import doersLogo from "../assets/04-Doers (dark bg).png";
 import Slider from "rc-slider";
 import RefreshSwitch from "./RefreshSwitch";
+import OnlyFavouritesSwitch from "./OnlyFavouritesSwitch";
 import "rc-slider/assets/index.css";
 
 SignedBlocksHeader.propTypes = () => { 
@@ -11,8 +12,12 @@ SignedBlocksHeader.propTypes = () => {
 		jumpToBlock: PropTypes.func,
 		atBlock: PropTypes.any,
 		blockNumber: PropTypes.any,
-		stayAtHead: PropTypes.func,
-		checked: PropTypes.bool,
+
+		setStayAtHead: PropTypes.func,
+		stayAtHead: PropTypes.bool,
+		setOnlyFavourites: PropTypes.func,
+		onlyFavourites: PropTypes.bool,
+
 		scale: PropTypes.any
 	}; 
 };	
@@ -73,12 +78,15 @@ export default function SignedBlocksHeader(props) {
 						<div className="col-sm-2">			
 							<p>{"Epoch " + (props.epochNumber ? props.epochNumber : "loading...")}</p>
 						</div>
-						<div className="col-sm-3">			
+						<div className="col-sm-2">			
 							<p>{"Current block " + (props.blockNumber ? props.blockNumber : "loading...")}</p>
 						</div>
 						<div className="col-sm-2">			
-							<RefreshSwitch stayAtHead={props.stayAtHead} checked={props.checked}/>
-						</div>					
+							<RefreshSwitch setStayAtHead={props.setStayAtHead} stayAtHead={props.stayAtHead}/>
+						</div>
+						<div className="col-sm-2">			
+							<OnlyFavouritesSwitch setOnlyFavourites={props.setOnlyFavourites} onlyFavourites={props.onlyFavourites}/>
+						</div>				
 						<div className="col-sm-2">					
 							<div className="column">
 								<input defaultValue={0} onChange={(event, type)=>{
@@ -89,7 +97,7 @@ export default function SignedBlocksHeader(props) {
 								<button onClick={()=> props.jumpToBlock(atBlock)} className="btn-secondary">To block</button>
 							</div>
 						</div>
-						<div className="col-sm-3">
+						<div className="col-sm-2">
 							<p>Map Scale</p>
 							<Slider min={0} max={2} step={1} defaultValue={index} marks={marks} onAfterChange={(value) => props.changeMapScale(value)}/>
 						</div>
