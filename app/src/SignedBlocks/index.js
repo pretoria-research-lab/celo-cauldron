@@ -406,12 +406,19 @@ class SignedBlocks extends Component
 		}
 	}
 
-	setOnlyFavourites = (onlyFavourites) => {
-		console.log("Only favourites =" + onlyFavourites);
-		if(this.state.onlyFavourites !== onlyFavourites){
-			console.log("Changing onlyFavourites to " + onlyFavourites);
-			localStorage.setItem("onlyFavourites", onlyFavourites);
-			this.setState({onlyFavourites});
+	setOnlyFavourites = (onlyFavourites, event) => {
+
+		const favourites = this.state.signatures.filter((e,i) => e.favourite === true) || [];
+		if((favourites.length===0) && (onlyFavourites === true)){
+			toast.notify("WARN", "No favourites have been set yet");
+		}
+		else{
+			console.log("Only favourites =" + onlyFavourites);
+			if(this.state.onlyFavourites !== onlyFavourites){
+				console.log("Changing onlyFavourites to " + onlyFavourites);
+				localStorage.setItem("onlyFavourites", onlyFavourites);
+				this.setState({onlyFavourites});
+			}
 		}
 	}
 
