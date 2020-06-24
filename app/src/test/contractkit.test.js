@@ -1,8 +1,11 @@
 import { strict as assert } from "assert";
+import {API_CONFIG} from "../Utils/config";
 import * as contractkit from "@celo/contractkit";
 
+const mainnetForno = API_CONFIG.filter((element) => element.network === "mainnet")[0].remoteNode;
+
 test("contractkit", async () => { 
-	const kit = contractkit.newKit("https://baklava-forno.celo-testnet.org");
+	const kit = contractkit.newKit(mainnetForno);
 	const blockNumber = await kit.web3.eth.getBlockNumber();
 	console.log("Current blockNumber is " + blockNumber);
 	assert(blockNumber);
@@ -11,7 +14,7 @@ test("contractkit", async () => {
 
 test("create account from private key", async () => {  
 
-	const kit = contractkit.newKit("https://baklava-forno.celo-testnet.org");
+	const kit = contractkit.newKit(mainnetForno);
 
 	// Add account with private key 0000000000000000000000000000000000000000000000000000000000000001
 	/*eslint no-undef: "warn"*/
