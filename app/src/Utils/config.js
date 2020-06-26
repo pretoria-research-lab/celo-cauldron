@@ -32,7 +32,7 @@ export const SIGNED_BLOCKS_API_CONFIG = [
 		paginationListLength: 12
 	},
 	{   network : "baklava",
-		host: "https://tqgd1io8a4.execute-api.eu-central-1.amazonaws.com",
+		host: "https://zoz0s5jis4.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/baklava",
 		firstBlock: 100,
 		paginationListLength: 12

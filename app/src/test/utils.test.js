@@ -17,24 +17,24 @@ test("Alfajores - getCurrentBlockNumber()", async () => {
 	assert(result > 0);
 }, fornoTimeout);
 
-// test("Baklava - getValidatorGroups()", async () => {
-// 	const result = await utils.getValidatorGroups(baklavaForno);
-// 	console.log(JSON.stringify(result));
-// 	assert(result.length > 0);
-// }, fornoTimeout); 
+test("Baklava - getValidatorGroups()", async () => {
+	const result = await utils.getValidatorGroups(baklavaForno);
+	console.log(JSON.stringify(result));
+	assert(result.length > 0);
+}, fornoTimeout); 
 
-// test("Baklava - getCurrentBlockNumber()", async () => {    
-// 	const result = await utils.getCurrentBlockNumber(baklavaForno);
-// 	assert(result > 0);
-// }, fornoTimeout);
+test("Baklava - getCurrentBlockNumber()", async () => {    
+	const result = await utils.getCurrentBlockNumber(baklavaForno);
+	assert(result > 0);
+}, fornoTimeout);
 
-// test("Mainnet - getValidatorGroups()", async () => {
-// 	const result = await utils.getValidatorGroups(mainnetForno);
-// 	console.log(JSON.stringify(result));
-// 	assert(result.length > 0);
-// }, fornoTimeout); 
+test("Mainnet - getValidatorGroups()", async () => {
+	const result = await utils.getValidatorGroups(mainnetForno);
+	console.log(JSON.stringify(result));
+	assert(result.length > 0);
+}, fornoTimeout); 
 
-// test("Mainnet - getCurrentBlockNumber()", async () => {    
-// 	const result = await utils.getCurrentBlockNumber(mainnetForno);
-// 	assert(result > 0);
-// }, fornoTimeout);
+test("Mainnet - getCurrentBlockNumber()", async () => {    
+	const result = await utils.getCurrentBlockNumber(mainnetForno);
+	assert(result > 0);
+}, fornoTimeout);

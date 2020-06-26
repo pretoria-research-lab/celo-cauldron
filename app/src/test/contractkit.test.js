@@ -3,6 +3,7 @@ import {API_CONFIG} from "../Utils/config";
 import * as contractkit from "@celo/contractkit";
 
 const mainnetForno = API_CONFIG.filter((element) => element.network === "mainnet")[0].remoteNode;
+const timeOut = 40000;
 
 test("contractkit", async () => { 
 	const kit = contractkit.newKit(mainnetForno);
@@ -10,7 +11,7 @@ test("contractkit", async () => {
 	console.log("Current blockNumber is " + blockNumber);
 	assert(blockNumber);
 	assert.notEqual(blockNumber, 0);    
-});
+}, timeOut);
 
 test("create account from private key", async () => {  
 
@@ -43,4 +44,4 @@ test("create account from private key", async () => {
 	kit.defaultAccount = accounts[0];
 	assert.equal(accounts[0], kit.defaultAccount);
 
-});
+}, timeOut);

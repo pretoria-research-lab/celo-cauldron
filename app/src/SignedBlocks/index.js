@@ -287,7 +287,7 @@ class SignedBlocks extends Component
 		
 		// Add earlier pages, only down to the minimum
 		for(let i=(listLength/2);i>0;i--){
-			if((atBlock-(i*lookback)) > minPage){
+			if((atBlock-(i*lookback)) >= minPage){
 				pageList.push(
 					{   atBlock: (atBlock-(i*lookback)),
 						active: false
@@ -323,12 +323,14 @@ class SignedBlocks extends Component
 
 			for(let i=0; i < iterations; i++){
 				if(addedPrevious){
-					const newPageList = [
-						{   atBlock: (pageList[0].atBlock-lookback),
-							active: false
-						}, 
-						...pageList ];
-					pageList = newPageList;
+					if(	(pageList[0].atBlock-lookback) >= minPage){
+						const newPageList = [
+							{   atBlock: (pageList[0].atBlock-lookback),
+								active: false
+							}, 
+							...pageList ];
+						pageList = newPageList;
+					} 
 				} else if (addedNext) {
 					const newPageList = [
 						...pageList, 	
