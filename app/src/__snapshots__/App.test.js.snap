@@ -74,10 +74,10 @@ exports[`renders without crashing and matches snapshot 1`] = `
               <a
                 aria-current={null}
                 className="nav-link"
-                href="/baklava-block-map"
+                href="/alfajores-faucet"
                 onClick={[Function]}
               >
-                Baklava Block Map
+                Alfajores Faucet
               </a>
             </li>
             <li
@@ -86,10 +86,10 @@ exports[`renders without crashing and matches snapshot 1`] = `
               <a
                 aria-current={null}
                 className="nav-link"
-                href="/alfajores-faucet"
+                href="/baklava-faucet"
                 onClick={[Function]}
               >
-                Alfajores Faucet
+                Baklava Faucet
               </a>
             </li>
           </ul>
