@@ -80,6 +80,18 @@ exports[`renders without crashing and matches snapshot 1`] = `
                 Alfajores Faucet
               </a>
             </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current={null}
+                className="nav-link"
+                href="/baklava-faucet"
+                onClick={[Function]}
+              >
+                Baklava Faucet
+              </a>
+            </li>
           </ul>
         </div>
       </div>
