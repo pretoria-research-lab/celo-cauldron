@@ -13,8 +13,8 @@ import SignedBlocksPaginator from "./SignedBlocksPaginator";
 import * as contractkit from "@celo/contractkit";
 
 const signedBlocksAPI = new SignedBlocksService();
-const refreshBlockNumberMillis = 1000;
-const highwatermarkRefreshMillis = 1000;
+const refreshBlockNumberMillis = 100;
+const highwatermarkRefreshMillis = 2000;
 const baseScale = 100;
 
 class SignedBlocks extends Component 
