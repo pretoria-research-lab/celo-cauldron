@@ -47,7 +47,8 @@ class SignedBlocks extends Component
 			stayAtHead: stayAtHead,
 			highwatermark: { atBlock: 0},
 			epoch: -1,
-			onlyFavourites: onlyFavourites
+			onlyFavourites: onlyFavourites,
+			currentSortFunction : () => {}
 		};
 	}
 
@@ -80,21 +81,96 @@ class SignedBlocks extends Component
 	}
 
 	getHighwatermark = async () => {
+		
 		try{
 			const previousHighwatermark = this.state.highwatermark;
 			const highwatermark = (await signedBlocksAPI.getHighwatermark(this.state.signedBlocksAPIConfig)).data;
 			
+			// console.table(highwatermark.signers);
+			
 			this.setState({highwatermark}, async () => {
 				
 				if(this.state.stayAtHead && (previousHighwatermark.atBlock !== highwatermark.atBlock)) {
-	
-					const from = highwatermark.atBlock - this.state.lookback + 1;
-					const to = highwatermark.atBlock;
-					const results = await signedBlocksAPI.getBlocks(this.state.signedBlocksAPIConfig, from, to);
-					
-					this.enrichData(results.data);
 
-					this.setState({signatures: results.data}, 
+					console.log("Retrieved new block ...");
+
+					const signers = this.state.signatures;
+					let recalculatedSigners = [];					
+					
+					// Process signers in extant records
+					signers.forEach((record, index) => {
+						
+						// Check if each signer exists in highwatermark
+						const highwatermarkSigner = highwatermark.signers.filter((element, index) => element.signer === record.signer)[0];
+												
+						if(record.tickArray[0] === ".")							
+							// If the first block in the tickArray was signed, reduce the signed count
+							record.counts.signatures--;		
+						else if (record.tickArray[0] === "~")
+							// If it was not a signer, reduce that count
+							record.counts.notASigner--;
+						else
+							// Otherwise reduce the missed count
+							record.counts.missedSignatures--;
+
+						if(highwatermarkSigner){
+							if(highwatermarkSigner.signed===true) {
+								// console.log(`New signed block found for extant signer ${record.signer}, signatures++`);
+								record.counts.signatures++;
+							}
+							else{
+								console.log(`New missed block found for extant signer ${record.signer}, missedSignatures++`);
+								record.counts.missedSignatures++;
+							}							
+
+							// Slice array from first index (removes [0] element)
+							record.tickArray = record.tickArray.slice(1);
+							// Add new highwatermark to the array
+							record.tickArray.push(highwatermarkSigner.signed ? "." : "✘");
+						}
+						else{
+							console.log(`No new block found for extant signer ${record.signer}, notASigner++`);
+							record.counts.notASigner++;
+							record.tickArray = record.tickArray.slice(1);
+							record.tickArray.push("~");
+						}
+						recalculatedSigners.push(record);
+					});
+
+					// Process signers in highwatermark
+					highwatermark.signers.forEach((record, index) => {
+
+						// Check if each signer exists in existing data
+						const extantSigner = signers.filter((element, index) => element.signer === record.signer)[0];
+
+						// If it doesn't, this highwatermark must be it's first signature
+						if(!extantSigner){
+
+							let newRecord = { 
+								validator: record.validator,
+								signer: record.signer,
+								validatorName: record.validatorName,
+								tickArray : [],
+								counts: {
+									signatures: (record.signed ? 1 : 0),
+									missedSignatures: (record.signed ? 0: 1),
+									notASigner: (this.state.scale - 1)
+								}
+							};
+							console.log(`New signer found: ${record.signer}!`);
+
+							// Pad tickArray with notASigner 
+							for(let i=0;i<this.state.lookback-1;i++)
+								newRecord.tickArray.push("~");
+							
+							newRecord.tickArray.push((record.signed ? "." : "✘"));
+							recalculatedSigners.push(newRecord);
+						}
+					});
+					
+					this.enrichData(recalculatedSigners);
+
+					this.setState({signatures: recalculatedSigners}, 
 						() => this.setState({atBlock: highwatermark.atBlock},
 							() => this.setState({pageList: this.createPageList()},
 								() => this.state.currentSortFunction(this.state.currentSortDirection)
