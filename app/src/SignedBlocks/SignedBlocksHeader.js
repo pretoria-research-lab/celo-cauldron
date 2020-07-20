@@ -12,6 +12,7 @@ SignedBlocksHeader.propTypes = () => {
 		jumpToBlock: PropTypes.func,
 		atBlock: PropTypes.any,
 		blockNumber: PropTypes.any,
+		highwatermark: PropTypes.any,
 
 		setStayAtHead: PropTypes.func,
 		stayAtHead: PropTypes.bool,
@@ -75,12 +76,17 @@ export default function SignedBlocksHeader(props) {
 				</div>
 				<div className="col-sm-7">
 					<div className="row controls">
-						<div className="col-sm-2">			
+						<div className="col-sm-3">			
+							<table className="table table-dark table-bordered">
+								<tbody>
+									<tr><td>Forno</td><td>{props.blockNumber ? props.blockNumber : "loading..."}</td></tr>
+									<tr><td>Cauldron</td><td>{props.highwatermark.atBlock ? props.highwatermark.atBlock : "loading..."}</td></tr>
+								</tbody>
+							</table>
+						</div>
+						<div className="col-sm-1">			
 							<p>{"Epoch " + (props.epochNumber ? props.epochNumber : "loading...")}</p>
-						</div>
-						<div className="col-sm-2">			
-							<p>{"Current block " + (props.blockNumber ? props.blockNumber : "loading...")}</p>
-						</div>
+						</div>					
 						<div className="col-sm-2">			
 							<RefreshSwitch setStayAtHead={props.setStayAtHead} stayAtHead={props.stayAtHead}/>
 						</div>

@@ -548,7 +548,8 @@ class SignedBlocks extends Component
 					setStayAtHead={this.setStayAtHead}
 					stayAtHead={this.state.stayAtHead}
 					setOnlyFavourites={this.setOnlyFavourites}
-					onlyFavourites={this.state.onlyFavourites}					
+					onlyFavourites={this.state.onlyFavourites}
+					highwatermark={this.state.highwatermark}				
 				/>
 				{this.state.loading ? "" : 
 					<SignedBlocksPaginator 
