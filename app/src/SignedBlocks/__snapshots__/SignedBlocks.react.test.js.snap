@@ -32,17 +32,36 @@ exports[`Signed Blocks component matches snapshot 1`] = `
         className="row controls"
       >
         <div
-          className="col-sm-2"
+          className="col-sm-3"
+        >
+          <table
+            className="table table-dark table-bordered"
+          >
+            <tbody>
+              <tr>
+                <td>
+                  Forno
+                </td>
+                <td>
+                  loading...
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Cauldron
+                </td>
+                <td>
+                  loading...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          className="col-sm-1"
         >
           <p>
             Epoch loading...
-          </p>
-        </div>
-        <div
-          className="col-sm-2"
-        >
-          <p>
-            Current block loading...
           </p>
         </div>
         <div
