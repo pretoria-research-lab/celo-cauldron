@@ -121,26 +121,16 @@ exports[`renders without crashing and matches snapshot 1`] = `
         <div
           className="col-sm-3"
         >
-          <a
-            className="navbar-brand"
-            href="/"
-          >
-            <img
-              alt="Pretoria Monochrome Logo"
-              className="header-logo"
-              src="Pretoria_Logo_color_02.png"
-            />
-          </a>
-        </div>
-        <div
-          className="col-sm-3"
-        >
           <p>
-            Built by 
             <a
-              href="https://pretoriaresearchlab.io"
+              className="navbar-brand"
+              href="/"
             >
-              Pretoria Research Lab GmbH
+              <img
+                alt="Pretoria Monochrome Logo"
+                className="header-logo"
+                src="Pretoria_Logo_color_02.png"
+              />
             </a>
           </p>
           <p>
@@ -163,6 +153,63 @@ exports[`renders without crashing and matches snapshot 1`] = `
           className="col-sm-3"
         >
           <p>
+            Pretoria Research Lab is a founding validator of the Celo network, and was security audited during 
+            <a
+              href="https://forum.celo.org/t/the-great-celo-stake-off-the-details/136"
+            >
+              The Great Celo Stake Off
+            </a>
+             and awarded the Master Validator badge.
+          </p>
+          <div
+            className="row validatorBadges"
+          >
+            <a
+              href="https://github.com/celo-org/celo-monorepo/blob/master/packages/web/validator-badges/001-stake-off-founder-validator.md"
+            >
+              <img
+                alt="Founder Validator"
+                src="FounderValidator.svg"
+              />
+            </a>
+            <a
+              href="https://github.com/celo-org/celo-monorepo/blob/master/packages/web/validator-badges/004-genesis-validator.md"
+            >
+              <img
+                alt="Genesis Validator"
+                src="GenesisValidator.svg"
+              />
+            </a>
+            <a
+              href="https://github.com/celo-org/celo-monorepo/blob/master/packages/web/validator-badges/003-stake-off-master-validator.md"
+            >
+              <img
+                alt="Master Validator"
+                src="MasterValidator.svg"
+              />
+            </a>
+            <a
+              href="https://github.com/celo-org/celo-monorepo/blob/master/packages/web/validator-badges/007-celo-foundation-vote-recipient.md"
+            >
+              <img
+                alt="Vote Recipient"
+                src="VoteRecipient.svg"
+              />
+            </a>
+            <a
+              href="https://github.com/celo-org/celo-monorepo/blob/master/packages/web/validator-badges/002-stake-off-attestation-maven.md"
+            >
+              <img
+                alt="Attestation Maven"
+                src="AttestationMaven.svg"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          className="col-sm-3"
+        >
+          <p>
             If you find this page useful, please consider supporting Pretoria by voting for our Celo validator group:
           </p>
           <p>
@@ -170,6 +217,14 @@ exports[`renders without crashing and matches snapshot 1`] = `
               href="https://explorer.celo.org/address/0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c/celo"
             >
               0xddaa60b6d803674bbc434f1c2b261ceb67c2fd7c
+            </a>
+          </p>
+          <p>
+            Additional validator group information available at 
+            <a
+              href="https://thecelo.com/group/pretoriaresearchlab"
+            >
+              https://thecelo.com/group/pretoriaresearchlab
             </a>
           </p>
         </div>

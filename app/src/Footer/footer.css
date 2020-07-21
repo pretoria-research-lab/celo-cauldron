@@ -12,3 +12,8 @@
   font-size: smaller;
   color: var(--celo-white);
 }
+
+.validatorBadges img {
+  max-width: 75px;
+  padding-right: 5px;
+}
