@@ -12,11 +12,13 @@ const alphaSort = (a,b) => {
 export default function HomeInformation() {
 
 	return (
-		<div className="column centered">
-			<div className="link-list col-lg-8">
-				<h2><img className="tiny-icon" src={securityIcon} alt="cLabs resource"/> cLabs</h2>
-				<hr />                
-				<table className="responsive col-lg-12">
+		<div className="row">			
+			
+			<div className="link-list col-sm-6">
+				<table className="table table-dark table-hover responsive col-sm-12">
+					<thead>
+						<tr colSpan={2}><th><h2><img className="tiny-icon" src={securityIcon} alt="cLabs resource"/> cLabs</h2></th></tr>
+					</thead>
 					<tbody>
 						{data.resources.filter(item => item.community===false).sort((a,b) => alphaSort(a.blurb, b.blurb)).map((item,i) =>
 							<tr key={i} className="small-padding">
@@ -28,10 +30,11 @@ export default function HomeInformation() {
 				</table>                
 			</div>
 
-			<div className="link-list col-lg-8">
-				<h2><img className="tiny-icon" src={communityIcon} alt="Community based resource" /> Community</h2>
-				<hr />                        
-				<table className="responsive col-lg-12">
+			<div className="link-list col-sm-6">
+				<table className="table table-dark table-hover responsive col-sm-12">
+					<thead>
+						<tr colSpan={2}><th><h2><img className="tiny-icon" src={communityIcon} alt="Community based resource" /> Community</h2></th></tr>
+					</thead>
 					<tbody>
 						{data.resources.filter(item => item.community===true).sort((a,b) => alphaSort(a.blurb, b.blurb)).map((item,i) =>
 							<tr key={i} className="small-padding">
