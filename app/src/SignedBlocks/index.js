@@ -530,8 +530,10 @@ class SignedBlocks extends Component
 			toast.notify("WARN","Block cannot be less than " + (this.state.signedBlocksAPIConfig.firstBlock + this.state.lookback - baseScale));
 		else if (atBlock > maxPage)
 			toast.notify("WARN","Block cannot be greater than " + maxPage);
-		else
+		else{
+			this.setStayAtHead(false);
 			this.changePage(+atBlock);
+		}	
 	}
 
 	render = () => {
