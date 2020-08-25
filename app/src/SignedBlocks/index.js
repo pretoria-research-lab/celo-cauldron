@@ -13,7 +13,7 @@ import SignedBlocksPaginator from "./SignedBlocksPaginator";
 import * as contractkit from "@celo/contractkit";
 
 const signedBlocksAPI = new SignedBlocksService();
-const refreshBlockNumberMillis = 100;
+const refreshBlockNumberMillis = 1000;
 const highwatermarkRefreshMillis = 2000;
 const baseScale = 100;
 
@@ -48,7 +48,8 @@ class SignedBlocks extends Component
 			highwatermark: { atBlock: 0},
 			epoch: -1,
 			onlyFavourites: onlyFavourites,
-			currentSortFunction : () => {}
+			currentSortFunction : () => {},
+			errorMutex: false
 		};
 	}
 
@@ -59,8 +60,21 @@ class SignedBlocks extends Component
 			const epochNumber = await getCurrentEpochNumber(nodeProvider, blockNumber);
 			this.setState({blockNumber: blockNumber}, () => this.setState({epochNumber: epochNumber}));
 		}catch(error){
-			toast.notify("ERROR", this.props.network + " is not responding");
-			this.setState({blockNumber: -1});
+			console.error(error);
+			if(!this.state.errorMutex){
+				this.setState({errorMutex:true}, () => {
+					toast.notify("WARN", this.props.network + " Forno node is not responding");
+					// toast.notify("WARN", "Retrying in 10 seconds ...");
+					setTimeout(() => {
+						this.setState({errorMutex:false});
+						console.log("errorMutext returned to false");
+					}, 10000);
+					this.setState({blockNumber: -1});
+				});
+			}
+			else{
+				console.log("Skipping notification while errorMutex is true");
+			}			
 		}
 	}
 
