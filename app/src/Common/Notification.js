@@ -6,15 +6,15 @@ export const DEFAULT_AUTOCLOSE = 3000;
 
 export const notify = (type, message) => {
 	if(type==="SUCCESS")
-		toast.success(message, {position: toast.POSITION.TOP_RIGHT, className: "toastSuccess"});
+		toast.success(message, {position: toast.POSITION.TOP_RIGHT, pauseOnHover: false, className: "toastSuccess"});
 	else if(type==="INFO")
-		toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
+		toast.info(message, {position: toast.POSITION.TOP_RIGHT, pauseOnHover: false, className: "toastInfo"});
 	else if(type==="WARN")
-		toast.warn(message, {position: toast.POSITION.TOP_RIGHT, className: "toastWarn"});
+		toast.warn(message, {position: toast.POSITION.TOP_RIGHT, pauseOnHover: false, className: "toastWarn"});
 	else if(type==="ERROR")
-		toast.error(message, {position: toast.POSITION.TOP_RIGHT, className: "toastError"});
+		toast.error(message, {position: toast.POSITION.TOP_RIGHT, pauseOnHover: false, className: "toastError"});
 	else
-		toast.info(message, {position: toast.POSITION.TOP_RIGHT, className: "toastInfo"});
+		toast.info(message, {position: toast.POSITION.TOP_RIGHT, pauseOnHover: false, className: "toastInfo"});
 };
 
 export const processError = (error) => {

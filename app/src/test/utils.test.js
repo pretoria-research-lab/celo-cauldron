@@ -1,6 +1,6 @@
 const assert = require("assert");
 const utils = require("../Utils/utils");
-const fornoTimeout = 40000; //ms
+const fornoTimeout = 60000; //ms
 const config = require("../Utils/config");
 
 const baklavaForno = config.API_CONFIG.filter((element) => element.network === "baklava")[0].remoteNode;
