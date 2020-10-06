@@ -26,5 +26,5 @@ export default class AttestationService {
 		const response = await instance.get(config.host + config.basePath + this.PARSED_PATH);
 		console.log("AttestationService - getParsedAttestations() - success");
 		return response;
-    }
+	}
 }
