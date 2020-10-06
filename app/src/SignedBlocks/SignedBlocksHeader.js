@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import doersLogo from "../assets/04-Doers (dark bg).png";
 import Slider from "rc-slider";
-import RefreshSwitch from "./RefreshSwitch";
-import OnlyFavouritesSwitch from "./OnlyFavouritesSwitch";
+import RefreshSwitch from "../Common/RefreshSwitch";
+import OnlyFavouritesSwitch from "../Common/OnlyFavouritesSwitch";
 import "rc-slider/assets/index.css";
 
 SignedBlocksHeader.propTypes = () => { 
@@ -88,7 +88,7 @@ export default function SignedBlocksHeader(props) {
 							<p>{"Epoch " + (props.epochNumber ? props.epochNumber : "loading...")}</p>
 						</div>					
 						<div className="col-sm-2">			
-							<RefreshSwitch setStayAtHead={props.setStayAtHead} stayAtHead={props.stayAtHead}/>
+							<RefreshSwitch switchText={"Stay at head"} setStayAtHead={props.setStayAtHead} stayAtHead={props.stayAtHead}/>
 						</div>
 						<div className="col-sm-2">			
 							<OnlyFavouritesSwitch setOnlyFavourites={props.setOnlyFavourites} onlyFavourites={props.onlyFavourites}/>
