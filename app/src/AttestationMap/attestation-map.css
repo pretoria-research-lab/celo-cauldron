@@ -1,0 +1,26 @@
+.attestation-300 {
+    padding: 0.05rem !important;
+}
+
+.attestation-200 {
+    padding: 0.05rem !important;
+}
+
+.attestation-100 {
+    padding: 0.15rem !important;
+}
+
+.incomplete {
+    background-color: var(--celo-accent-red);
+    color: var(--celo-accent-red);
+}
+
+.completed {
+    background-color: var(--celo-green);
+    color: var(--celo-green);
+}
+
+.filler {
+    background-color: var(--celo-accent-cyan);
+    color: var(--celo-accent-cyan);
+}
