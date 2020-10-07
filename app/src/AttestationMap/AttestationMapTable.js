@@ -26,7 +26,8 @@ export default function AttestationMapTable(props) {
 		COMPLETED: 2,
 		INCOMPLETE: 3,
 		RATIO: 4,
-		SELECTED: 5
+		SELECTED: 5,
+		STATUS: 6
 	};
 
 	const [currentSortedBy, setCurrentSortedBy] = useState(sortOptions.COMPLETED);
@@ -81,6 +82,15 @@ export default function AttestationMapTable(props) {
 		attestations.sort((x, y) => {
 			let a = x.completedRatio, b = y.completedRatio;
 			if(flip){ a = y.completedRatio; b = x.completedRatio;}
+			return (a === b ? 0 : a > b ? 1 : -1);
+		});
+	};
+
+	const sortByStatus = (attestations, flip) => {	
+		console.log(`Sorting by Ratio, flip = ${flip}`);
+		attestations.sort((x, y) => {
+			let a = x.attestationStatus, b = y.attestationStatus;
+			if(flip){ a = y.attestationStatus; b = x.attestationStatus;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
 	};
@@ -154,6 +164,17 @@ export default function AttestationMapTable(props) {
 				setCurrentSortedBy(sortOptions.SELECTED);
 			}
 			break;	
+		case sortOptions.STATUS:
+			if(currentSortedBy===sortOptions.STATUS) {
+				sortByStatus(attestations, true);
+				setSortIcon(sortUpIcon);
+			}
+			else {
+				sortByStatus(attestations, false);
+				setSortIcon(sortDownIcon);
+				setCurrentSortedBy(sortOptions.STATUS);
+			}
+			break;
 		default:
 			if(currentSortedBy===sortOptions.RATIO) {
 				sortByRatio(attestations, true);
@@ -188,6 +209,13 @@ export default function AttestationMapTable(props) {
 										<>
 											<span>Attestation Service      </span>
 											{currentSortedBy===sortOptions.ATTESTATION_URL ? <img id="sortIcon" src={currentSortIcon} alt="Sorted by issuer" /> : ""}
+										</>	
+									</th>
+
+									<th onClick={() => {sortBy(sortOptions.STATUS);}}>
+										<>
+											<span>Status      </span>
+											{currentSortedBy===sortOptions.STATUS ? <img id="sortIcon" src={currentSortIcon} alt="Sorted by status" /> : ""}
 										</>	
 									</th>			
 									

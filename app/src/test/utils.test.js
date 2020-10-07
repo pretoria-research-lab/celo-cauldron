@@ -51,8 +51,9 @@ test("Mainnet - getAttestationURL())", async () => {
 	assert(result);
 }, fornoTimeout);
 
-// test("Mainnet - getAttestationStatus())", async () => {    
-// 	const result = await utils.getAttestationStatus(mainnetForno, "0xe4036C56B0026eb86f058c77c55E73e9d65d2EA0");
-// 	console.log(result);
-// 	assert(result);
-// }, fornoTimeout);
+test("Mainnet - getAttestationStatus())", async () => {    
+	const attestationURL = await utils.getAttestationURL(mainnetForno, "0xe4036C56B0026eb86f058c77c55E73e9d65d2EA0");
+	const result = await utils.getAttestationStatus(attestationURL);
+	console.log(result);
+	assert(result);
+}, fornoTimeout);

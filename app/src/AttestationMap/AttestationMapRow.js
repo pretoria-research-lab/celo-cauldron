@@ -39,6 +39,10 @@ export default function AttestationMapRow(props) {
 						<a rel="noopener noreferrer" target="_blank" href={data.attestationURL}>{data.attestationURL}</a>
 					</td>
 
+					<td title={JSON.stringify(data.attestationStatus)} className="blockMapInfo text-align-left">
+						<a rel="noopener noreferrer" target="_blank" href={data.attestationURL + "/status"}>{data.attestationStatus.version + " " + data.attestationStatus.status}</a>
+					</td>
+
 					{data.attestations.map((t, i) => 
 						<td 
 							title={JSON.stringify(t)} 

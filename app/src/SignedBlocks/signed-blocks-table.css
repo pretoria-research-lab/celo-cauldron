@@ -20,6 +20,7 @@ th:nth-child(3) {
 
 .signed-blocks td,th {
   padding: 0.3rem;
+  white-space: nowrap;
 }
 
 .missedNumber {
