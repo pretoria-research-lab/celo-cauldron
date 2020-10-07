@@ -42,7 +42,7 @@ export default function AttestationMapTable(props) {
 			if(flip){a = (y.issuerName ? y.issuerName : y.key).toLowerCase(); b = (x.issuerName ? x.issuerName : x.key).toLowerCase();}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 	
 	const sortByAttestationURL = (attestations, flip) => {
 		attestations.sort((x, y) => {			
@@ -50,7 +50,7 @@ export default function AttestationMapTable(props) {
 			if(flip){a = y.attestationURL.toLowerCase(); b = x.attestationURL.toLowerCase();}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 	
 	const sortByCompleted = (attestations, flip) => {	
 		attestations.sort((x, y) => {
@@ -58,7 +58,7 @@ export default function AttestationMapTable(props) {
 			if(flip){a = y.completedCount; b = x.completedCount;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 	
 	const sortByIncomplete = (attestations, flip) => {	
 		attestations.sort((x, y) => {
@@ -66,7 +66,7 @@ export default function AttestationMapTable(props) {
 			if(flip){ a = y.notCompletedCount; b = x.notCompletedCount;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 
 	const sortBySelected = (attestations, flip) => {	
 		attestations.sort((x, y) => {
@@ -74,7 +74,7 @@ export default function AttestationMapTable(props) {
 			if(flip){ a = y.selectedCount; b = x.selectedCount;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 
 	const sortByRatio = (attestations, flip) => {	
 		console.log(`Sorting by Ratio, flip = ${flip}`);
@@ -83,89 +83,89 @@ export default function AttestationMapTable(props) {
 			if(flip){ a = y.completedRatio; b = x.completedRatio;}
 			return (a === b ? 0 : a > b ? 1 : -1);
 		});
-	};
+	}
 
 	const sortBy = (option) => {
 
 		switch(option){
-		case sortOptions.VALIDATOR_NAME:
-			if(currentSortedBy===sortOptions.VALIDATOR_NAME) {
-				sortByValidatorName(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByValidatorName(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.VALIDATOR_NAME);
-			}
-			break;
-		case sortOptions.ATTESTATION_URL:
-			if(currentSortedBy===sortOptions.ATTESTATION_URL) {
-				sortByAttestationURL(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByAttestationURL(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.ATTESTATION_URL);
-			}
-			break;
-		case sortOptions.COMPLETED:
-			if(currentSortedBy===sortOptions.COMPLETED) {
-				sortByCompleted(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByCompleted(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.COMPLETED);
-			}
-			break;				
-		case sortOptions.INCOMPLETE:
-			if(currentSortedBy===sortOptions.INCOMPLETE) {
-				sortByIncomplete(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByIncomplete(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.INCOMPLETE);
-			}
-			break;
-		case sortOptions.RATIO:
-			if(currentSortedBy===sortOptions.RATIO) {
-				sortByRatio(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByRatio(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.RATIO);
-			}
-			break;		
-		case sortOptions.SELECTED:
-			if(currentSortedBy===sortOptions.SELECTED) {
-				sortBySelected(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortBySelected(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.SELECTED);
-			}
-			break;	
-		default:
-			if(currentSortedBy===sortOptions.RATIO) {
-				sortByRatio(attestations, true);
-				setSortIcon(sortUpIcon);
-			}
-			else {
-				sortByRatio(attestations, false);
-				setSortIcon(sortDownIcon);
-				setCurrentSortedBy(sortOptions.RATIO);
-			}
+			case sortOptions.VALIDATOR_NAME:
+				if(currentSortedBy===sortOptions.VALIDATOR_NAME) {
+					sortByValidatorName(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByValidatorName(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.VALIDATOR_NAME);
+				}
+				break;
+			case sortOptions.ATTESTATION_URL:
+				if(currentSortedBy===sortOptions.ATTESTATION_URL) {
+					sortByAttestationURL(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByAttestationURL(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.ATTESTATION_URL);
+				}
+				break;
+			case sortOptions.COMPLETED:
+				if(currentSortedBy===sortOptions.COMPLETED) {
+					sortByCompleted(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByCompleted(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.COMPLETED);
+				}
+				break;				
+			case sortOptions.INCOMPLETE:
+				if(currentSortedBy===sortOptions.INCOMPLETE) {
+					sortByIncomplete(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByIncomplete(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.INCOMPLETE);
+				}
+				break;
+			case sortOptions.RATIO:
+				if(currentSortedBy===sortOptions.RATIO) {
+					sortByRatio(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByRatio(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.RATIO);
+				}
+				break;		
+			case sortOptions.SELECTED:
+				if(currentSortedBy===sortOptions.SELECTED) {
+					sortBySelected(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortBySelected(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.SELECTED);
+				}
+				break;	
+			default:
+				if(currentSortedBy===sortOptions.RATIO) {
+					sortByRatio(attestations, true);
+					setSortIcon(sortUpIcon);
+				}
+				else {
+					sortByRatio(attestations, false);
+					setSortIcon(sortDownIcon);
+					setCurrentSortedBy(sortOptions.RATIO);
+				}
 		}		
-	};
+	}
 
 	return (
 		<div className="row">
