@@ -1,6 +1,6 @@
 service: pretoria-celo-cauldron
 
-frameworkVersion: ">=1.2.0 <2.5.0"
+frameworkVersion: ">=1.2.0 <2.6.0"
 
 plugins:
   - serverless-single-page-app-plugin
