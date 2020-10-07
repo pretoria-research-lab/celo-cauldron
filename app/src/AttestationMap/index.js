@@ -33,21 +33,21 @@ class AttestationMap extends Component
 		const scale = parseInt(localStorage.getItem("scale")) || this.props.lookback;
 		console.log(`Retrieved previous settings, autoRefresh ${autoRefresh}, scale ${scale}, onlyFavourites ${onlyFavourites}`);
 
-        this.state =	
+		this.state =	
         {
-			lookback: scale, 
-			atBlock: -1, 
-			attestations: [], 
-			loading: true, 
-			attestationAPIConfig: {}, 
-			remoteNodeConfig: {}, 
-			blockNumber: 0, 
-			processing: false,
-			autoRefresh: autoRefresh,
-			epoch: -1,
-			onlyFavourites: onlyFavourites,
-			errorMutex: false
-		};
+        	lookback: scale, 
+        	atBlock: -1, 
+        	attestations: [], 
+        	loading: true, 
+        	attestationAPIConfig: {}, 
+        	remoteNodeConfig: {}, 
+        	blockNumber: 0, 
+        	processing: false,
+        	autoRefresh: autoRefresh,
+        	epoch: -1,
+        	onlyFavourites: onlyFavourites,
+        	errorMutex: false
+        };
 	}
 
 	getCurrentBlockNumber = async () => {
@@ -78,7 +78,7 @@ class AttestationMap extends Component
 		const remoteNodeConfig = API_CONFIG.filter((item) => item.network.toLowerCase() === network.toLowerCase())[0];
 		console.log(`Using remote node configuration - ${JSON.stringify(remoteNodeConfig)}`);
 		return remoteNodeConfig;
-    }
+	}
     
 	getAttestationAPIConfig = (network) => {
 		const attestationAPIConfig = ATTESTATIONS_API_CONFIG.filter((item) => item.network.toLowerCase() === network.toLowerCase())[0];
@@ -89,17 +89,17 @@ class AttestationMap extends Component
 	componentDidMount = () => {
 		this.setState({remoteNodeConfig: this.getRemoteNodeConfig(this.props.network)}, 
             
-            () => this.setState({attestationAPIConfig: this.getAttestationAPIConfig(this.props.network)}, 
+			() => this.setState({attestationAPIConfig: this.getAttestationAPIConfig(this.props.network)}, 
                 
-                () => {
-                    const blockNumberIntervalID = setInterval(this.getCurrentBlockNumber, refreshBlockNumberMillis);
+				() => {
+					const blockNumberIntervalID = setInterval(this.getCurrentBlockNumber, refreshBlockNumberMillis);
 					this.setState({blockNumberIntervalID:blockNumberIntervalID});
 					
 					const attestationsIntervalID = setInterval(this.getAttestations, refreshAttestationsMillis);
-                    this.setState({attestationsIntervalID:attestationsIntervalID});
+					this.setState({attestationsIntervalID:attestationsIntervalID});
 
-                    this.getAttestations();
-                }
+					this.getAttestations();
+				}
 
 			));
 	}
@@ -166,27 +166,27 @@ class AttestationMap extends Component
 
 	getAttestations = () => {
 
-        this.setState({loading:true},  async () => {
-            try{
-                const response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);            
-                var data = response.data;                
-                toast.notify("INFO", "Retrieved parsed attestations");
+		this.setState({loading:true},  async () => {
+			try{
+				const response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);            
+				var data = response.data;                
+				toast.notify("INFO", "Retrieved parsed attestations");
 
 				await this.enrichData(data);
 				this.sortByCompleted(data, true);
             
-                this.setState({attestations: data}, () => {
+				this.setState({attestations: data}, () => {
 					console.log(this.state);
-                    this.setState({loading:false});}
-                );
-            }
-            catch (error) {
-                console.log(error);
-                toast.notify("WARN","Error retrieving attestations, please refresh");
-                const attestations = [];
-                this.setState({attestations}, () => this.setState({loading:true}));
-            }
-        });	
+					this.setState({loading:false});}
+				);
+			}
+			catch (error) {
+				console.log(error);
+				toast.notify("WARN","Error retrieving attestations, please refresh");
+				const attestations = [];
+				this.setState({attestations}, () => this.setState({loading:true}));
+			}
+		});	
 	}
 
 	changeMapScale = (scale) => {
@@ -271,23 +271,23 @@ class AttestationMap extends Component
 		return ( 			
 			<div className="container-fluid signed-blocks-content">   
 				
-                <AttestationMapHeader
+				<AttestationMapHeader
 					
 					epochNumber={this.state.epochNumber}
 					atBlock={this.state.atBlock}
                     
-                    changeMapScale={this.changeMapScale}
+					changeMapScale={this.changeMapScale}
 					scale={this.state.lookback}
                     
-                    blockNumber={this.state.blockNumber}
-                    config={this.state.remoteNodeConfig} 
-                    network={this.props.network}
+					blockNumber={this.state.blockNumber}
+					config={this.state.remoteNodeConfig} 
+					network={this.props.network}
                     
-                    setAutoRefresh={this.setAutoRefresh}
+					setAutoRefresh={this.setAutoRefresh}
 					autoRefresh={this.state.autoRefresh}
                     
-                    setOnlyFavourites={this.setOnlyFavourites}
-                    onlyFavourites={this.state.onlyFavourites}
+					setOnlyFavourites={this.setOnlyFavourites}
+					onlyFavourites={this.state.onlyFavourites}
                 				
 				/>
 
