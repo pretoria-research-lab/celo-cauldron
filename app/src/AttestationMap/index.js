@@ -9,7 +9,7 @@ import {getCurrentBlockNumber, getCurrentEpochNumber} from "../Utils/utils";
 import AttestationService from "../AttestationService";
 import AttestationMapTable from "./AttestationMapTable";
 import AttestationMapHeader from "./AttestationMapHeader";
-import {getAttestationURL} from "../Utils/utils";
+import {getAttestationURL, getAttestationHealthz, getAttestationStatus} from "../Utils/utils";
 
 const attestationAPI = new AttestationService();
 const refreshBlockNumberMillis = 1000;
@@ -136,8 +136,25 @@ class AttestationMap extends Component
 				element["attestationURL"] = await getAttestationURL(this.state.remoteNodeConfig.remoteNode, element.key);
 			}
 			catch(err){
-				element["attestationURL"] = "Could not retrieve";
-			}			
+				element["attestationURL"] = "Could not retrieve metadata";
+			}
+			
+			try{
+				element["attestationHealthz"] = await getAttestationHealthz(element["attestationURL"]);
+			}
+			catch(err){
+				element["attestationHealthz"] = "-";
+			}
+
+			try{
+				element["attestationStatus"] = await getAttestationStatus(element["attestationURL"]);
+				if(!element["attestationStatus"].version){
+					element["attestationStatus"]["version"] = "-";
+				}
+			}
+			catch(err){
+				element["attestationStatus"] = {version: "-", status: "-"};
+			}
 	
 			if(element.favourite === null)
 				element.favourite = false;

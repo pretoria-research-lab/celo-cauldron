@@ -36,16 +36,54 @@ export const getMetadataURL = async (nodeProvider, account) => {
 };
 
 export const getAttestationURL = async (nodeProvider, account) => {
-	const metadataURL = await getMetadataURL(nodeProvider, account);
-	const metadata = await axios.get(metadataURL);
+	
+	let metadataURL = await getMetadataURL(nodeProvider, account);
+	metadataURL = "https://cors-anywhere.herokuapp.com/"+metadataURL;
+	const urlParts = metadataURL.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];
+	const TIMEOUT = 10000;
+	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS
+		});
+	const metadata = await instance.get(metadataURL);
 	const claims = metadata.data.claims;
 	const attestationServiceURL = claims.filter((element, index) => {return element.type==="ATTESTATION_SERVICE_URL";})[0];
+
 	return attestationServiceURL.url;
 };
 
-export const getAttestationStatus = async (nodeProvider, account) => {
-	const attestationServiceURL = await getAttestationURL(nodeProvider, account);
-	const healthz = await axios.get(attestationServiceURL + "/healthz");
+export const getAttestationHealthz = async (attestationServiceURL) => {
+	
+	const url = "https://cors-anywhere.herokuapp.com/"+attestationServiceURL;
+	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];
+	const TIMEOUT = 10000;
+	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS
+		});
+	const healthz = await instance.get(url + "/healthz");
 	const status = healthz.data.status;
 	return status;
+};
+
+export const getAttestationStatus = async (attestationServiceURL) => {
+	
+	const url = "https://cors-anywhere.herokuapp.com/"+attestationServiceURL;
+	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];
+	const TIMEOUT = 10000;
+	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS
+		});
+	const status = await instance.get(url + "/status");
+	return status.data;
 };
