@@ -12,13 +12,14 @@ class Navigation extends Component
 	static get propTypes() { 
 		return { 
 			faucets: PropTypes.any,
-			signedBlocks: PropTypes.any
+			signedBlocks: PropTypes.any,
+			attestationMaps: PropTypes.any
 		}; 
 	}
 
 	render() { 
 
-		const { faucets, signedBlocks } = this.props;
+		const { faucets, signedBlocks, attestationMaps } = this.props;
        
 		return (<nav className="navbar navbar-expand-lg navbar-dark static-top">
 			<div className="container-fluid">
@@ -37,6 +38,7 @@ class Navigation extends Component
 						<li className="nav-item">
 							<NavLink className="nav-link" exact={true} to="/">Tools</NavLink>
 						</li>
+						{attestationMaps.map((am, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + (am.toLowerCase() === "mainnet" ? "" : (am.toLowerCase() + "-")) + "attestations"}>{(am.toLowerCase() === "mainnet" ? "" : (am + " ")) + "Attestation Map"}</NavLink></li> )}
 						{signedBlocks.map((sb, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + (sb.toLowerCase() === "mainnet" ? "" : (sb.toLowerCase() + "-")) + "block-map"}>{(sb.toLowerCase() === "mainnet" ? "" : (sb + " ")) + "Block Map"}</NavLink></li> )}
 						{faucets.map((faucet, i) => <li key={i} className="nav-item"><NavLink key={i} className="nav-link" to={"/" + faucet.toLowerCase() + "-faucet"}>{faucet + " Faucet"}</NavLink></li> )}
 					</ul>
