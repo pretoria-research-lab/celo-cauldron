@@ -2,7 +2,8 @@ import axios from "axios";
 export default class AttestationService {
 
 	TIMEOUT = 29000;
-	HEADERS = {"Content-Type":"application/json;charset=utf-8", "Accept":"*/*"};
+	// HEADERS = {"Content-Type":"application/json;charset=utf-8", "Accept":"*/*"};
+	HEADERS = {};
 	PARSED_PATH = "/parsed";
 	FULL_PATH = "/full";
 	ATTESTATION_PATH = "/attestation"
@@ -11,8 +12,7 @@ export default class AttestationService {
 		return axios.create({
 			baseUrl: config.host,
 			timeout: this.TIMEOUT,
-			headers: this.HEADERS,
-			crossDomain: true
+			headers: this.HEADERS
 		});
 	}
 

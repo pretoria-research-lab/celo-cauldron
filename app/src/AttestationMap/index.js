@@ -135,8 +135,6 @@ class AttestationMap extends Component
 				const metadataURL = await getMetadataURL(this.state.remoteNodeConfig.remoteNode, element.key);
 				const response = await attestationAPI.getAttestationStatus(this.state.attestationAPIConfig, metadataURL);
 				const data = response.data;	
-
-				// console.log("Retrieve attestation status of:" + JSON.stringify(data));	
 				
 				element["attestationURL"] = data.attestationURL;
 				element["attestationHealthz"] = data.healthz.status;
@@ -147,27 +145,10 @@ class AttestationMap extends Component
 
 			}
 			catch(err){
-
-				// Retry with cors kludge
-				console.log("Error retrieving attestation information for " + element.key);
-				try{
-					const cors_kludge = "https://cors-anywhere.herokuapp.com/";					
-					const metadataURL = await getMetadataURL(this.state.remoteNodeConfig.remoteNode, element.key);
-					const response = await attestationAPI.getAttestationStatus(this.state.attestationAPIConfig, cors_kludge + metadataURL);
-					const data = response.data;				
-					element["attestationURL"] = data.attestationURL;
-					element["attestationHealthz"] = data.healthz.status;
-					element["attestationStatus"] = data.status;
-					if(!element["attestationStatus"].version){
-						element["attestationStatus"]["version"] = "-";
-					}
-
-				}
-				catch(err){
-					element["attestationURL"] = "(╯°□°）╯︵ ┻━┻";
-					element["attestationHealthz"] = "-";
-					element["attestationStatus"] = {version: "-", status: "-"};
-				}
+				element["attestationURL"] = "(╯°□°）╯︵ ┻━┻ Cauldron did something wrong";
+				element["attestationHealthz"] = "-";
+				element["attestationStatus"] = {version: "-", status: "-"};
+				console.log(err);
 			}
 	
 			if(element.favourite === null)
