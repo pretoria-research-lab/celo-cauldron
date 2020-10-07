@@ -5,11 +5,10 @@ import * as toast from "../Common/Notification";
 import "../SignedBlocks/signed-blocks.css";
 import "./attestation-map.css";
 import {ATTESTATIONS_API_CONFIG, API_CONFIG} from "../Utils/config";
-import {getCurrentBlockNumber, getCurrentEpochNumber} from "../Utils/utils";
+import {getCurrentBlockNumber, getCurrentEpochNumber, getMetadataURL} from "../Utils/utils";
 import AttestationService from "../AttestationService";
 import AttestationMapTable from "./AttestationMapTable";
 import AttestationMapHeader from "./AttestationMapHeader";
-import {getAttestationURL, getAttestationHealthz, getAttestationStatus} from "../Utils/utils";
 
 const attestationAPI = new AttestationService();
 const refreshBlockNumberMillis = 1000;
@@ -133,27 +132,42 @@ class AttestationMap extends Component
 			});		
 			
 			try{
-				element["attestationURL"] = await getAttestationURL(this.state.remoteNodeConfig.remoteNode, element.key);
-			}
-			catch(err){
-				element["attestationURL"] = "Could not retrieve metadata";
-			}
-			
-			try{
-				element["attestationHealthz"] = await getAttestationHealthz(element["attestationURL"]);
-			}
-			catch(err){
-				element["attestationHealthz"] = "-";
-			}
+				const metadataURL = await getMetadataURL(this.state.remoteNodeConfig.remoteNode, element.key);
+				const response = await attestationAPI.getAttestationStatus(this.state.attestationAPIConfig, metadataURL);
+				const data = response.data;	
 
-			try{
-				element["attestationStatus"] = await getAttestationStatus(element["attestationURL"]);
+				// console.log("Retrieve attestation status of:" + JSON.stringify(data));	
+				
+				element["attestationURL"] = data.attestationURL;
+				element["attestationHealthz"] = data.healthz.status;
+				element["attestationStatus"] = data.status;
 				if(!element["attestationStatus"].version){
 					element["attestationStatus"]["version"] = "-";
 				}
+
 			}
 			catch(err){
-				element["attestationStatus"] = {version: "-", status: "-"};
+
+				// Retry with cors kludge
+				console.log("Error retrieving attestation information for " + element.key);
+				try{
+					const cors_kludge = "https://cors-anywhere.herokuapp.com/";					
+					const metadataURL = await getMetadataURL(this.state.remoteNodeConfig.remoteNode, element.key);
+					const response = await attestationAPI.getAttestationStatus(this.state.attestationAPIConfig, cors_kludge + metadataURL);
+					const data = response.data;				
+					element["attestationURL"] = data.attestationURL;
+					element["attestationHealthz"] = data.healthz.status;
+					element["attestationStatus"] = data.status;
+					if(!element["attestationStatus"].version){
+						element["attestationStatus"]["version"] = "-";
+					}
+
+				}
+				catch(err){
+					element["attestationURL"] = "(╯°□°）╯︵ ┻━┻";
+					element["attestationHealthz"] = "-";
+					element["attestationStatus"] = {version: "-", status: "-"};
+				}
 			}
 	
 			if(element.favourite === null)
@@ -187,14 +201,13 @@ class AttestationMap extends Component
 			try{
 				const response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);            
 				var data = response.data;                
-				toast.notify("INFO", "Retrieved parsed attestations");
 
 				await this.enrichData(data);
 				this.sortByCompleted(data, true);
             
 				this.setState({attestations: data}, () => {
 					console.log(this.state);
-					this.setState({loading:false});}
+					this.setState({loading:false}, toast.notify("INFO", "Retrieved parsed attestations"));}
 				);
 			}
 			catch (error) {
