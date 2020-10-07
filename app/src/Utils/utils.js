@@ -33,19 +33,19 @@ export const getMetadataURL = async (nodeProvider, account) => {
 	const accounts = await kit.contracts.getAccounts();
 	const metadataURL = await accounts.getMetadataURL(account);
 	return metadataURL;
-}
+};
 
 export const getAttestationURL = async (nodeProvider, account) => {
 	const metadataURL = await getMetadataURL(nodeProvider, account);
 	const metadata = await axios.get(metadataURL);
 	const claims = metadata.data.claims;
-	const attestationServiceURL = claims.filter((element, index) => {return element.type==="ATTESTATION_SERVICE_URL"})[0];
+	const attestationServiceURL = claims.filter((element, index) => {return element.type==="ATTESTATION_SERVICE_URL";})[0];
 	return attestationServiceURL.url;
-}
+};
 
 export const getAttestationStatus = async (nodeProvider, account) => {
 	const attestationServiceURL = await getAttestationURL(nodeProvider, account);
 	const healthz = await axios.get(attestationServiceURL + "/healthz");
 	const status = healthz.data.status;
 	return status;
-}
+};
