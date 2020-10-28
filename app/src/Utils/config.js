@@ -43,6 +43,10 @@ export const ATTESTATIONS_API_CONFIG = [
 	{   network : "mainnet",
 		host: "https://n986qtrpth.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/mainnet"
+	},
+	{   network : "baklava",
+		host: "https://7pa0tekgx0.execute-api.eu-central-1.amazonaws.com",
+		basePath: "/baklava"
 	}
 ];
 
