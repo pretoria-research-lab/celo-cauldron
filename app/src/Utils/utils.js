@@ -1,5 +1,5 @@
 import * as contractkit from "@celo/contractkit";
-// import axios from "axios";
+import axios from "axios";
 
 export const getCurrentBlockNumber = async (nodeProvider) => {    
 	const kit = contractkit.newKit(nodeProvider);
@@ -35,55 +35,69 @@ export const getMetadataURL = async (nodeProvider, account) => {
 	return metadataURL;
 };
 
-// export const getAttestationURL = async (nodeProvider, account) => {
-	
-// 	let metadataURL = await getMetadataURL(nodeProvider, account);
-// 	metadataURL = "https://cors-anywhere.herokuapp.com/"+metadataURL;
-// 	const urlParts = metadataURL.replace('http://','').replace('https://','').split(/[/?#]/);
-// 	const host = urlParts[0];
-// 	const TIMEOUT = 10000;
-// 	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
-// 	const instance = axios.create({
-// 			baseUrl: host,
-// 			timeout: TIMEOUT,
-// 			headers: HEADERS
-// 		});
-// 	const metadata = await instance.get(metadataURL);
-// 	const claims = metadata.data.claims;
-// 	const attestationServiceURL = claims.filter((element, index) => {return element.type==="ATTESTATION_SERVICE_URL";})[0];
+const CORS_ANYWHERE="https://shielded-ravine-99376.herokuapp.com/";
+// const HEADERS = {"X-Requested-With": "XMLHttpRequest"};
+const HEADERS= {};
+const TIMEOUT = 5000;
 
-// 	return attestationServiceURL.url;
-// };
-
-// export const getAttestationHealthz = async (attestationServiceURL) => {
+export const getAttestationURL = async (nodeProvider, account) => {
 	
-// 	const url = "https://cors-anywhere.herokuapp.com/"+attestationServiceURL;
-// 	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
-// 	const host = urlParts[0];
-// 	const TIMEOUT = 10000;
-// 	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
-// 	const instance = axios.create({
-// 			baseUrl: host,
-// 			timeout: TIMEOUT,
-// 			headers: HEADERS
-// 		});
-// 	const healthz = await instance.get(url + "/healthz");
-// 	const status = healthz.data.status;
-// 	return status;
-// };
+	let metadataURL = await getMetadataURL(nodeProvider, account);
+	metadataURL = CORS_ANYWHERE+metadataURL;
+	const urlParts = metadataURL.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];	
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS,
+			withCredentials: false,
+			// proxy: {
+			// 	host: CORS_ANYWHERE,
+			// 	port: 8080
+			// },
+		});
+	const metadata = await instance.get(metadataURL);
+	const claims = metadata.data.claims;
+	const attestationServiceURL = claims.filter((element, index) => {return element.type==="ATTESTATION_SERVICE_URL";})[0];
 
-// export const getAttestationStatus = async (attestationServiceURL) => {
+	return attestationServiceURL.url;
+};
+
+export const getAttestationHealthz = async (attestationServiceURL) => {
 	
-// 	const url = "https://cors-anywhere.herokuapp.com/"+attestationServiceURL;
-// 	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
-// 	const host = urlParts[0];
-// 	const TIMEOUT = 10000;
-// 	const HEADERS = {"Content-Type":"application/json;charset=utf-8"};
-// 	const instance = axios.create({
-// 			baseUrl: host,
-// 			timeout: TIMEOUT,
-// 			headers: HEADERS
-// 		});
-// 	const status = await instance.get(url + "/status");
-// 	return status.data;
-// };
+	const url = CORS_ANYWHERE+attestationServiceURL;
+	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS,
+			withCredentials: false,
+			// proxy: {
+			// 	host: CORS_ANYWHERE,
+			// 	port: 8080
+			// },
+		});
+	const healthz = await instance.get(url + "/healthz");
+	const status = healthz.data.status;
+	return status;
+};
+
+export const getAttestationStatus = async (attestationServiceURL) => {
+	
+	const url = CORS_ANYWHERE+attestationServiceURL;
+	const urlParts = url.replace('http://','').replace('https://','').split(/[/?#]/);
+	const host = urlParts[0];
+	const instance = axios.create({
+			baseUrl: host,
+			timeout: TIMEOUT,
+			headers: HEADERS,
+			withCredentials: false,
+			// proxy: {
+			// 	host: CORS_ANYWHERE,
+			// 	port: 8080
+			// },
+		});
+	const status = await instance.get(url + "/status");
+	return status.data;
+};
