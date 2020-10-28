@@ -17,7 +17,7 @@ const AsyncAttestationMap = AsyncComponent(() => import("./AttestationMap"));
 
 const faucets = ["Alfajores","Baklava"];
 const signedBlocks = ["Mainnet", "Baklava"];
-const attestationMaps = ["Mainnet"];
+const attestationMaps = ["Mainnet", "Baklava"];
 
 class App extends Component {
 

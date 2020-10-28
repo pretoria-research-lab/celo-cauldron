@@ -74,6 +74,18 @@ exports[`renders without crashing and matches snapshot 1`] = `
               <a
                 aria-current={null}
                 className="nav-link"
+                href="/baklava-attestations"
+                onClick={[Function]}
+              >
+                Baklava Attestation Map
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current={null}
+                className="nav-link"
                 href="/block-map"
                 onClick={[Function]}
               >

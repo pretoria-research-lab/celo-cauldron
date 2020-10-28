@@ -5,10 +5,12 @@ import * as toast from "../Common/Notification";
 import "../SignedBlocks/signed-blocks.css";
 import "./attestation-map.css";
 import {ATTESTATIONS_API_CONFIG, API_CONFIG} from "../Utils/config";
-import {getCurrentBlockNumber, getCurrentEpochNumber, getMetadataURL} from "../Utils/utils";
+import {getCurrentBlockNumber, getCurrentEpochNumber, getMetadataURL, getAttestationURL, getAttestationStatus, getAttestationHealthz} from "../Utils/utils";
 import AttestationService from "../AttestationService";
 import AttestationMapTable from "./AttestationMapTable";
 import AttestationMapHeader from "./AttestationMapHeader";
+import ascendingIcon from "../assets/sort-down.svg";
+import descendingIcon from "../assets/sort-up.svg";
 
 const attestationAPI = new AttestationService();
 const refreshBlockNumberMillis = 1000;
@@ -27,9 +29,9 @@ class AttestationMap extends Component
 	constructor(props){
 		super(props);
 
-		const autoRefresh = localStorage.getItem("autoRefresh") === "true" ? true : false;
-		const onlyFavourites = localStorage.getItem("onlyFavourites") === "true" ? true : false;
-		const scale = parseInt(localStorage.getItem("scale")) || this.props.lookback;
+		const autoRefresh = localStorage.getItem(`attestation-autoRefresh-${this.props.network}`) === "true" ? true : false;
+		const onlyFavourites = localStorage.getItem(`attestation-onlyFavourites-${this.props.network}`) === "true" ? true : false;
+		const scale = parseInt(localStorage.getItem(`attestation-scale-${this.props.network}`)) || this.props.lookback;
 		console.log(`Retrieved previous settings, autoRefresh ${autoRefresh}, scale ${scale}, onlyFavourites ${onlyFavourites}`);
 
 		this.state =	
@@ -45,7 +47,10 @@ class AttestationMap extends Component
         	autoRefresh: autoRefresh,
         	epoch: -1,
         	onlyFavourites: onlyFavourites,
-        	errorMutex: false
+			errorMutex: false,
+			sortIcon: descendingIcon,
+			sortByAttributeName: "selectedCount",
+			sortDirection: "descending"
         };
 	}
 
@@ -62,7 +67,7 @@ class AttestationMap extends Component
 					toast.notify("WARN", this.props.network + " Forno node is not responding");
 					setTimeout(() => {
 						this.setState({errorMutex:false});
-						console.log("errorMutext returned to false");
+						console.log("errorMutex returned to false");
 					}, 10000);
 					this.setState({blockNumber: -1});
 				});
@@ -122,14 +127,19 @@ class AttestationMap extends Component
 
 	enrichData = async (data) => {		
 		data.forEach(async element => {
+			
 			element["issuerLink"] = this.getLinkForAddress(element.key);
-			element["validatorLink"] = this.getLinkForValidatorAddress(element.issuerName);
-			element["favourite"] = localStorage.getItem(element.issuer);
+			element["favourite"] = localStorage.getItem("attestation-" + this.props.network + "-" + element.key);
 			element["completedRatio"] = Math.round(element.completedCount / element.selectedCount * 100);			
+			
 			element.attestations.forEach((element, index) => {
 				element["issuerSelectedLink"] = this.getLinkForTxId(element.issuerSelected.txId);
-				element["completedLink"] = this.getLinkForTxId(element.completed.txId);				
-			});		
+				element["completedLink"] = element.completed.txId ? this.getLinkForTxId(element.completed.txId) : null;				
+			});
+
+			if(!element["issuerName"]){
+				element["issuerName"] = element.key;
+			}
 			
 			try{
 				const metadataURL = await getMetadataURL(this.state.remoteNodeConfig.remoteNode, element.key);
@@ -142,14 +152,44 @@ class AttestationMap extends Component
 				if(!element["attestationStatus"].version){
 					element["attestationStatus"]["version"] = "-";
 				}
-
 			}
 			catch(err){
-				element["attestationURL"] = "(╯°□°）╯︵ ┻━┻ Cauldron did something wrong";
-				element["attestationHealthz"] = "-";
-				element["attestationStatus"] = {version: "-", status: "-"};
-				console.log(err);
+
+				console.log(`Error retrieving for ${element.key}, retrying via proxy...`);
+
+				try{					
+					element["attestationURL"] = await getAttestationURL(this.state.remoteNodeConfig.remoteNode, element.key);
+					console.log(`AttestationURL for ${element.key} is ${element.attestationURL}`);
+					
+					try{
+						element["attestationHealthz"] = await getAttestationHealthz(element["attestationURL"]);
+					}
+					catch(error){
+						console.log(`Error retrieving /healthz for ${element.key}, setting to empty`);
+						element["attestationHealthz"] = "-";
+					}
+					
+					try{
+						element["attestationStatus"] = await getAttestationStatus(element["attestationURL"]);
+					}
+					catch(error){
+						console.log(`Error retrieving /status for ${element.key}, setting to empty`);
+						element["attestationStatus"] = {version: "-", status: "-"};
+					}
+
+					
+					if(!element["attestationStatus"].version){
+						element["attestationStatus"]["version"] = "-";
+					}
+				}
+				catch(err){
+					element["attestationURL"] = "** CORS error getting metadata **";
+					element["attestationHealthz"] = "-";
+					element["attestationStatus"] = {version: "-", status: "-"};
+				}
 			}
+
+			element["status"] = element.attestationStatus.version + " - " + element.attestationStatus.status;
 	
 			if(element.favourite === null)
 				element.favourite = false;
@@ -160,19 +200,57 @@ class AttestationMap extends Component
 		});
 	}
 
-	sortByRatio = (attestations, flip) => {	
-		attestations.sort((x, y) => {
-			let a = x.completedRatio, b = y.completedRatio;
-			if(flip){ a = y.completedRatio; b = x.completedRatio;}
+	sortAscending = (attributeName) => {		
+		const sortFunction = (x, y) => {			
+			let a = x[`${attributeName}`];
+			let b = y[`${attributeName}`];
+	
+			if(typeof a === "string"){
+				a = a.toLowerCase();
+				b = b.toLowerCase();
+			}
 			return (a === b ? 0 : a > b ? 1 : -1);
-		});
+		}
+		return sortFunction;
 	}
 
-	sortByCompleted = (attestations, flip) => {	
-		attestations.sort((x, y) => {
-			let a = x.completedCount, b = y.completedCount;
-			if(flip){a = y.completedCount; b = x.completedCount;}
+	sortDescending = (attributeName) => {		
+		const sortFunction = (x, y) => {			
+			let b = x[`${attributeName}`];
+			let a = y[`${attributeName}`];
+	
+			if(typeof a === "string"){
+				a = a.toLowerCase();
+				b = b.toLowerCase();
+			}
 			return (a === b ? 0 : a > b ? 1 : -1);
+		}
+		return sortFunction;
+	}
+
+	sortByAttribute = (attestations, attributeName, flip) => {	
+		
+		const sortDirection = this.state.sortDirection;
+		
+		if(flip){
+			if(sortDirection==="descending"){
+				this.setState({sortDirection: "ascending"}, this.setState({sortIcon: ascendingIcon}));
+				attestations.sort(this.sortAscending(attributeName));
+			}
+			else{
+				this.setState({sortDirection: "descending"}, this.setState({sortIcon: descendingIcon}));
+				attestations.sort(this.sortDescending(attributeName));
+			}				
+		}
+		else{
+			if(sortDirection==="descending")
+				attestations.sort(this.sortDescending(attributeName));
+			else
+				attestations.sort(this.sortAscending(attributeName));
+		}
+
+		this.setState({attestations}, () => {
+			this.setState({sortByAttributeName : attributeName});
 		});
 	}
 
@@ -181,13 +259,14 @@ class AttestationMap extends Component
 		this.setState({loading:true},  async () => {
 			try{
 				const response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);            
-				var data = response.data;                
+				var data = response.data;
 
 				await this.enrichData(data);
-				this.sortByCompleted(data, true);
             
 				this.setState({attestations: data}, () => {
-					console.log(this.state);
+					console.info(this.state);
+					this.sortByAttribute(this.state.attestations, this.state.sortByAttributeName, false);
+					
 					this.setState({loading:false}, toast.notify("INFO", "Retrieved parsed attestations"));}
 				);
 			}
@@ -220,17 +299,18 @@ class AttestationMap extends Component
 		if(lookback !== this.state.lookback){
 			this.setState({loading:true}, () => {
 				toast.notify("INFO","Scale updated to " + lookback);
-				localStorage.setItem("scale", lookback);
+				localStorage.setItem(`attestation-scale-${this.props.network}`, lookback);
 				this.setState({lookback}, this.setState({loading:false}));
 			});
 		}
 	}
 
 	setAutoRefresh = async (autoRefresh) => {
+		
 		console.log("Auto-refresh =" + autoRefresh);
 		if(this.state.autoRefresh !== autoRefresh){
 			console.log("Changing autoRefresh to " + autoRefresh);
-			localStorage.setItem("autoRefresh", autoRefresh);
+			localStorage.setItem(`attestation-autoRefresh-${this.props.network}`, autoRefresh);
 			this.setState({autoRefresh});
 
 			if(this.state.autoRefresh){
@@ -243,7 +323,7 @@ class AttestationMap extends Component
 		}
 	}
 
-	setOnlyFavourites = (onlyFavourites, event) => {
+	setOnlyFavourites = (onlyFavourites) => {
 
 		const favourites = this.state.attestations.filter((e,i) => e.favourite === true) || [];
 		if((favourites.length===0) && (onlyFavourites === true)){
@@ -253,7 +333,7 @@ class AttestationMap extends Component
 			console.log("Only favourites =" + onlyFavourites);
 			if(this.state.onlyFavourites !== onlyFavourites){
 				console.log("Changing onlyFavourites to " + onlyFavourites);
-				localStorage.setItem("onlyFavourites", onlyFavourites);
+				localStorage.setItem(`attestation-onlyFavourites-${this.props.network}`, onlyFavourites);
 				this.setState({onlyFavourites});
 			}
 		}
@@ -266,13 +346,13 @@ class AttestationMap extends Component
 
 		if(issuerToToggle.favourite === false){
 			issuerToToggle["favourite"] = true;
-			console.log("Setting favourite for " + issuer);
-			localStorage.setItem(issuer, true);
+			console.log("Setting favourite for attestation-" + this.props.network + "-" + issuer);
+			localStorage.setItem("attestation-" + this.props.network + "-" + issuer, true);
 		}
 		else {
 			issuerToToggle["favourite"] = false;
-			console.log("Removing favourite for " + issuer);
-			localStorage.setItem(issuer, false);
+			console.log("Removing favourite for attestation-" + this.props.network + "-" + issuer);
+			localStorage.setItem("attestation-" + this.props.network + "-" + issuer, false);
 		}
 		const attestations = [...this.state.attestations.filter((e,i) => e.key !== issuer), issuerToToggle];
 		this.setState({attestations});		
@@ -303,18 +383,17 @@ class AttestationMap extends Component
 				/>
 
 				<AttestationMapTable 
-					sortByValidatorName={this.sortByValidatorName} 
-					sortBySignerAddress={this.sortBySignerAddress}
-					sortBySignedCount={this.sortBySignedCount}
-					sortByMissedCount={this.sortByMissedCount}
 					toggleFavourite={this.toggleFavourite}
 					config={this.state.remoteNodeConfig} 
 					loading={this.state.loading} 
 					lookback={this.state.lookback} 
 					atBlock={this.state.atBlock} 
 					blockNumber={this.state.blockNumber} 
-					attestations={this.state.onlyFavourites ? this.state.attestations.filter((e,i) => e.favourite === true) : this.state.attestations}/>
-
+					attestations={this.state.onlyFavourites ? this.state.attestations.filter((e,i) => e.favourite === true) : this.state.attestations}
+					sortIcon={this.state.sortIcon}
+					sortByAttribute={this.sortByAttribute}
+					sortByAttributeName={this.state.sortByAttributeName}
+				/>
 				<ToastContainer autoClose={toast.DEFAULT_AUTOCLOSE}/>
 				<hr />
 			</div>
