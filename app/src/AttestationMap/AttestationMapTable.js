@@ -25,6 +25,19 @@ export default function AttestationMapTable(props) {
 	const colSpan = lookback;
 	const favourites = attestations.filter((e,i) => e.favourite === true);
 	const nonFavourites = attestations.filter((e,i) => e.favourite === false);
+	
+	let servicesCount = 0, sumTLS = 0, sumSelected = 0, sumCompleted = 0, sumMissed = 0, sumPercent = 0, averagePercent = 0, tlsPercent = 0;
+	attestations.forEach((element, index) => {
+		servicesCount++;
+		sumTLS = sumTLS + (element.tlsStatus ? 1 : 0);
+		sumCompleted = sumCompleted + element.completedCount;
+		sumSelected = sumSelected + element.selectedCount;
+		sumMissed = sumMissed + element.notCompletedCount;
+		sumPercent = sumPercent + element.completedRatio;
+	});
+
+	averagePercent = Math.round(sumCompleted/sumSelected*100);
+	tlsPercent = Math.round(sumTLS/servicesCount*100.0);
 
 	const headers = [
 		{	label: "Validator",
@@ -34,6 +47,10 @@ export default function AttestationMapTable(props) {
 		{	label: "Attestation URL",
 			attributeName: "attestationURL",
 			altText: "Sorted by attestation URL"
+		},
+		{	label: "TLS",
+			attributeName: "tlsStatus",
+			altText: "Sorted by SSL/TLS status"
 		},
 		{	label: "Status",
 			attributeName: "status",
@@ -89,7 +106,7 @@ export default function AttestationMapTable(props) {
 									<th colSpan={colSpan}>{"Attestations"}</th>	
 
 									{summaries.map((value, i) => 
-										<th key= {i} onClick={() => {
+										<th className="summary-column-header" key= {i} onClick={() => {
 											if(sortByAttributeName === value.attributeName)
 												sortByAttribute(attestations, value.attributeName, true);
 											else
@@ -105,6 +122,15 @@ export default function AttestationMapTable(props) {
 								</tr>
 							</thead>
 							<tbody>
+								<tr className="blockMapInfo">
+									<td colSpan={3}>{`Total Attestation Services: ${nonFavourites.length + favourites.length}`}</td>
+									<td colSpan={2}>{`TLS: ${sumTLS} (${tlsPercent}%)`}</td>
+									<td colSpan={colSpan}>{"Hover over any attestation cell for transaction details"}</td>
+									<td>{sumSelected}</td>
+									<td>{sumCompleted}</td>
+									<td>{sumMissed}</td>
+									<td>{averagePercent}</td>
+								</tr>
 								{favourites.map((row, i) =><AttestationMapRow key={i} atBlock={atBlock} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} data={{...row}} />)}						
 								{nonFavourites.map((row, i) =><AttestationMapRow key={i} atBlock={atBlock} loading={loading} lookback={lookback} toggleFavourite={toggleFavourite} data={{...row}} />)}
 							</tbody>

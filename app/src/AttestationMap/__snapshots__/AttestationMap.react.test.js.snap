@@ -483,7 +483,7 @@ exports[`Attestation Map component matches snapshot 1`] = `
                 }
               >
                 <strong>
-                  100
+                  150
                 </strong>
               </span>
               <span
@@ -517,7 +517,7 @@ exports[`Attestation Map component matches snapshot 1`] = `
                 }
               >
                 <strong>
-                  300
+                  250
                 </strong>
               </span>
             </div>

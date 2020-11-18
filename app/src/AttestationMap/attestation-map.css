@@ -1,13 +1,13 @@
-.attestation-300 {
-    padding: 0.05rem !important;
+.attestation-250 {
+    padding: 0.03rem !important;
 }
 
 .attestation-200 {
-    padding: 0.05rem !important;
+    padding: 0.06rem !important;
 }
 
-.attestation-100 {
-    padding: 0.15rem !important;
+.attestation-150 {
+    padding: 0.08rem !important;
 }
 
 .incomplete {
@@ -23,4 +23,8 @@
 .filler {
     background-color: var(--celo-accent-cyan);
     color: var(--celo-accent-cyan);
+}
+
+.checkmark-small img {
+    width: 15px;
 }

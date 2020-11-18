@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../SignedBlocks/signed-blocks-row.css";
 import favouriteIcon from "../assets/favorite_white.svg";
+import checkmarkIcon from "../assets/10-Check (light-bg).png";
 
 AttestationMapRow.propTypes = () => { 
 	return { 
@@ -36,7 +37,11 @@ export default function AttestationMapRow(props) {
 					</td>
 
 					<td className="blockMapInfo text-align-left">
-						<a rel="noopener noreferrer" target="_blank" href={data.attestationURL}>{data.attestationURL}</a>
+						<a rel="noopener noreferrer" target="_blank" href={data.attestationURL}>{data.attestationURL}</a>					
+					</td>
+
+					<td className="blockMapInfo checkmark-small">
+						{data.tlsStatus ? <img src={checkmarkIcon} alt="TLS secured attestation endpoint" />:""}
 					</td>
 
 					<td title={JSON.stringify(data.attestationStatus)} className="blockMapInfo text-align-left">

@@ -31,7 +31,7 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" render={(props) => <AsyncHome {...props} />} />   
 							<Redirect from="/rc1-block-map" to="/block-map" />
-							{attestationMaps.map((am, i) => <Route key={i} path={"/" + (am.toLowerCase() === "mainnet" ? "" : (am.toLowerCase() + "-")) + "attestations"} render={(props) => (<AsyncAttestationMap key={i} network={am} lookback={100} {...props} />)} />)}
+							{attestationMaps.map((am, i) => <Route key={i} path={"/" + (am.toLowerCase() === "mainnet" ? "" : (am.toLowerCase() + "-")) + "attestations"} render={(props) => (<AsyncAttestationMap key={i} network={am} lookback={150} {...props} />)} />)}
 							{faucets.map((faucet, i) => <Route key={i} path={"/" + faucet.toLowerCase() + "-faucet"} render={(props) => (<AsyncFaucet key={i} network={faucet} {...props} />)} />)}
 							{signedBlocks.map((sb, i) => <Route key={i} path={"/" + (sb.toLowerCase() === "mainnet" ? "" : (sb.toLowerCase() + "-")) + "block-map"} render={(props) => (<AsyncSignedBlocks key={i} network={sb} lookback={100} {...props} />)} />)}
 							<Route path="*" render={(props) => {return <AsyncNotFound {...props} />; }}/>              
