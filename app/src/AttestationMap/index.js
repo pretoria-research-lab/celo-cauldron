@@ -190,6 +190,7 @@ class AttestationMap extends Component
 			}
 
 			element["status"] = element.attestationStatus.version + " - " + element.attestationStatus.status;
+			element["tlsStatus"] = element["attestationURL"].includes("https://");
 	
 			if(element.favourite === null)
 				element.favourite = false;
@@ -284,16 +285,16 @@ class AttestationMap extends Component
 		let lookback;
 		switch (scale) {
 		case 0:
-			lookback = 100;
+			lookback = 150;
 			break;
 		case 1:
 			lookback = 200;
 			break;
 		case 2:
-			lookback = 300;
+			lookback = 250;
 			break;
 		default:
-			lookback = 100;
+			lookback = 150;
 		}
 
 		if(lookback !== this.state.lookback){
