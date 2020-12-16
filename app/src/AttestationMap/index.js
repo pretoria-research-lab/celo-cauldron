@@ -285,16 +285,16 @@ class AttestationMap extends Component
 		let lookback;
 		switch (scale) {
 		case 0:
-			lookback = 150;
-			break;
-		case 1:
 			lookback = 200;
 			break;
-		case 2:
+		case 1:
 			lookback = 250;
 			break;
+		case 2:
+			lookback = 300;
+			break;
 		default:
-			lookback = 150;
+			lookback = 200;
 		}
 
 		if(lookback !== this.state.lookback){

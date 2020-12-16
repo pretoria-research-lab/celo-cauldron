@@ -23,13 +23,13 @@ const getIndexFromValue = (value) => {
 	var index = 0;
 	var intValue = parseInt(value); 
 	switch (intValue) {
-	case 150:
+	case 200:
 		index = 0;
 		break;
-	case 200:
+	case 250:
 		index = 1;
 		break;
-	case 250:
+	case 300:
 		index = 2;
 		break;
 	default:
@@ -42,15 +42,15 @@ const marks =
 { 
 	0:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>150</strong>
+	label: <strong>200</strong>
 	},
 	1:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>200</strong>
+	label: <strong>250</strong>
 	},
 	2:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>250</strong>
+	label: <strong>300</strong>
 	},
 };
 
