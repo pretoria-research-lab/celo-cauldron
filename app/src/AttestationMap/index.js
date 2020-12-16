@@ -31,7 +31,11 @@ class AttestationMap extends Component
 
 		const autoRefresh = localStorage.getItem(`attestation-autoRefresh-${this.props.network}`) === "true" ? true : false;
 		const onlyFavourites = localStorage.getItem(`attestation-onlyFavourites-${this.props.network}`) === "true" ? true : false;
-		const scale = parseInt(localStorage.getItem(`attestation-scale-${this.props.network}`)) || this.props.lookback;
+		let scale = parseInt(localStorage.getItem(`attestation-scale-${this.props.network}`)) || this.props.lookback;
+		// If using old scale, update to the new scale default
+		if([200,250,300].filter((x, index) => {return scale===x}).length === 0){
+			scale = 200;
+		}
 		console.log(`Retrieved previous settings, autoRefresh ${autoRefresh}, scale ${scale}, onlyFavourites ${onlyFavourites}`);
 
 		this.state =	
