@@ -33,8 +33,8 @@ class AttestationMap extends Component
 		const onlyFavourites = localStorage.getItem(`attestation-onlyFavourites-${this.props.network}`) === "true" ? true : false;
 		let scale = parseInt(localStorage.getItem(`attestation-scale-${this.props.network}`)) || this.props.lookback;
 		// If using old scale, update to the new scale default
-		if([200,250,300].filter((x, index) => {return scale===x}).length === 0){
-			scale = 200;
+		if([250,300,350].filter((x, index) => {return scale===x}).length === 0){
+			scale = 250;
 		}
 		console.log(`Retrieved previous settings, autoRefresh ${autoRefresh}, scale ${scale}, onlyFavourites ${onlyFavourites}`);
 
@@ -263,9 +263,18 @@ class AttestationMap extends Component
 
 		this.setState({loading:true},  async () => {
 			try{
-				const response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);            
-				var data = response.data;
-
+				
+				let response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);			
+				let data = response.data.parsedAttestations;
+				let page = response.data.next;
+				
+				// Keep retrieving next pages until none left (page is null)
+				while(page){
+					console.log(`Retrieving next page ${page}`);
+					response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig, page);			
+					data = [...response.data.parsedAttestations, ...data];
+					page = response.data.next;
+				}
 				await this.enrichData(data);
             
 				this.setState({attestations: data}, () => {
@@ -289,16 +298,16 @@ class AttestationMap extends Component
 		let lookback;
 		switch (scale) {
 		case 0:
-			lookback = 200;
-			break;
-		case 1:
 			lookback = 250;
 			break;
-		case 2:
+		case 1:
 			lookback = 300;
 			break;
+		case 2:
+			lookback = 350;
+			break;
 		default:
-			lookback = 200;
+			lookback = 250;
 		}
 
 		if(lookback !== this.state.lookback){
