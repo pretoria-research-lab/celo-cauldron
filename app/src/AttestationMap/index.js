@@ -298,21 +298,27 @@ class AttestationMap extends Component
 		let lookback;
 		switch (scale) {
 		case 0:
-			lookback = 250;
+			lookback = 100;
 			break;
 		case 1:
-			lookback = 300;
+			lookback = 150;
 			break;
 		case 2:
-			lookback = 350;
+			lookback = 200;
+			break;
+		case 3:
+			lookback = 250;
+			break;
+		case 4:
+			lookback = 300;
 			break;
 		default:
-			lookback = 250;
+			lookback = 100;
 		}
 
 		if(lookback !== this.state.lookback){
 			this.setState({loading:true}, () => {
-				toast.notify("INFO","Scale updated to " + lookback);
+				toast.notify("INFO","Now showing last " + lookback);
 				localStorage.setItem(`attestation-scale-${this.props.network}`, lookback);
 				this.setState({lookback}, this.setState({loading:false}));
 			});

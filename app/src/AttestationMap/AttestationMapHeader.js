@@ -23,14 +23,20 @@ const getIndexFromValue = (value) => {
 	var index = 0;
 	var intValue = parseInt(value); 
 	switch (intValue) {
-	case 250:
+	case 100:
 		index = 0;
 		break;
-	case 300:
+	case 150:
 		index = 1;
 		break;
-	case 350:
+	case 200:
 		index = 2;
+		break;
+	case 250:
+		index = 3;
+		break;
+	case 300:
+		index = 4;
 		break;
 	default:
 		index = 0;
@@ -42,15 +48,23 @@ const marks =
 { 
 	0:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>250</strong>
+	label: <strong>100</strong>
 	},
 	1:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>300</strong>
+	label: <strong>150</strong>
 	},
 	2:	{	style: {
 		color: "var(--celo-green)",},
-	label: <strong>350</strong>
+	label: <strong>200</strong>
+	},
+	3:	{	style: {
+		color: "var(--celo-green)",},
+	label: <strong>250</strong>
+	},
+	4:	{	style: {
+		color: "var(--celo-green)",},
+	label: <strong>300</strong>
 	},
 };
 
@@ -88,8 +102,8 @@ export default function AttestationMapHeader(props) {
 							<OnlyFavouritesSwitch setOnlyFavourites={props.setOnlyFavourites} onlyFavourites={props.onlyFavourites}/>
 						</div>				
 						<div className="col-sm-3">
-							<p>Map Scale</p>
-							<Slider min={0} max={2} step={1} defaultValue={index} marks={marks} onAfterChange={(value) => props.changeMapScale(value)}/>
+							<p>Show Only Last</p>
+							<Slider min={0} max={4} step={1} defaultValue={index} marks={marks} onAfterChange={(value) => props.changeMapScale(value)}/>
 						</div>
 					</div>					
 				</div>

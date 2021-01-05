@@ -48,7 +48,7 @@ export default function AttestationMapRow(props) {
 						<a rel="noopener noreferrer" target="_blank" href={data.attestationURL + "/status"}>{data.status}</a>
 					</td>
 
-					{data.attestations.map((t, i) => 
+					{data.attestations.filter((element, index) => {return index >= (data.attestations.length - lookback)}).map((t, i) => 
 						<td 
 							title={JSON.stringify(t)} 
 							className={"attestation-" + lookback + " " + (t.completed.txId ? "completed" : "incomplete")} 

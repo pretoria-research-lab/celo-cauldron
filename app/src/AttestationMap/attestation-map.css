@@ -18,6 +18,10 @@
     padding: 0.08rem !important;
 }
 
+.attestation-100 {
+    padding: 0.1rem !important;
+}
+
 .incomplete {
     background-color: var(--celo-accent-red);
     color: var(--celo-accent-red);
