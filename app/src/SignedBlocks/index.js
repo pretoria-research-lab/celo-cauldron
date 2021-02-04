@@ -492,7 +492,7 @@ class SignedBlocks extends Component
 			console.log("Changing stayAtHead to " + stayAtHead);
 			localStorage.setItem("stayAtHead", stayAtHead);
 			this.setState({stayAtHead}, () => {
-				if(this.state.stayAtHead === true)
+				if(this.state.stayAtHead === true || this.state.stayAtHead === "true")
 					this.changeToLastPage();
 			});
 		}

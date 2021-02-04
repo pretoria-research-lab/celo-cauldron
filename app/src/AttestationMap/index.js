@@ -325,20 +325,20 @@ class AttestationMap extends Component
 	}
 
 	setAutoRefresh = async (autoRefresh) => {
-		
-		console.log("Auto-refresh =" + autoRefresh);
+
 		if(this.state.autoRefresh !== autoRefresh){
 			console.log("Changing autoRefresh to " + autoRefresh);
 			localStorage.setItem(`attestation-autoRefresh-${this.props.network}`, autoRefresh);
-			this.setState({autoRefresh});
-
-			if(this.state.autoRefresh){
-				const attestationsIntervalID = setInterval(this.getAttestations, refreshAttestationsMillis);
-				this.setState({attestationsIntervalID:attestationsIntervalID});
-			}
-			else{
-				clearInterval(this.state.attestationsIntervalID);
-			}
+			this.setState({autoRefresh}, () => {
+				if((this.state.autoRefresh === true) || (this.state.autoRefresh === "true")){
+					const attestationsIntervalID = setInterval(this.getAttestations, refreshAttestationsMillis);
+					this.setState({attestationsIntervalID:attestationsIntervalID}, () => console.log("setInterval, attestationsIntervalID " + this.state.attestationsIntervalID));
+				}
+				else{
+					clearInterval(this.state.attestationsIntervalID);
+					console.log("setInterval cleared");
+				}
+			});
 		}
 	}
 
