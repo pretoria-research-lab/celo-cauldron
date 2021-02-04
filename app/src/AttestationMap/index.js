@@ -270,7 +270,7 @@ class AttestationMap extends Component
 				
 				// Keep retrieving next pages until none left (LastEvaluatedKey is null)
 				while(LastEvaluatedKey){
-					console.log(`Retrieving next page at LastEvaluatedKey ${LastEvaluatedKey}`);
+					console.log(`Retrieving next page at LastEvaluatedKey ${JSON.stringify(LastEvaluatedKey)}`);
 					response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig, LastEvaluatedKey);			
 					data = [...response.data.parsedAttestations, ...data];
 					LastEvaluatedKey = response.data.LastEvaluatedKey;

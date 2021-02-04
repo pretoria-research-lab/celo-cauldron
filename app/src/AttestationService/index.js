@@ -24,7 +24,13 @@ export default class AttestationService {
 
 	getParsedAttestations = async (config, LastEvaluatedKey) => {
 		const instance = this.createInstance(config);
-		const response = await instance.get(config.host + config.basePath + this.PARSED_PATH + (LastEvaluatedKey? "?LastEvaluatedKey=" + LastEvaluatedKey : ""));
+		
+		let response;
+		if(LastEvaluatedKey && LastEvaluatedKey.key)
+			response = await instance.get(config.host + config.basePath + this.PARSED_PATH + "?LastEvaluatedKey=" + LastEvaluatedKey.key);
+		else
+			response = await instance.get(config.host + config.basePath + this.PARSED_PATH);
+
 		console.log("AttestationService - getParsedAttestations() - success");
 		return response;
 	}
