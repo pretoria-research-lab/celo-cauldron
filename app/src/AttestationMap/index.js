@@ -266,21 +266,20 @@ class AttestationMap extends Component
 				
 				let response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig);			
 				let data = response.data.parsedAttestations;
-				let page = response.data.next;
+				let LastEvaluatedKey = response.data.LastEvaluatedKey;
 				
-				// Keep retrieving next pages until none left (page is null)
-				while(page){
-					console.log(`Retrieving next page ${page}`);
-					response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig, page);			
+				// Keep retrieving next pages until none left (LastEvaluatedKey is null)
+				while(LastEvaluatedKey){
+					console.log(`Retrieving next page at LastEvaluatedKey ${LastEvaluatedKey}`);
+					response = await attestationAPI.getParsedAttestations(this.state.attestationAPIConfig, LastEvaluatedKey);			
 					data = [...response.data.parsedAttestations, ...data];
-					page = response.data.next;
+					LastEvaluatedKey = response.data.LastEvaluatedKey;
 				}
 				await this.enrichData(data);
             
 				this.setState({attestations: data}, () => {
 					console.info(this.state);
-					this.sortByAttribute(this.state.attestations, this.state.sortByAttributeName, false);
-					
+					this.sortByAttribute(this.state.attestations, this.state.sortByAttributeName, false);					
 					this.setState({loading:false}, toast.notify("INFO", "Retrieved parsed attestations"));}
 				);
 			}
