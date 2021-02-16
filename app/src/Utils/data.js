@@ -104,7 +104,7 @@ export const data = {
 		{
 			community: true,
 			link: "https://celovote.com/",
-			blurb: "CeloVote - automatically delegate cGLD maximize returns"
+			blurb: "CeloVote - automatically delegate CELO maximize returns"
 		},
 		{
 			community: true,

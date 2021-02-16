@@ -23,7 +23,7 @@ export default function FaucetInformation(props) {
 					{props.config.faucetAddress ? <QRCode size={150} bgColor="#FFFFFF" fgColor="#2E3338" includeMargin={false} value={props.config.faucetAddress} /> : "" }
 				</div>
 				<div className="technical">
-					<p>{"Balance " + props.faucetBalance + " cGLD"}</p>
+					<p>{"Balance " + props.faucetBalance + " CELO"}</p>
 					<p>{"Block number " + props.blockNumber}</p>
 				</div>
 			</div>
@@ -31,14 +31,14 @@ export default function FaucetInformation(props) {
 				<h3>How To Prepare</h3>
 				<hr />
 				<ul>
-					<li>Use the table below to request a 1 cGLD for testing purposes</li>
-					<li>The cGLD will cool down for 12 blocks before being served</li>
+					<li>Use the table below to request a 1 CELO for testing purposes</li>
+					<li>The CELO will cool down for 12 blocks before being served</li>
 					<li>Press the confirm button to claim your faucet amount after cooldown</li>
 					<li>A maximum of 20 requests can be queued at once</li>                
 					<li>If someone leaves without claiming, you may confirm for them at any time</li>
 					<li>Only the last 20 requests are visible on this dashboard</li>
 				</ul>
-				<h5 className="nb">This is a community kitchen - please return any cGLD if you are finished cooking</h5>
+				<h5 className="nb">This is a community kitchen - please return any CELO if you are finished cooking</h5>
 			</div>
 		</div>
 	);

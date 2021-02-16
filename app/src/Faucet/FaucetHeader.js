@@ -21,7 +21,7 @@ export default function FaucetHeader(props) {
 				</div>
 				<div className="col-sm-8">
 					<div className="row">
-						<p>{"A community funded faucet to receive nominal amounts of cGLD for testing and development on the Celo " + props.network + " network"}</p>
+						<p>{"A community funded faucet to receive nominal amounts of CELO for testing and development on the Celo " + props.network + " network"}</p>
 					</div>
 				</div>
 			</div>
