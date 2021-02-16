@@ -34,15 +34,14 @@ test("create account from private key", async () => {
 	// Get accounts
 	const accounts = await kit.web3.eth.getAccounts();
 	console.log(accounts);
-	assert.equal(accounts.length, 3); // contractkit now initialises a new account for you
+	assert.equal(accounts.length, 2);
 
 	// Check individual accounts
-	assert.equal(accounts[1], "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf");
-	assert.equal(accounts[2], "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF");
+	assert.equal(accounts[0], "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf", "accounts[0] should be 0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf");
+	assert.equal(accounts[1], "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF", "accounts[1] should be 0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF");
 
 	console.log(accounts[0]);
 	console.log(accounts[1]);
-	console.log(accounts[2]);
 
 	// Set default account
 	kit.defaultAccount = accounts[0];
