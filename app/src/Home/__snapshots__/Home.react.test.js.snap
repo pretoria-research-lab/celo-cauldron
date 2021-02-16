@@ -393,7 +393,7 @@ exports[`Home component matches snapshot 1`] = `
             <td
               id="left"
             >
-              CeloVote - automatically delegate cGLD maximize returns
+              CeloVote - automatically delegate CELO maximize returns
             </td>
             <td
               id="right"
