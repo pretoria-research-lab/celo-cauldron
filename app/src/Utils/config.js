@@ -18,7 +18,7 @@ export const API_CONFIG = [
 	{   network : "mainnet",
 		host: "https://cuzea5un8e.execute-api.eu-central-1.amazonaws.com",
 		basePath: "/rc1",
-		remoteNode: "https://rc1-forno.celo-testnet.org/",
+		remoteNode: "https://forno.celo.org/",
 		blockExplorer: "https://explorer.celo.org/",
 		blocksCooldown: 12
 	}
